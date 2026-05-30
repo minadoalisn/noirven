@@ -32,6 +32,36 @@ function Invoke-CheckedCommand {
   }
 }
 
+function Repair-GitWriteAccess {
+  $gitDir = Join-Path $RepoPath ".git"
+  if (-not (Test-Path -LiteralPath $gitDir)) {
+    throw "Git directory not found: $gitDir"
+  }
+
+  $indexLock = Join-Path $gitDir "index.lock"
+  if (Test-Path -LiteralPath $indexLock) {
+    $gitProcesses = Get-CimInstance Win32_Process -Filter "Name = 'git.exe'" -ErrorAction SilentlyContinue
+    if ($gitProcesses) {
+      throw "Git index lock exists while git.exe is running: $indexLock"
+    }
+    Remove-Item -LiteralPath $indexLock -Force
+    Write-WatchdogLog "Removed stale git index lock."
+  }
+
+  $acl = Get-Acl -LiteralPath $gitDir
+  $denyRules = @($acl.Access | Where-Object { $_.AccessControlType -eq [System.Security.AccessControl.AccessControlType]::Deny })
+  if ($denyRules.Count -gt 0) {
+    foreach ($rule in $denyRules) {
+      [void]$acl.RemoveAccessRuleSpecific($rule)
+    }
+    Set-Acl -LiteralPath $gitDir -AclObject $acl
+    Write-WatchdogLog ("Removed {0} explicit Deny ACL rule(s) from .git." -f $denyRules.Count)
+  }
+
+  Invoke-CheckedCommand "git" @("config", "--local", "http.sslBackend", "schannel")
+  Invoke-CheckedCommand "git" @("config", "--local", "http.sslVerify", "true")
+}
+
 function Test-GitCleanForPath {
   param([string[]]$Paths)
   $status = & git status --porcelain -- @Paths
@@ -113,6 +143,7 @@ try {
   }
 
   Set-Location -LiteralPath $RepoPath
+  Repair-GitWriteAccess
   $product = Get-LatestLocalProduct
   Write-WatchdogLog ("Latest local product: {0} / {1}" -f $product.Serial, $product.Slug)
 
@@ -144,12 +175,18 @@ try {
   Invoke-CheckedCommand "npm.cmd" @("run", "lint")
   Invoke-CheckedCommand "npm.cmd" @("run", "build")
 
+  Repair-GitWriteAccess
   Invoke-CheckedCommand "git" (@("add") + $pathsToPublish)
   & git diff --cached --quiet
   if ($LASTEXITCODE -ne 0) {
     $date = Get-Date -Format "yyyy-MM-dd"
     Invoke-CheckedCommand "git" @("commit", "-m", "Add Noirven daily story product $date")
-    Invoke-CheckedCommand "git" @("push", "origin", "main")
+    try {
+      Invoke-CheckedCommand "git" @("push", "origin", "main")
+    } catch {
+      Write-WatchdogLog ("Initial git push failed; retrying with Schannel HTTPS. " + $_.Exception.Message)
+      Invoke-CheckedCommand "git" @("-c", "http.sslbackend=schannel", "-c", "http.sslverify=true", "push", "origin", "main")
+    }
   } else {
     Write-WatchdogLog "No staged changes; skipping commit."
   }

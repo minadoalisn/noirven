@@ -232,6 +232,15 @@ export const storySeries: StorySeries[] = [
 
 export const storyChapters = [
   {
+    code: "CH-18",
+    seriesId: "tide-return",
+    title: "归潮的蓝账骨架",
+    summary:
+      "N-0528 把一次被海带走后的归来做成一圈蓝色账页：雾面钛撑起像船骨的内架，铂金把潮线收成可佩戴的弧度，海蓝宝与白水晶在外侧叠出透明水纹，帕拉伊巴碧玺只在转折处亮成坐标，珍珠母贝像重新登记过的页边。买家说：我不是回到原来的岸边，我只是把漂走的那部分自己重新认领。",
+    emotion: "归来 / 认领 / 蓝色账页",
+    productSerial: "N-0528",
+  },
+  {
     code: "CH-17",
     seriesId: "ash-garden",
     title: "灰烬花园的余温证词",
@@ -387,6 +396,17 @@ export const storyChapters = [
 ];
 
 export const dailyProductSeeds: DailyProductSeed[] = [
+  {
+    serial: "N-0528",
+    title: "Tide Return Blue Ledger Cuff Bracelet",
+    seriesId: "tide-return",
+    category: "bracelet",
+    zhTitle: "归潮蓝账骨架手环",
+    image: "/assets/products/n-0528-tide-return-blue-ledger-cuff-bracelet.webp",
+    materialLine: "铂金 / 雾面钛 / 海蓝宝 / 帕拉伊巴碧玺 / 白水晶 / 珍珠母贝 / 天然白钻",
+    craftLine: "水纹雕刻 / 隐秘式镶嵌 / 玑镂雕纹 / 微密镶 / 镜面抛光",
+    storyLine: "真正的回潮不是原路返回，而是把漂走的自己重新登记在蓝色里。",
+  },
   {
     serial: "N-0527",
     title: "Ash Garden Ember Witness Collar Necklace",
@@ -660,6 +680,7 @@ export const internalProductConceptSeeds: DailyProductSeed[] = [
 ];
 
 const seedAuctionEndsAt = [
+  "2026-06-06T20:00:00+08:00",
   "2026-05-27T20:00:00+08:00",
   "2026-05-27T20:30:00+08:00",
   "2026-05-28T20:00:00+08:00",
@@ -1064,10 +1085,10 @@ export const liveProducts = products.filter((product) => product.status !== "sol
 export const soldProducts = products.filter((product) => product.status === "sold");
 
 export const adminMetrics: AdminMetric[] = [
-  { label: "Live Belonging", value: "24", detail: "New story-backed product images are listed first" },
+  { label: "Live Belonging", value: "25", detail: "New story-backed product images are listed first" },
   { label: "Story Series", value: "08", detail: "Ready for IP, short drama, game extension" },
   { label: "Pending Settlement", value: "$220k+", detail: "USDT transfer proofs waiting for admin confirmation" },
-  { label: "Generated Drafts", value: "14", detail: "Seed prompts stay internal; only finished product images are public" },
+  { label: "Generated Drafts", value: "15", detail: "Seed prompts stay internal; only finished product images are public" },
 ];
 
 export function getSeries(seriesId: string) {

@@ -207,6 +207,7 @@ const seriesTranslations: Record<
 };
 
 const productInspirationTranslations: Record<string, string> = {
+  "N-0528": "The true tide return is not taking the old route back; it is registering the part of the self that drifted away back into blue.",
   "N-0527": "The ember after ash is not residue; it is testimony that the self still exists.",
   "N-0101": "I am still here, so the light is still here.",
   "N-0102": "Not repairing the wound, but recognizing that what remains after it is still whole.",
@@ -243,6 +244,12 @@ const productInspirationTranslations: Record<string, string> = {
 };
 
 const chapterTranslations: Record<string, Pick<StoryChapterLike, "title" | "summary" | "emotion">> = {
+  "CH-18": {
+    title: "Tide Return's Blue Ledger Frame",
+    summary:
+      "N-0528 turns a return after being carried out to sea into a ring of blue ledger pages: matte titanium supports a keel-like inner frame, platinum draws the tide line into a wearable arc, aquamarine and clear quartz layer transparent water marks along the edge, Paraiba tourmaline lights only at the turning points, and mother-of-pearl reads like a margin registered again. The collector said: I am not going back to the same shore. I am reclaiming the part of myself that drifted away.",
+    emotion: "return, reclaiming, blue ledger",
+  },
   "CH-17": {
     title: "Ash Garden's Ember Witness",
     summary:
