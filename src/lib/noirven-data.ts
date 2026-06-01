@@ -740,6 +740,14 @@ const seedAuctionEndsAt = [
   "2026-06-05T20:00:00+08:00",
 ];
 
+const dailyProductArchiveOverrides: Record<string, Pick<Product, "status" | "ownerNickname" | "soldAt">> = {
+  "N-0529": {
+    status: "sold",
+    ownerNickname: "Archive Review",
+    soldAt: "2026-06-01T20:00:00+08:00",
+  },
+};
+
 function splitSeedLine(line: string) {
   return line
     .split("/")
@@ -758,6 +766,7 @@ function seedSizing(category: Product["category"]) {
 
 function createProductFromSeed(seed: DailyProductSeed, index: number): Product {
   const materials = splitSeedLine(seed.materialLine);
+  const archiveOverride = dailyProductArchiveOverrides[seed.serial];
   const craft = splitSeedLine(seed.craftLine);
   const startPrice = suggestStartPrice({
     category: seed.category,
@@ -784,7 +793,9 @@ function createProductFromSeed(seed: DailyProductSeed, index: number): Product {
     bidIncrement: 0,
     bids: 0,
     endsAt: seedAuctionEndsAt[index] ?? seedAuctionEndsAt[0],
-    status: "live",
+    status: archiveOverride?.status ?? "live",
+    ownerNickname: archiveOverride?.ownerNickname,
+    soldAt: archiveOverride?.soldAt,
     image: seed.image,
     sizing: seedSizing(seed.category),
     engraving: `内侧或背面微刻 ${seed.serial}，作为 Noirven 唯一编号印记。`,
