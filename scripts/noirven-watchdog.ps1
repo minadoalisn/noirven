@@ -8,7 +8,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$LogDir = Join-Path $env:USERPROFILE ".codex\automations\noirven-daily-story-product-library"
+$LogDir = Join-Path $env:USERPROFILE ".codex\automations\noirven-daily-publish-watchdog"
 $LogPath = Join-Path $LogDir "watchdog.log"
 New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
 
@@ -51,11 +51,31 @@ function Repair-GitWriteAccess {
   $acl = Get-Acl -LiteralPath $gitDir
   $denyRules = @($acl.Access | Where-Object { $_.AccessControlType -eq [System.Security.AccessControl.AccessControlType]::Deny })
   if ($denyRules.Count -gt 0) {
-    foreach ($rule in $denyRules) {
-      [void]$acl.RemoveAccessRuleSpecific($rule)
+    $denySids = @($denyRules | ForEach-Object { $_.IdentityReference.Value } | Select-Object -Unique)
+    $aclRepaired = $false
+    try {
+      foreach ($rule in $denyRules) {
+        [void]$acl.RemoveAccessRuleSpecific($rule)
+      }
+      Set-Acl -LiteralPath $gitDir -AclObject $acl -ErrorAction Stop
+      $aclRepaired = $true
+    } catch {
+      Write-WatchdogLog ("PowerShell ACL repair failed: " + $_.Exception.Message)
+      try {
+        $icaclsArgs = @($gitDir, "/remove:d") + ($denySids | ForEach-Object { "*" + $_ })
+        & icacls @icaclsArgs | ForEach-Object { Write-WatchdogLog $_ }
+        $aclRepaired = ($LASTEXITCODE -eq 0)
+      } catch {
+        Write-WatchdogLog ("icacls ACL repair failed: " + $_.Exception.Message)
+      }
     }
-    Set-Acl -LiteralPath $gitDir -AclObject $acl
-    Write-WatchdogLog ("Removed {0} explicit Deny ACL rule(s) from .git." -f $denyRules.Count)
+
+    $remainingDenyRules = @((Get-Acl -LiteralPath $gitDir).Access | Where-Object { $_.AccessControlType -eq [System.Security.AccessControl.AccessControlType]::Deny })
+    if ($aclRepaired -and $remainingDenyRules.Count -eq 0) {
+      Write-WatchdogLog ("Removed {0} explicit Deny ACL rule(s) from .git." -f $denyRules.Count)
+    } else {
+      Write-WatchdogLog ("WARNING Could not remove {0} explicit Deny ACL rule(s) from .git; continuing to verify Git write access." -f $remainingDenyRules.Count)
+    }
   }
 
   Invoke-CheckedCommand "git" @("config", "--local", "http.sslBackend", "schannel")
@@ -88,29 +108,35 @@ function Get-LatestLocalProduct {
   }
 
   $latestSerial = $serials | Sort-Object { [int]($_ -replace "\D", "") } -Descending | Select-Object -First 1
-  $blockMatch = [regex]::Match($seedSource, ('\{{[^{{}}]*serial:\s*"{0}"[^{{}}]*\}}' -f [regex]::Escape($latestSerial)))
-  if (-not $blockMatch.Success) {
+  $blockMatches = @([regex]::Matches($seedSource, ('(?s)\{{\s*serial:\s*"{0}".*?\n\s*\}},' -f [regex]::Escape($latestSerial))))
+  if ($blockMatches.Count -eq 0) {
     throw "Could not parse latest product block for $latestSerial"
   }
 
-  $block = $blockMatch.Value
-  $image = [regex]::Match($block, 'image:\s*"([^"]+)"').Groups[1].Value
-  $seriesId = [regex]::Match($block, 'seriesId:\s*"([^"]+)"').Groups[1].Value
-  if (-not $image -or -not $seriesId) {
+  $blocks = @($blockMatches | ForEach-Object { $_.Value })
+  $images = @($blocks | ForEach-Object { [regex]::Match($_, 'image:\s*"([^"]+)"').Groups[1].Value } | Where-Object { $_ } | Select-Object -Unique)
+  $seriesIds = @($blocks | ForEach-Object { [regex]::Match($_, 'seriesId:\s*"([^"]+)"').Groups[1].Value } | Where-Object { $_ })
+  $image = $images | Select-Object -First 1
+  $seriesId = $seriesIds | Select-Object -First 1
+  if (-not $images -or -not $seriesId) {
     throw "Could not parse latest product image/series for $latestSerial"
   }
   $slug = "{0}-{1}" -f $seriesId, $latestSerial.ToLowerInvariant()
-  $imagePath = Join-Path $RepoPath ($image.TrimStart("/") -replace "/", "\")
-  if (-not $imagePath.Contains("\public\")) {
-    $imagePath = Join-Path $RepoPath ("public" + ($image -replace "/", "\"))
-  }
+  $imagePaths = @($images | ForEach-Object {
+    $path = Join-Path $RepoPath ($_.TrimStart("/") -replace "/", "\")
+    if (-not $path.Contains("\public\")) {
+      $path = Join-Path $RepoPath ("public" + ($_ -replace "/", "\"))
+    }
+    $path
+  })
 
   [pscustomobject]@{
     Serial = $latestSerial
     SeriesId = $seriesId
     Slug = $slug
     Image = $image
-    ImagePath = $imagePath
+    ImagePath = $imagePaths | Select-Object -First 1
+    ImagePaths = $imagePaths
   }
 }
 
@@ -164,9 +190,8 @@ try {
 
   $pathsToPublish = @(
     "src/lib/noirven-data.ts",
-    "src/lib/localized-content.ts",
-    ($product.ImagePath.Replace($RepoPath + "\", ""))
-  )
+    "src/lib/localized-content.ts"
+  ) + @($product.ImagePaths | ForEach-Object { $_.Replace($RepoPath + "\", "") })
 
   Invoke-CheckedCommand "npm.cmd" @("run", "verify:catalog")
   Invoke-CheckedCommand "npm.cmd" @("run", "verify:geo")

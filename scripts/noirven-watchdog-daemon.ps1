@@ -8,7 +8,7 @@ param(
 $ErrorActionPreference = "Continue"
 
 $watchdog = Join-Path $RepoPath "scripts\noirven-watchdog.ps1"
-$logDir = Join-Path $env:USERPROFILE ".codex\automations\noirven-daily-story-product-library"
+$logDir = Join-Path $env:USERPROFILE ".codex\automations\noirven-daily-publish-watchdog"
 $logPath = Join-Path $logDir "watchdog-daemon.log"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 

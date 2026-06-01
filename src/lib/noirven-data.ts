@@ -232,6 +232,24 @@ export const storySeries: StorySeries[] = [
 
 export const storyChapters = [
   {
+    code: "CH-20",
+    seriesId: "tender-armor",
+    title: "温柔盾甲的静锚时间",
+    summary:
+      "N-0530 把温柔不再漂流的时刻做成一枚安静的腕表：钛金属与钯金像软甲一样围住手腕，碳纤维格架把轻盈变成支撑，白玛瑙表盘保留一片不被打扰的空白，粉玉髓表冠像贴近脉搏的小锚，天然白钻只沿一侧低声发光。买家说：我终于不用把温柔解释成没有重量，它可以替我在时间里停稳。",
+    emotion: "静锚 / 温柔 / 边界重量",
+    productSerial: "N-0530",
+  },
+  {
+    code: "CH-19",
+    seriesId: "moon-archive",
+    title: "月相档案的静名透镜",
+    summary:
+      "N-0529 把一个终于不再替别人沉默的名字，放进一枚可佩戴的月光透镜：铂金做成很薄的档案边框，黑贝母在戒面下方像夜色封页，月光石与白水晶叠成半透明的证词，淡色珐琅把编号留在内侧，白钻只沿着月弧亮成一圈低声标记。买家说：我不再替那段沉默保管名字，我把它交给月光，让它站在可以作证的位置。",
+    emotion: "静名 / 作证 / 月光归档",
+    productSerial: "N-0529",
+  },
+  {
     code: "CH-18",
     seriesId: "tide-return",
     title: "归潮的蓝账骨架",
@@ -396,6 +414,28 @@ export const storyChapters = [
 ];
 
 export const dailyProductSeeds: DailyProductSeed[] = [
+  {
+    serial: "N-0530",
+    title: "Tender Armor Quiet Anchor Watch",
+    seriesId: "tender-armor",
+    category: "watch",
+    zhTitle: "温柔盾甲静锚腕表",
+    image: "/assets/products/n-0530-tender-armor-quiet-anchor-watch.png",
+    materialLine: "钛金属 / 钯金 / 碳纤维 / 白玛瑙 / 粉玉髓 / 黑色钢琴烤漆 / 天然白钻",
+    craftLine: "钛金属拉丝 / 碳纤维层压 / 玉髓包镶 / 微密镶 / 镜面抛光",
+    storyLine: "温柔不是没有重量，而是在时间里替自己落下一枚安静的锚。",
+  },
+  {
+    serial: "N-0529",
+    title: "Moon Archive Quiet Name Lens Ring",
+    seriesId: "moon-archive",
+    category: "ring",
+    zhTitle: "月相档案静名透镜戒",
+    image: "/assets/products/n-0529-moon-archive-quiet-name-lens-ring.png",
+    materialLine: "铂金 / 黑贝母 / 月光石 / 白水晶 / 淡色珐琅 / 天然白钻",
+    craftLine: "贝母薄片镶嵌 / 水晶切面 / 微刻封存线 / 隐秘式镶嵌 / 镜面抛光",
+    storyLine: "有些名字不需要再替别人沉默，只需要被月光安放在可以作证的位置。",
+  },
   {
     serial: "N-0528",
     title: "Tide Return Blue Ledger Cuff Bracelet",

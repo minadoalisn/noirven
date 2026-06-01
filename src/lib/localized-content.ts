@@ -65,6 +65,7 @@ const termTranslations: Record<string, string> = {
   黑铑封层: "black rhodium coating",
   黑玛瑙: "black onyx",
   黑陶瓷: "black ceramic",
+  黑色钢琴烤漆: "black piano lacquer",
   黑曜石: "obsidian",
   红宝石: "ruby",
   红色尖晶石: "red spinel",
@@ -207,6 +208,8 @@ const seriesTranslations: Record<
 };
 
 const productInspirationTranslations: Record<string, string> = {
+  "N-0530": "Tenderness is not weightless; it is setting a quiet anchor for yourself inside time.",
+  "N-0529": "Some names no longer need to be kept silent for someone else; they only need moonlight to place them where they can testify.",
   "N-0528": "The true tide return is not taking the old route back; it is registering the part of the self that drifted away back into blue.",
   "N-0527": "The ember after ash is not residue; it is testimony that the self still exists.",
   "N-0101": "I am still here, so the light is still here.",
@@ -244,6 +247,18 @@ const productInspirationTranslations: Record<string, string> = {
 };
 
 const chapterTranslations: Record<string, Pick<StoryChapterLike, "title" | "summary" | "emotion">> = {
+  "CH-20": {
+    title: "Tender Armor's Quiet Anchor Time",
+    summary:
+      "N-0530 turns the moment when tenderness stops drifting into a quiet watch: titanium and palladium wrap the wrist like soft armor, a carbon-fiber lattice turns lightness into support, the white agate dial keeps one undisturbed field of silence, the pink chalcedony crown sits like a small anchor near the pulse, and natural white diamonds speak only along one edge. The collector said: I no longer need to explain tenderness as weightless; it can steady time for me.",
+    emotion: "quiet anchor, tenderness, boundary weight",
+  },
+  "CH-19": {
+    title: "Moon Archive's Quiet Name Lens",
+    summary:
+      "N-0529 places a name that no longer keeps silence for someone else into a wearable moonlight lens: platinum forms a thin archive frame, black nacre sits under the face like a night-bound page, moonstone and clear quartz layer into translucent testimony, pale enamel keeps the serial inside, and white diamonds mark the lunar arc in a low voice. The collector said: I no longer keep that name inside silence. I give it to moonlight, where it can stand as witness.",
+    emotion: "quiet name, testimony, lunar archive",
+  },
   "CH-18": {
     title: "Tide Return's Blue Ledger Frame",
     summary:

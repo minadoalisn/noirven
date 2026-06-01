@@ -4,11 +4,22 @@ export default function robots(): MetadataRoute.Robots {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nvonly.com";
 
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: ["/api/", "/admin", "/en/admin", "/account", "/en/account"],
-    },
+    rules: [
+      {
+        userAgent: "OAI-SearchBot",
+        allow: "/",
+        disallow: ["/api/", "/admin", "/en/admin", "/account", "/en/account"],
+      },
+      {
+        userAgent: "GPTBot",
+        disallow: "/",
+      },
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/admin", "/en/admin", "/account", "/en/account"],
+      },
+    ],
     sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
