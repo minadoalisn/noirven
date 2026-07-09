@@ -208,6 +208,7 @@ const seriesTranslations: Record<
 };
 
 const productInspirationTranslations: Record<string, string> = {
+  "N-0531": "The evidence line that belongs to you does not need noise, and it should not be erased again.",
   "N-0530": "Tenderness is not weightless; it is setting a quiet anchor for yourself inside time.",
   "N-0529": "Some names no longer need to be kept silent for someone else; they only need moonlight to place them where they can testify.",
   "N-0528": "The true tide return is not taking the old route back; it is registering the part of the self that drifted away back into blue.",
@@ -247,6 +248,12 @@ const productInspirationTranslations: Record<string, string> = {
 };
 
 const chapterTranslations: Record<string, Pick<StoryChapterLike, "title" | "summary" | "emotion">> = {
+  "CH-21": {
+    title: "Justice of One's Evidence Line",
+    summary:
+      "N-0531 turns a quiet but undeniable line of evidence into a wearable brooch: platinum carries the clean outer contour, carved gold presses a fine inner structure, and the emerald refuses the exact center, sitting to one side like testimony returning into view. Tsavorite gathers light along the balance line, while natural white diamonds mark only the turning points. The collector said: I do not need everyone to see me. I only need the evidence line that is truly mine not to be erased again.",
+    emotion: "evidence, balance, unerased",
+  },
   "CH-20": {
     title: "Tender Armor's Quiet Anchor Time",
     summary:

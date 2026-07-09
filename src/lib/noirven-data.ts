@@ -232,6 +232,15 @@ export const storySeries: StorySeries[] = [
 
 export const storyChapters = [
   {
+    code: "CH-21",
+    seriesId: "justice-of-one",
+    title: "唯一证明的证据线",
+    summary:
+      "N-0531 把一条安静但不可反驳的证据线做成可佩戴的胸针：铂金承担干净的外轮廓，雕金在内侧压出细密骨架，祖母绿不站在正中，而是偏在一侧像重新出现的证词；沙弗莱石沿着平衡线渐次收光，天然白钻只在转折处形成低声标记。买家说：我不需要被所有人看见，我只需要那条真正属于我的证据线不要再被抹去。",
+    emotion: "证据 / 平衡 / 不被抹去",
+    productSerial: "N-0531",
+  },
+  {
     code: "CH-20",
     seriesId: "tender-armor",
     title: "温柔盾甲的静锚时间",
@@ -414,6 +423,17 @@ export const storyChapters = [
 ];
 
 export const dailyProductSeeds: DailyProductSeed[] = [
+  {
+    serial: "N-0531",
+    title: "Justice of One Evidence Line Brooch",
+    seriesId: "justice-of-one",
+    category: "brooch",
+    zhTitle: "唯一证明证据线胸针",
+    image: "/assets/products/n-0531-justice-of-one-evidence-line-brooch.png",
+    materialLine: "铂金 / 雕金 / 祖母绿 / 沙弗莱石 / 天然白钻",
+    craftLine: "手工錾刻 / 隐秘式镶嵌 / 微密镶 / 镜面抛光",
+    storyLine: "真正属于自己的证据线，不需要喧哗，也不该再被抹去。",
+  },
   {
     serial: "N-0530",
     title: "Tender Armor Quiet Anchor Watch",
@@ -720,6 +740,7 @@ export const internalProductConceptSeeds: DailyProductSeed[] = [
 ];
 
 const seedAuctionEndsAt = [
+  "2026-07-16T20:00:00+08:00",
   "2026-06-06T20:00:00+08:00",
   "2026-05-27T20:00:00+08:00",
   "2026-05-27T20:30:00+08:00",
@@ -1136,10 +1157,10 @@ export const liveProducts = products.filter((product) => product.status !== "sol
 export const soldProducts = products.filter((product) => product.status === "sold");
 
 export const adminMetrics: AdminMetric[] = [
-  { label: "Live Belonging", value: "25", detail: "New story-backed product images are listed first" },
+  { label: "Live Belonging", value: "26", detail: "New story-backed product images are listed first" },
   { label: "Story Series", value: "08", detail: "Ready for IP, short drama, game extension" },
   { label: "Pending Settlement", value: "$220k+", detail: "USDT transfer proofs waiting for admin confirmation" },
-  { label: "Generated Drafts", value: "15", detail: "Seed prompts stay internal; only finished product images are public" },
+  { label: "Generated Drafts", value: "16", detail: "Seed prompts stay internal; only finished product images are public" },
 ];
 
 export function getSeries(seriesId: string) {
