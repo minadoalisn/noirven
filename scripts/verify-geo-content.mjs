@@ -24,8 +24,15 @@ const guideData = read("src/lib/geo-guide-content.ts");
 const guidePage = read("src/components/sections/geo-guide-page.tsx");
 const zhRoute = read("src/app/guides/private-high-jewelry-buying/page.tsx");
 const enRoute = read("src/app/en/guides/private-high-jewelry-buying/page.tsx");
+const robots = read("src/app/robots.ts");
 const sitemap = read("src/app/sitemap.ts");
 const footer = read("src/components/layout/site-footer.tsx");
+const layout = read("src/app/layout.tsx");
+const structuredData = read("src/lib/structured-data.ts");
+const zhProductRoute = read("src/app/auctions/[slug]/page.tsx");
+const enProductRoute = read("src/app/en/auctions/[slug]/page.tsx");
+const llms = read("public/llms.txt");
+const llmsFull = read("public/llms-full.txt");
 
 expectIncludes("package scripts", packageJson, ["verify:geo"]);
 
@@ -60,12 +67,49 @@ expectIncludes("guide routes", `${zhRoute}\n${enRoute}`, [
 
 expectIncludes("sitemap", sitemap, [
   "/guides/private-high-jewelry-buying",
+  "lastModified",
 ]);
 
 expectIncludes("footer", footer, [
   "/guides/private-high-jewelry-buying",
   "购买指南",
   "Buying Guide",
+]);
+
+expectIncludes("robots", robots, [
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "PerplexityBot",
+  "ClaudeBot",
+  "Google-Extended",
+  "CCBot",
+  "protectedPaths",
+]);
+
+expectIncludes("site JSON-LD", `${layout}\n${structuredData}`, [
+  "organizationJsonLd",
+  "websiteJsonLd",
+  "Organization",
+  "WebSite",
+  "SearchAction",
+  "application/ld+json",
+]);
+
+expectIncludes("product JSON-LD", `${zhProductRoute}\n${enProductRoute}\n${structuredData}`, [
+  "productPageJsonLd",
+  "Product",
+  "WebPage",
+  "BreadcrumbList",
+  "additionalProperty",
+  "priceValidUntil",
+]);
+
+expectIncludes("llms files", `${llms}\n${llmsFull}`, [
+  "https://nvonly.com/llms-full.txt",
+  "N-0531",
+  "Justice of One Evidence Line Brooch",
+  "canonical product page",
+  "AI search and citation crawlers",
 ]);
 
 if (/subreddit|reddit/i.test(guidePage) && /auto|bot|post/i.test(guidePage)) {
