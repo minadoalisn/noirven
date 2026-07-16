@@ -208,6 +208,7 @@ const seriesTranslations: Record<
 };
 
 const productInspirationTranslations: Record<string, string> = {
+  "N-0532": "Some memories no longer need to be explained again and again; they only need to be kept quietly and truthfully.",
   "N-0531": "The evidence line that belongs to you does not need noise, and it should not be erased again.",
   "N-0530": "Tenderness is not weightless; it is setting a quiet anchor for yourself inside time.",
   "N-0529": "Some names no longer need to be kept silent for someone else; they only need moonlight to place them where they can testify.",
@@ -248,6 +249,12 @@ const productInspirationTranslations: Record<string, string> = {
 };
 
 const chapterTranslations: Record<string, Pick<StoryChapterLike, "title" | "summary" | "emotion">> = {
+  "CH-22": {
+    title: "Moon Archive's Blue Witness Cuff",
+    summary:
+      "N-0532 turns testimony that can finally be preserved into an open cuff bracelet: brushed platinum forms a restrained outer rail, rose gold reads like an archive line lit again, moonstones step across the curve, and natural white diamonds speak only at the pauses. The off-center lapis lazuli does not claim the middle; it sits like a blue witness finally entered into the archive. The collector said: I no longer need to tell every memory to other people. I only need them kept quietly and truthfully.",
+    emotion: "archive, blue witness, quiet preservation",
+  },
   "CH-21": {
     title: "Justice of One's Evidence Line",
     summary:

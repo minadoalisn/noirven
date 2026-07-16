@@ -106,8 +106,8 @@ expectIncludes("product JSON-LD", `${zhProductRoute}\n${enProductRoute}\n${struc
 
 expectIncludes("llms files", `${llms}\n${llmsFull}`, [
   "https://nvonly.com/llms-full.txt",
-  "N-0531",
-  "Justice of One Evidence Line Brooch",
+  "N-0532",
+  "Moon Archive Blue Witness Cuff Bracelet",
   "canonical product page",
   "AI search and citation crawlers",
 ]);
