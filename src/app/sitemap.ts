@@ -3,8 +3,21 @@ import { products } from "@/lib/noirven-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nvonly.com";
-  const staticLastModified = new Date("2026-07-09T00:00:00+08:00");
+  const staticLastModified = new Date("2026-07-21T00:00:00+08:00");
   const staticRoutes = ["", "/auctions", "/custom", "/series", "/story", "/sold", "/guides/private-high-jewelry-buying"];
+  const machineReadableRoutes: MetadataRoute.Sitemap = [
+    "/llms.txt",
+    "/llms-full.txt",
+    "/pricing.md",
+    "/ai-monitoring-prompts.md",
+    "/okf/noirven.md",
+  ].map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: staticLastModified,
+    changeFrequency: "weekly" as const,
+    priority: 0.55,
+  }));
+
   const localized: MetadataRoute.Sitemap = staticRoutes.flatMap((path) => {
     const canonical = `${baseUrl}${path || "/"}`;
     const english = `${baseUrl}/en${path}`;
@@ -44,5 +57,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
   });
 
-  return [...localized, ...productRoutes];
+  return [...localized, ...productRoutes, ...machineReadableRoutes];
 }

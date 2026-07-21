@@ -32,6 +32,11 @@ export default function robots(): MetadataRoute.Robots {
         disallow: protectedPaths,
       },
       {
+        userAgent: "anthropic-ai",
+        allow: "/",
+        disallow: protectedPaths,
+      },
+      {
         userAgent: "Claude-SearchBot",
         allow: "/",
         disallow: protectedPaths,
@@ -43,6 +48,26 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: "CCBot",
+        allow: "/",
+        disallow: protectedPaths,
+      },
+      {
+        userAgent: "Bingbot",
+        allow: "/",
+        disallow: protectedPaths,
+      },
+      {
+        userAgent: "Baiduspider",
+        allow: "/",
+        disallow: protectedPaths,
+      },
+      {
+        userAgent: "Bytespider",
+        allow: "/",
+        disallow: protectedPaths,
+      },
+      {
+        userAgent: "Applebot",
         allow: "/",
         disallow: protectedPaths,
       },

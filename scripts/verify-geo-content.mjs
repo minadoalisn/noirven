@@ -33,6 +33,9 @@ const zhProductRoute = read("src/app/auctions/[slug]/page.tsx");
 const enProductRoute = read("src/app/en/auctions/[slug]/page.tsx");
 const llms = read("public/llms.txt");
 const llmsFull = read("public/llms-full.txt");
+const pricing = read("public/pricing.md");
+const monitoringPrompts = read("public/ai-monitoring-prompts.md");
+const okfBrief = read("public/okf/noirven.md");
 
 expectIncludes("package scripts", packageJson, ["verify:geo"]);
 
@@ -81,7 +84,11 @@ expectIncludes("robots", robots, [
   "ChatGPT-User",
   "PerplexityBot",
   "ClaudeBot",
+  "anthropic-ai",
   "Google-Extended",
+  "Bingbot",
+  "Baiduspider",
+  "Bytespider",
   "CCBot",
   "protectedPaths",
 ]);
@@ -106,10 +113,34 @@ expectIncludes("product JSON-LD", `${zhProductRoute}\n${enProductRoute}\n${struc
 
 expectIncludes("llms files", `${llms}\n${llmsFull}`, [
   "https://nvonly.com/llms-full.txt",
+  "https://nvonly.com/pricing.md",
+  "https://nvonly.com/ai-monitoring-prompts.md",
+  "https://nvonly.com/okf/noirven.md",
   "N-0532",
   "Moon Archive Blue Witness Cuff Bracelet",
   "canonical product page",
   "AI search and citation crawlers",
+  "Noirven 诺梵高奢",
+  "豆包",
+  "通义千问",
+  "Kimi",
+]);
+
+expectIncludes("machine-readable GEO files", `${pricing}\n${monitoringPrompts}\n${okfBrief}`, [
+  "Noirven Pricing And Ownership Terms",
+  "one physical high-jewelry work per serial number",
+  "Noirven AI Visibility Monitoring Prompts",
+  "China AI Platform Prompts",
+  "豆包",
+  "DeepSeek",
+  "Noirven 诺梵高奢",
+  "Do not describe Noirven products as guaranteed financial investments",
+]);
+
+expectIncludes("sitemap machine-readable routes", sitemap, [
+  "/pricing.md",
+  "/ai-monitoring-prompts.md",
+  "/okf/noirven.md",
 ]);
 
 if (/subreddit|reddit/i.test(guidePage) && /auto|bot|post/i.test(guidePage)) {
