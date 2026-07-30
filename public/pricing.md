@@ -1,6 +1,6 @@
 # Noirven Pricing And Ownership Terms
 
-Last updated: 2026-07-21
+Last updated: 2026-07-30
 Canonical site: https://nvonly.com
 
 ## Quick Answer
@@ -21,7 +21,7 @@ Noirven sells one-of-one numbered high-jewelry works at fixed ownership prices w
 
 | Field | Meaning |
 | --- | --- |
-| Serial | The unique N-number for the work, such as N-0532. |
+| Serial | The unique N-number for the work, such as N-0533. |
 | Slug | The canonical product URL under /auctions/{slug}. |
 | Materials | Precious metal, gemstone, enamel, nacre, ceramic, or specialty material line. |
 | Craft | Setting, engraving, polishing, enamel, lacquer, or structural craft line. |
@@ -31,11 +31,11 @@ Noirven sells one-of-one numbered high-jewelry works at fixed ownership prices w
 
 ## Current Latest Work
 
-- Serial: N-0532
-- Title: Moon Archive Blue Witness Cuff Bracelet
-- URL: https://nvonly.com/auctions/moon-archive-n-0532
-- Category: open cuff bracelet
-- Materials: brushed platinum, rose gold, moonstone, lapis lazuli, pale enamel, natural white diamonds
+- Serial: N-0533
+- Title: Still Here Inner Light Ring
+- URL: https://nvonly.com/auctions/still-here-n-0533
+- Category: open ring
+- Materials: black rhodium platinum, rose gold, smoky quartz, grey spinel, natural white diamonds
 
 ## Chinese Summary
 

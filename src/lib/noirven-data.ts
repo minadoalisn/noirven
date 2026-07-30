@@ -232,6 +232,15 @@ export const storySeries: StorySeries[] = [
 
 export const storyChapters = [
   {
+    code: "CH-23",
+    seriesId: "still-here",
+    title: "仍在这里的内光裂隙戒",
+    summary:
+      "N-0533 把裂缝之后仍然存在的内光做成一枚可佩戴的开口戒：黑铑铂金戒臂保留克制的断口，玫瑰金内轨贴着指围安静发亮，烟晶弧面不夸张地压低光线，灰色尖晶石沿裂隙渐次收住阴影，天然白钻只在断口处亮成一个很小的确认。买家说：我不需要把自己修回没有裂缝的样子，我只需要确认，光仍然可以从我选择的位置出来。",
+    emotion: "裂隙 / 内光 / 自我确认",
+    productSerial: "N-0533",
+  },
+  {
     code: "CH-22",
     seriesId: "moon-archive",
     title: "月相档案的蓝色证词手环",
@@ -432,6 +441,17 @@ export const storyChapters = [
 ];
 
 export const dailyProductSeeds: DailyProductSeed[] = [
+  {
+    serial: "N-0533",
+    title: "Still Here Inner Light Ring",
+    seriesId: "still-here",
+    category: "ring",
+    zhTitle: "仍在这里内光裂隙戒",
+    image: "/assets/products/n-0533-still-here-inner-light-ring.png",
+    materialLine: "黑铑铂金 / 玫瑰金 / 烟晶 / 灰色尖晶石 / 天然白钻",
+    craftLine: "拉丝雾面 / 镜面抛光 / 爪镶 / 微密镶 / 开口戒臂成形",
+    storyLine: "裂缝不是失败的痕迹，而是自己重新选择光从哪里出来的证据。",
+  },
   {
     serial: "N-0532",
     title: "Moon Archive Blue Witness Cuff Bracelet",
@@ -760,6 +780,7 @@ export const internalProductConceptSeeds: DailyProductSeed[] = [
 ];
 
 const seedAuctionEndsAt = [
+  "2026-08-07T20:00:00+08:00",
   "2026-07-24T20:00:00+08:00",
   "2026-07-16T20:00:00+08:00",
   "2026-06-06T20:00:00+08:00",
@@ -1178,10 +1199,10 @@ export const liveProducts = products.filter((product) => product.status !== "sol
 export const soldProducts = products.filter((product) => product.status === "sold");
 
 export const adminMetrics: AdminMetric[] = [
-  { label: "Live Belonging", value: "27", detail: "New story-backed product images are listed first" },
+  { label: "Live Belonging", value: "36", detail: "New story-backed product images are listed first" },
   { label: "Story Series", value: "08", detail: "Ready for IP, short drama, game extension" },
   { label: "Pending Settlement", value: "$220k+", detail: "USDT transfer proofs waiting for admin confirmation" },
-  { label: "Generated Drafts", value: "17", detail: "Seed prompts stay internal; only finished product images are public" },
+  { label: "Generated Drafts", value: "18", detail: "Seed prompts stay internal; only finished product images are public" },
 ];
 
 export function getSeries(seriesId: string) {

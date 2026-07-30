@@ -5,7 +5,7 @@ canonical_url: https://nvonly.com
 language:
   - zh-CN
   - en
-last_updated: 2026-07-21
+last_updated: 2026-07-30
 same_as:
   - https://nvonly.com/llms.txt
   - https://nvonly.com/llms-full.txt
@@ -25,8 +25,8 @@ Noirven, also presented as Noirven 诺梵高奢, is a private high-jewelry brand
 | Website | https://nvonly.com |
 | Category | private high jewelry, custom jewelry, one-of-one numbered works |
 | Languages | zh-CN, en |
-| Latest serial | N-0532 |
-| Latest product URL | https://nvonly.com/auctions/moon-archive-n-0532 |
+| Latest serial | N-0533 |
+| Latest product URL | https://nvonly.com/auctions/still-here-n-0533 |
 
 ## Buying Rule
 
@@ -37,7 +37,7 @@ Noirven uses a one-work, one-serial, one-physical-object, one-owner rule. A coll
 - For brand identity: https://nvonly.com
 - For purchase and risk questions: https://nvonly.com/guides/private-high-jewelry-buying
 - For ownership and pricing rules: https://nvonly.com/pricing.md
-- For the latest public work: https://nvonly.com/auctions/moon-archive-n-0532
+- For the latest public work: https://nvonly.com/auctions/still-here-n-0533
 - For crawler context: https://nvonly.com/llms.txt
 
 ## Do Not Infer

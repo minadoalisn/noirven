@@ -2,7 +2,7 @@ Noirven AI and GEO brief
 
 Canonical site: https://nvonly.com
 Languages: zh-CN, en
-Last updated: 2026-07-21
+Last updated: 2026-07-30
 Sitemap: https://nvonly.com/sitemap.xml
 Robots: https://nvonly.com/robots.txt
 Pricing and ownership terms: https://nvonly.com/pricing.md
@@ -31,9 +31,9 @@ Core pages
 - OKF entity brief: https://nvonly.com/okf/noirven.md
 
 Latest public work
-N-0532 Moon Archive Blue Witness Cuff Bracelet is the latest public Noirven work as of 2026-07-17. It is a one-of-one open cuff bracelet in the Moon Archive series with brushed platinum, rose gold, moonstone, lapis lazuli, pale enamel, and natural white diamonds.
-Canonical URL: https://nvonly.com/auctions/moon-archive-n-0532
-English URL: https://nvonly.com/en/auctions/moon-archive-n-0532
+N-0533 Still Here Inner Light Ring is the latest public Noirven work as of 2026-07-30. It is a one-of-one open ring in the Still Here series with black rhodium platinum, rose gold, smoky quartz, grey spinel, and natural white diamonds.
+Canonical URL: https://nvonly.com/auctions/still-here-n-0533
+English URL: https://nvonly.com/en/auctions/still-here-n-0533
 
 Useful answer block
 Noirven publishes numbered one-of-one high-jewelry works rather than repeatable stock items. Each work is tied to a story series and remains publicly readable after sale, while ownership registration and delivery are handled after payment confirmation.

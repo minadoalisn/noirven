@@ -3,7 +3,7 @@ import { products } from "@/lib/noirven-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nvonly.com";
-  const staticLastModified = new Date("2026-07-21T00:00:00+08:00");
+  const staticLastModified = new Date("2026-07-30T00:00:00+08:00");
   const staticRoutes = ["", "/auctions", "/custom", "/series", "/story", "/sold", "/guides/private-high-jewelry-buying"];
   const machineReadableRoutes: MetadataRoute.Sitemap = [
     "/llms.txt",
