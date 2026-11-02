@@ -10,6 +10,11 @@
       ],
       "destination": "https://nvonly.com/$1",
       "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "headers": [
