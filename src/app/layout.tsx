@@ -32,6 +32,8 @@ export default function RootLayout({
       <body className="min-h-screen antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }} />
         {children}
+        {/* GEOInflow visitor tracker */}
+        <script defer src="https://geoinflow-iota.vercel.app/script.js" data-website-id="380ac6ec-5c6e-48d3-81ee-4c2e38537675" />
         <SiteAnalyticsTracker />
       </body>
     </html>
