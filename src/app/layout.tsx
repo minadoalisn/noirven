@@ -4,6 +4,7 @@ import "./globals.css";
 import { createMetadata } from "@/lib/seo";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import { SiteAnalyticsTracker } from "@/components/ui/site-analytics-tracker";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({
         {/* GEOInflow visitor tracker */}
         <script defer src="https://geoinflow-iota.vercel.app/script.js" data-website-id="380ac6ec-5c6e-48d3-81ee-4c2e38537675" />
         <SiteAnalyticsTracker />
+        <SpeedInsights />
       </body>
     </html>
   );
