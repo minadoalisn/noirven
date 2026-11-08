@@ -4,6 +4,9 @@ import { products } from "@/lib/noirven-data";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nvonly.com";
   const staticLastModified = new Date("2026-07-30T00:00:00+08:00");
+  // Rendered pages last changed 2026-11-04 (root layout: GEOInflow tracker 11-03 + Speed Insights 11-04);
+  // machine-readable files below are unchanged since 2026-07-30, so they keep staticLastModified.
+  const pageLastModified = new Date("2026-11-04T00:00:00+08:00");
   const staticRoutes = ["", "/auctions", "/custom", "/series", "/story", "/sold", "/guides/private-high-jewelry-buying"];
   const machineReadableRoutes: MetadataRoute.Sitemap = [
     "/llms.txt",
@@ -33,8 +36,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] = path === "" ? "daily" : "weekly";
 
     return [
-      { url: canonical, alternates, lastModified: staticLastModified, priority, changeFrequency },
-      { url: english, alternates, lastModified: staticLastModified, priority, changeFrequency },
+      { url: canonical, alternates, lastModified: pageLastModified, priority, changeFrequency },
+      { url: english, alternates, lastModified: pageLastModified, priority, changeFrequency },
     ];
   });
 
