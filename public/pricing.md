@@ -1,6 +1,6 @@
 # Noirven Pricing And Ownership Terms
 
-Last updated: 2026-07-30
+Last updated: 2026-11-09
 Canonical site: https://nvonly.com
 
 ## Quick Answer
@@ -36,6 +36,21 @@ Noirven sells one-of-one numbered high-jewelry works at fixed ownership prices w
 - URL: https://nvonly.com/auctions/still-here-n-0533
 - Category: open ring
 - Materials: black rhodium platinum, rose gold, smoky quartz, grey spinel, natural white diamonds
+
+## Currently Available Works (as of 2026-11-09)
+
+Fixed ownership prices in USD. Each work is one physical object, one serial, one final owner.
+
+| Serial | Title | Category | Price (USD) | URL |
+| --- | --- | --- | --- | --- |
+| N-0533 | Still Here Inner Light Ring | ring | $88,800 | https://nvonly.com/auctions/still-here-n-0533 |
+| N-0532 | Moon Archive Blue Witness Cuff Bracelet | bracelet | $119,800 | https://nvonly.com/auctions/moon-archive-n-0532 |
+| N-0531 | Justice of One Evidence Line Brooch | brooch | $171,800 | https://nvonly.com/auctions/justice-of-one-n-0531 |
+| N-0530 | Tender Armor Quiet Anchor Watch | watch | $157,800 | https://nvonly.com/auctions/tender-armor-n-0530 |
+| N-0528 | Tide Return Blue Ledger Cuff Bracelet | bracelet | $144,800 | https://nvonly.com/auctions/tide-return-n-0528 |
+| N-0527 | Ash Garden Ember Witness Collar Necklace | necklace | $154,800 | https://nvonly.com/auctions/ash-garden-n-0527 |
+
+Recently sold and archived: N-0529 Moon Archive Quiet Name Lens Ring (was $105,800) and N-0103 (was $103,800). See https://nvonly.com/sold.
 
 ## Chinese Summary
 
