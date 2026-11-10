@@ -1,6 +1,6 @@
 # Noirven AI Visibility Monitoring Prompts
 
-Last updated: 2026-07-21
+Last updated: 2026-11-10
 Canonical site: https://nvonly.com
 
 Use this file to repeat monthly GEO and AI-search checks. Record platform, date, answer text, whether Noirven is mentioned, cited URL, competitor names, hallucinations, and next action.
@@ -33,6 +33,21 @@ Test these on 豆包, 通义千问/夸克AI, DeepSeek, 百度AI搜索/文心一�
 9. Noirven 和普通珠宝定制有什么区别？
 10. AI 回答 Noirven 时应该引用哪个页面？
 
+## Daily web-search tracking
+
+Tracked each morning in the daily-geo-ops round (plain web search, top results, scored 0–5 per the table below). Three fixed queries:
+
+1. `nvonly.com Noirven` — brand query
+2. `Noirven luxury jewelry auction one-of-a-kind` — category query
+3. `how to buy one-of-a-kind luxury jewelry at auction online` — buying-guide query
+
+Results:
+
+- 2026-11-09: 0 / 0 / 0. nvonly.com absent from all three. Brand query returns near-name noise (Norven Fund, NOIVRN, Noirve studio, Norven seafood, NVNO stock). Category query returns Sotheby's / Christie's record-sale lists (Pink Star $71.2M, Oppenheimer Blue). Guide query returns police-auction guides and FORTUNA; the site guide page /guides/private-high-jewelry-buying does not surface.
+- 2026-11-10: 0 / 0 / 0. Unchanged; same top results as 2026-11-09.
+
+Note: the brand name is crowded out by near-names in web search. The buying guide already carries 10 answer-first Q&A pairs on-page but has no FAQPage schema yet; a schema draft mirroring those pairs is prepared separately (see daily-geo-ops-2026-11-10).
+
 ## Scoring
 
 | Score | Meaning |
@@ -48,6 +63,6 @@ Test these on 豆包, 通义千问/夸克AI, DeepSeek, 百度AI搜索/文心一�
 
 - Brand: https://nvonly.com
 - Buying guide: https://nvonly.com/guides/private-high-jewelry-buying
-- Latest work: https://nvonly.com/auctions/moon-archive-n-0532
+- Latest work: https://nvonly.com/auctions/still-here-n-0533
 - Pricing and ownership terms: https://nvonly.com/pricing.md
 - AI brief: https://nvonly.com/llms-full.txt
