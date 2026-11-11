@@ -1,6 +1,6 @@
 # Noirven AI Visibility Monitoring Prompts
 
-Last updated: 2026-11-11
+Last updated: 2026-11-12
 Canonical site: https://nvonly.com
 
 Use this file to repeat monthly GEO and AI-search checks. Record platform, date, answer text, whether Noirven is mentioned, cited URL, competitor names, hallucinations, and next action.
@@ -46,10 +46,11 @@ Results:
 - 2026-11-09: 0 / 0 / 0. nvonly.com absent from all three. Brand query returns near-name noise (Norven Fund, NOIVRN, Noirve studio, Norven seafood, NVNO stock). Category query returns Sotheby's / Christie's record-sale lists (Pink Star $71.2M, Oppenheimer Blue). Guide query returns police-auction guides and FORTUNA; the site guide page /guides/private-high-jewelry-buying does not surface.
 - 2026-11-10: 0 / 0 / 0. Unchanged; same top results as 2026-11-09.
 - 2026-11-11: 0 / 0 / 0. Unchanged for the third day. Brand query still returns near-name noise (NOIVRN, Noirve, Norven, Nouvelle Nouveau); category query still led by record-sale lists (Pink Star $71.2M, Oppenheimer Blue); guide query still led by police-auction guides and FORTUNA. The site guide page /guides/private-high-jewelry-buying still does not surface.
+- 2026-11-12: 0 / 0 / 0. Unchanged for the fourth day. Brand query still returns near-name noise (Noire Vino, NOERAVEN, Noirve, NVNO); category query still led by record-sale lists (Pink Star $71.2M, Oppenheimer Blue); guide query still led by police-auction guides (thefactrelay, revolutionnitro) and FORTUNA. The site guide page /guides/private-high-jewelry-buying still does not surface.
 
-Note: the buying-guide FAQPage schema draft prepared 2026-11-10 is still not applied (code search for FAQPage in the repo returns 0 hits); a verification-guide draft answering Global Prompt #3 ("How do I verify whether a high-jewelry piece is truly one-of-one?") was prepared 2026-11-11 as a local draft only, pending confirmation before it becomes a site page.
+Note (corrected 2026-11-12): the buying-guide FAQPage schema IS live — src/components/sections/geo-guide-page.tsx builds faqJsonLd from the same 10 geoQuestions and renders it as application/ld+json on both /guides/private-high-jewelry-buying and /en/guides/private-high-jewelry-buying; the component has carried it since the guide was added 2026-05-22 (commit c08ce2f), and the live page renders all 10 pairs verbatim. The 2026-11-10/11 notes saying "not applied" were based on GitHub code search, which returns 0 hits for FAQPage in this repo even though the string is in the file — do not use code search alone to judge schema presence. The 2026-11-10 schema draft is therefore already mirrored on-page; no separate application needed. A verification-guide draft answering Global Prompt #3 ("How do I verify whether a high-jewelry piece is truly one-of-one?") was prepared 2026-11-11 as a local draft only, pending confirmation before it becomes a site page.
 
-Note: the brand name is crowded out by near-names in web search. The buying guide already carries 10 answer-first Q&A pairs on-page but has no FAQPage schema yet; a schema draft mirroring those pairs is prepared separately (see daily-geo-ops-2026-11-10).
+Note: the brand name is crowded out by near-names in web search. The buying guide carries 10 answer-first Q&A pairs on-page, with FAQPage schema live (see note above).
 
 ## Scoring
 
