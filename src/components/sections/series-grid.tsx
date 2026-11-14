@@ -5,6 +5,17 @@ import { localizedSeries } from "@/lib/localized-content";
 import type { Locale } from "@/lib/types";
 import { withLocale } from "@/lib/i18n";
 
+function SeriesNameEmphasis({ name }: { name: string }) {
+  const words = name.split(" ");
+  if (words.length < 2) return <>{name}</>;
+  const last = words.pop() as string;
+  return (
+    <>
+      {words.join(" ")} <em className="italic">{last}</em>
+    </>
+  );
+}
+
 export function SeriesGrid({ locale = "zh" }: { locale?: Locale }) {
   return (
     <div className="grid gap-6 md:grid-cols-2">
@@ -19,10 +30,10 @@ export function SeriesGrid({ locale = "zh" }: { locale?: Locale }) {
         >
           <div className="flex items-start justify-between gap-6">
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--ash)]">
+              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--ash)]">
                 0{index + 1} / {series.name}
               </p>
-              <h3 className="mt-4 text-3xl font-normal text-black">{locale === "zh" ? series.zhName : series.name}</h3>
+              <h3 className="mt-4 font-serif text-3xl font-normal text-black">{locale === "zh" ? series.zhName : <SeriesNameEmphasis name={series.name} />}</h3>
             </div>
             <span
               className="story-card-arrow mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/12 text-[var(--ash)] transition group-hover:border-black group-hover:bg-black group-hover:text-white"
