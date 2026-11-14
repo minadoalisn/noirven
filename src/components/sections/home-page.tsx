@@ -60,7 +60,7 @@ function HeroSaleStrip({ locale }: { locale: Locale }) {
           <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">
             {locale === "zh" ? "最新上线顶奢作品" : "Latest Ultra-Luxury Work"} · {featured.serial}
           </p>
-          <p className="mt-2 text-[var(--step--1)] text-black">{title}</p>
+          <p className="mt-2 text-step--1 text-black">{title}</p>
         </div>
         <div className="border-b border-black/10 p-5 md:border-b-0 md:border-r">
           <p className="font-mono text-2xl text-black">{formatCurrency(featured.currentPrice)}</p>
@@ -78,7 +78,7 @@ function HeroSaleStrip({ locale }: { locale: Locale }) {
         </div>
         <Link
           href={withLocale(locale, `/auctions/${featured.slug}`)}
-          className="focus-ring flex h-full min-h-20 items-center justify-center gap-2 p-5 text-[var(--step--1)] transition hover:bg-black hover:text-white"
+          className="focus-ring flex h-full min-h-20 items-center justify-center gap-2 p-5 text-step--1 transition hover:bg-black hover:text-white"
         >
           {locale === "zh" ? "查看并购买" : "View Work"} <ArrowRight size={15} />
         </Link>
@@ -97,7 +97,7 @@ function MobileHeroSale({ locale }: { locale: Locale }) {
         {locale === "zh" ? "最新上线顶奢作品" : "Latest Ultra-Luxury Work"} · {featured.serial}
       </p>
       <p className="mt-2 font-mono text-2xl">{formatCurrency(featured.currentPrice)}</p>
-      <p className="mb-4 mt-2 text-[var(--step--1)] leading-6 text-[var(--graphite)]">{title}</p>
+      <p className="mb-4 mt-2 text-step--1 leading-6 text-[var(--graphite)]">{title}</p>
       <LinkButton href={withLocale(locale, "/auctions")}>{locale === "zh" ? "查看顶奢作品" : "Shop Ultra-Luxury"}</LinkButton>
       <div className="mt-3">
         <LinkButton href={withLocale(locale, "/story")} variant="outline">
@@ -121,7 +121,7 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
       <main>
         <section className="section-shell grid min-h-[calc(100vh-176px)] items-center gap-6 py-8 lg:grid-cols-[0.86fr_1.14fr]">
           <div className="max-w-xl lg:pl-16">
-            <h1 className="font-serif text-[var(--step-5)] font-normal leading-[1.12] text-black">
+            <h1 className="font-serif text-step-5 font-normal leading-[1.12] text-black">
               {locale === "zh" ? (
                 <>
                   每一次归属，
@@ -136,7 +136,7 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
                 </>
               )}
             </h1>
-            <p className="mt-6 max-w-md text-[var(--step--1)] leading-7 text-[var(--graphite)]">
+            <p className="mt-6 max-w-md text-step--1 leading-7 text-[var(--graphite)]">
               {locale === "zh"
                 ? "每件作品都是顶级奢侈品级的唯一实体：一个编号、一句心事、一件饰品，不复制、不复刻。付款确认后，它从此只属于一位主人。"
                 : "Every work is an ultra-luxury one-physical-piece creation: one serial, one feeling, one jewel. Never copied, never reissued; after confirmation, it belongs to one collector only."}
@@ -176,7 +176,7 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
                 <item.icon size={20} className="mt-1 text-[var(--antique-gold)]" />
                 <div>
                   <h2 className="text-xs uppercase tracking-[0.2em]">{item.label}</h2>
-                  <p className="mt-2 text-[var(--step--1)] leading-6 text-[var(--graphite)]">{item.text}</p>
+                  <p className="mt-2 text-step--1 leading-6 text-[var(--graphite)]">{item.text}</p>
                 </div>
               </div>
             ))}
@@ -185,8 +185,8 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
 
         <section className="section-shell py-24" id="series">
           <div className="mb-12 max-w-2xl">
-            <h2 className="mt-4 font-serif text-[var(--step-5)] font-normal leading-[1.05]">{copy.seriesTitle}</h2>
-            <p className="mt-5 text-[var(--step-1)] leading-8 text-[var(--graphite)]">{copy.seriesIntro}</p>
+            <h2 className="mt-4 font-serif text-step-5 font-normal leading-[1.05]">{copy.seriesTitle}</h2>
+            <p className="mt-5 text-step-1 leading-8 text-[var(--graphite)]">{copy.seriesIntro}</p>
           </div>
           <SeriesGrid locale={locale} />
         </section>
@@ -195,7 +195,7 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
           <div className="section-shell">
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
               <div>
-                <h2 className="mt-4 font-serif text-[var(--step-5)] font-normal leading-[1.05] text-white">{copy.auctionTitle}</h2>
+                <h2 className="mt-4 font-serif text-step-5 font-normal leading-[1.05] text-white">{copy.auctionTitle}</h2>
               </div>
               <LinkButton href={withLocale(locale, "/auctions")} variant="light">
                 {copy.primaryCta}
@@ -213,10 +213,10 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
 
         <section className="section-shell grid gap-12 py-24 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <h2 className="mt-4 font-serif text-[var(--step-5)] font-normal leading-[1.05]">
+            <h2 className="mt-4 font-serif text-step-5 font-normal leading-[1.05]">
               {locale === "zh" ? "材质服务故事，而不是炫耀堆砌。" : "Materials serve the story, not excess."}
             </h2>
-            <p className="mt-6 text-[var(--step-1)] leading-8 text-[var(--graphite)]">
+            <p className="mt-6 text-step-1 leading-8 text-[var(--graphite)]">
               {locale === "zh"
                 ? "从玫瑰金、雕金、黄金、铂金，到黑铑铂金、钯金、钛金属、陨铁与黑陶瓷；从天然白钻、帕拉伊巴碧玺、沙弗莱石、欧泊、月光石、黑贝母，到珐琅彩、玑镂雕纹、隐秘式镶嵌、雪花镶、错金银与景泰蓝，都会按故事线选择。"
                 : "From rose gold, carved gold, platinum, black rhodium platinum, palladium, titanium, meteorite, and black ceramic to diamonds, paraiba tourmaline, tsavorite, opal, moonstone, black nacre, enamel, guilloche, invisible setting, snow setting, damascening, and cloisonne-inspired craft, every choice follows the story."}
@@ -224,8 +224,8 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
             <div className="mt-8 grid gap-4">
               {materialNarratives.slice(0, 3).map((item) => (
                 <div key={item.title} className="border-t border-black/12 pt-4">
-                  <h3 className="mt-2 text-[var(--step-1)]">{locale === "zh" ? item.zhTitle : item.title}</h3>
-                  <p className="mt-2 text-[var(--step--1)] leading-7 text-[var(--graphite)]">
+                  <h3 className="mt-2 text-step-1">{locale === "zh" ? item.zhTitle : item.title}</h3>
+                  <p className="mt-2 text-step--1 leading-7 text-[var(--graphite)]">
                     {localizedMaterialNarrativeStory(item.title, item.story, locale)}
                   </p>
                 </div>
@@ -238,8 +238,8 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
 
               return (
               <div key={rawSeries.id} className="border-t border-black/12 pt-5">
-                <h3 className="font-serif text-[var(--step-1)]">{series.name}</h3>
-                <p className="mt-2 text-[var(--step--1)] leading-6 text-[var(--graphite)]">{series.emotionalLine}</p>
+                <h3 className="font-serif text-step-1">{series.name}</h3>
+                <p className="mt-2 text-step--1 leading-6 text-[var(--graphite)]">{series.emotionalLine}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {localizedTerms([...rawSeries.materials, ...rawSeries.craft], locale).slice(0, 5).map((item) => (
                     <span key={item} className="border border-black/10 px-3 py-2 text-xs text-[var(--graphite)]">
@@ -257,7 +257,7 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
           <div className="section-shell">
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
               <div>
-                <h2 className="mt-4 font-serif text-[var(--step-5)] font-normal leading-[1.05]">{copy.archiveTitle}</h2>
+                <h2 className="mt-4 font-serif text-step-5 font-normal leading-[1.05]">{copy.archiveTitle}</h2>
               </div>
               <LinkButton href={withLocale(locale, "/sold")} variant="outline">
                 {locale === "zh" ? "查看已售档案" : "View Archive"}

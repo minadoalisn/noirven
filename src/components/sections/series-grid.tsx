@@ -33,7 +33,7 @@ export function SeriesGrid({ locale = "zh" }: { locale?: Locale }) {
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[var(--ash)]">
                 0{index + 1} / {series.name}
               </p>
-              <h3 className="mt-4 font-serif text-[var(--step-3)] font-normal text-black">{locale === "zh" ? series.zhName : <SeriesNameEmphasis name={series.name} />}</h3>
+              <h3 className="mt-4 font-serif text-step-3 font-normal text-black">{locale === "zh" ? series.zhName : <SeriesNameEmphasis name={series.name} />}</h3>
             </div>
             <span
               className="story-card-arrow mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/12 text-[var(--ash)] transition group-hover:border-black group-hover:bg-black group-hover:text-white"
@@ -42,7 +42,7 @@ export function SeriesGrid({ locale = "zh" }: { locale?: Locale }) {
               <ArrowUpRight size={18} strokeWidth={1.7} />
             </span>
           </div>
-          <p className="mt-5 max-w-xl text-[var(--step-1)] leading-8 text-[var(--graphite)]">
+          <p className="mt-5 max-w-xl text-step-1 leading-8 text-[var(--graphite)]">
             {locale === "zh" ? series.emotionalLine : series.theme}
           </p>
           <div className="mt-6 flex flex-wrap gap-2">

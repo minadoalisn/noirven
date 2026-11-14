@@ -81,10 +81,10 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
       <main>
         <section className="section-shell py-20">
           <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">Final Brand Story</p>
-          <h1 className="mt-5 max-w-4xl font-serif text-[var(--step-5)] font-normal leading-tight">
+          <h1 className="mt-5 max-w-4xl font-serif text-step-5 font-normal leading-tight">
             {locale === "zh" ? "没有滞销品，只有还未遇见主人的作品。" : "There are no unwanted works, only works that have not met their owner yet."}
           </h1>
-          <p className="mt-8 max-w-3xl text-[var(--step-1)] leading-10 text-[var(--graphite)]">
+          <p className="mt-8 max-w-3xl text-step-1 leading-10 text-[var(--graphite)]">
             {locale === "zh"
               ? "Noirven 讲述的是：世界上有些人和有些作品，都曾经被忽略、被错过、被误解，甚至被认为不值得被选择。但真正独一无二的存在，不会因为一时尚未被确认就失去价值。"
               : "Noirven tells a story about people and works that have been overlooked, missed, or misunderstood. An unrepeatable ultra-luxury presence does not lose value because it was not chosen at first."}
@@ -94,11 +94,11 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
           <div className="section-shell grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/46">N-0007 / Still Here</p>
-              <h2 className="mt-5 font-serif text-[var(--step-5)] font-normal text-white">
+              <h2 className="mt-5 font-serif text-step-5 font-normal text-white">
                 {locale === "zh" ? "有一件作品，一直安静地等在那里。" : "One work kept waiting quietly."}
               </h2>
             </div>
-            <div className="space-y-6 text-[var(--step-1)] leading-9 text-white/68">
+            <div className="space-y-6 text-step-1 leading-9 text-white/68">
               <p>
                 {locale === "zh"
                   ? "它没有耀眼到让所有人停下，也没有像流行款那样容易被理解。它只是安静地停在页面上，编号 N-0007，名字叫《第七日的光》。"
@@ -120,7 +120,7 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
         <section className="section-shell py-20">
           <div className="mb-12 max-w-2xl">
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--ash)]">Series As IP</p>
-            <h2 className="mt-4 font-serif text-[var(--step-5)] font-normal">{locale === "zh" ? "每个故事，对应一件顶奢饰品。" : "Each story maps to one ultra-luxury jewel."}</h2>
+            <h2 className="mt-4 font-serif text-step-5 font-normal">{locale === "zh" ? "每个故事，对应一件顶奢饰品。" : "Each story maps to one ultra-luxury jewel."}</h2>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
             {storySeries.map((rawSeries) => {
@@ -129,8 +129,8 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
               return (
               <article key={rawSeries.id} className="border-t border-black/12 pt-6">
                 <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--ash)]">{series.name}</p>
-                <h3 className="mt-4 text-[var(--step-3)]">{locale === "zh" ? series.zhName : series.name}</h3>
-                <p className="mt-5 text-[var(--step-1)] leading-8 text-[var(--graphite)]">{locale === "zh" ? series.ipHook : series.description}</p>
+                <h3 className="mt-4 text-step-3">{locale === "zh" ? series.zhName : series.name}</h3>
+                <p className="mt-5 text-step-1 leading-8 text-[var(--graphite)]">{locale === "zh" ? series.ipHook : series.description}</p>
               </article>
               );
             })}
@@ -139,10 +139,10 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
             <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
               <div>
                 <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--ash)]">Daily Story Growth</p>
-                <h2 className="mt-4 font-serif text-[var(--step-5)] font-normal">
+                <h2 className="mt-4 font-serif text-step-5 font-normal">
                   {locale === "zh" ? "故事会继续生长。" : "The story keeps growing."}
                 </h2>
-                <p className="mt-5 text-[var(--step--1)] leading-7 text-[var(--graphite)]">
+                <p className="mt-5 text-step--1 leading-7 text-[var(--graphite)]">
                   {locale === "zh"
                     ? "每天新增故事章节和产品方向，先进入策展草案。确认配图、编号、材质、顶奢定价与 360 展示后，才进入顶奢作品库。每个故事章节只绑定一个产品、一件饰品和一个唯一编号，为未来影视剧、短剧、游戏与角色 IP 留档。"
                     : "New chapters and product directions enter curation daily, then move into the ultra-luxury collection after imagery, serials, materials, fixed pricing, and 360 display are confirmed. Each story chapter binds one product, one jewel, and one serial for future film, short-drama, game, and character IP archives."}
@@ -176,8 +176,8 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
                         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">
                           {chapter.code} / {series?.name}
                         </p>
-                        <h3 className="mt-4 text-[var(--step-2)]">{chapter.title}</h3>
-                        <p className="mt-4 text-[var(--step--1)] leading-7 text-[var(--graphite)]">{chapter.summary}</p>
+                        <h3 className="mt-4 text-step-2">{chapter.title}</h3>
+                        <p className="mt-4 text-step--1 leading-7 text-[var(--graphite)]">{chapter.summary}</p>
                         <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--antique-gold)]">{chapter.emotion}</p>
                       </div>
                     </article>
@@ -189,10 +189,10 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
           <section className="mt-20 border-t border-black/12 pt-10">
             <div className="mb-10 max-w-3xl">
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--ash)]">Material Story Codes</p>
-              <h2 className="mt-4 font-serif text-[var(--step-5)] font-normal">
+              <h2 className="mt-4 font-serif text-step-5 font-normal">
                 {locale === "zh" ? "每一种材质都有自己的叙事职责。" : "Every material carries a narrative role."}
               </h2>
-              <p className="mt-5 text-[var(--step--1)] leading-7 text-[var(--graphite)]">
+              <p className="mt-5 text-step--1 leading-7 text-[var(--graphite)]">
                 {locale === "zh"
                   ? "材质不是堆砌价格，而是替故事承担情绪：夜色金属负责克制，档案之光负责保存，裁决之绿负责证明，灰烬盛开负责反转。"
                   : "Materials are not price stacking. They carry emotion: night metal restrains, archive light preserves, verdict green proves, burned bloom reverses."}
@@ -202,8 +202,8 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
               {materialNarratives.map((item) => (
                 <article key={item.title} className="border border-black/10 p-5">
                   <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{item.title}</p>
-                  <h3 className="mt-4 text-[var(--step-2)]">{locale === "zh" ? item.zhTitle : item.title}</h3>
-                  <p className="mt-4 text-[var(--step--1)] leading-7 text-[var(--graphite)]">
+                  <h3 className="mt-4 text-step-2">{locale === "zh" ? item.zhTitle : item.title}</h3>
+                  <p className="mt-4 text-step--1 leading-7 text-[var(--graphite)]">
                     {localizedMaterialNarrativeStory(item.title, item.story, locale)}
                   </p>
                   <p className="mt-5 text-xs leading-6 text-[var(--ash)]">
@@ -216,10 +216,10 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
           <section className="mt-20 border-t border-black/12 pt-10">
             <div className="mb-10 max-w-3xl">
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--ash)]">Next Product Seeds</p>
-              <h2 className="mt-4 font-serif text-[var(--step-5)] font-normal">
+              <h2 className="mt-4 font-serif text-step-5 font-normal">
                 {locale === "zh" ? "下一批产品不再只依赖金银。" : "The next products move beyond gold and silver."}
               </h2>
-              <p className="mt-5 text-[var(--step--1)] leading-7 text-[var(--graphite)]">
+              <p className="mt-5 text-step--1 leading-7 text-[var(--graphite)]">
                 {locale === "zh"
                   ? "黑铑铂金、钯金、陨铁、黑陶瓷、碳纤维、帕拉伊巴碧玺、沙弗莱石、欧泊、月光石、黑贝母、烟晶与半透明珐琅会成为新的材质记忆，让 Noirven 的产品语言更容易被辨认。"
                   : "Black rhodium platinum, palladium, meteorite, black ceramic, carbon fiber, paraiba tourmaline, tsavorite, opal, moonstone, black nacre, smoky quartz, and translucent enamel become new material memories."}
@@ -248,9 +248,9 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
                         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">
                           {seed.serial} / {series?.name}
                         </p>
-                        <h3 className="mt-4 text-[var(--step-2)] leading-tight">{seed.zhTitle}</h3>
+                        <h3 className="mt-4 text-step-2 leading-tight">{seed.zhTitle}</h3>
                       </div>
-                      <div className="mt-8 space-y-5 self-end text-[var(--step--1)] leading-7 text-[var(--graphite)]">
+                      <div className="mt-8 space-y-5 self-end text-step--1 leading-7 text-[var(--graphite)]">
                         <p>{seed.storyLine}</p>
                         <p>
                           <span className="text-black">{locale === "zh" ? "材质：" : "Materials: "}</span>

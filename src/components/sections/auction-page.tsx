@@ -45,10 +45,10 @@ export function AuctionPage({ locale = "zh", searchParams = {} }: { locale?: Loc
       <main>
         <section className="section-shell py-20">
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--ash)]">Ultra-Luxury Works</p>
-          <h1 className="mt-5 max-w-3xl font-serif text-[var(--step-5)] font-normal leading-tight">
+          <h1 className="mt-5 max-w-3xl font-serif text-step-5 font-normal leading-tight">
             {locale === "zh" ? "顶级奢侈品级作品，仅此一件。" : "Ultra-luxury works, one physical piece only."}
           </h1>
-          <p className="mt-6 max-w-2xl text-[var(--step-1)] leading-8 text-[var(--graphite)]">
+          <p className="mt-6 max-w-2xl text-step-1 leading-8 text-[var(--graphite)]">
             {locale === "zh"
               ? "新品按编号优先展示，满页后进入下一页，也可以按故事线筛选。每个故事章节对应一个产品、一件饰品、一个编号；每件作品按顶级奢侈品级材质、工艺与唯一实体价值直接出售，USDT 到账确认后登记拥有者并安排发货。"
               : "New pieces appear first and paginate after a full page. Filter by storyline; each story chapter maps to one product, one jewel, and one serial. Each work is sold directly at an ultra-luxury fixed price shaped by materials, craft, and one-physical-piece value."}
@@ -93,7 +93,7 @@ export function AuctionPage({ locale = "zh", searchParams = {} }: { locale?: Loc
               ))}
             </div>
           ) : (
-            <div className="border border-black/10 p-10 text-[var(--step--1)] text-[var(--graphite)]">
+            <div className="border border-black/10 p-10 text-step--1 text-[var(--graphite)]">
               {locale === "zh" ? "这一条故事线暂时没有现售作品。" : "This storyline has no available works yet."}
             </div>
           )}
@@ -104,7 +104,7 @@ export function AuctionPage({ locale = "zh", searchParams = {} }: { locale?: Loc
                 <Link
                   key={page}
                   href={collectionHref(locale, selectedSeries, page)}
-                  className={`focus-ring inline-flex h-10 min-w-10 items-center justify-center border px-3 text-[var(--step--1)] ${
+                  className={`focus-ring inline-flex h-10 min-w-10 items-center justify-center border px-3 text-step--1 ${
                     currentPage === page ? "border-black bg-black text-white" : "border-black/10 text-[var(--graphite)] hover:border-black/40"
                   }`}
                 >

@@ -79,23 +79,23 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }} />
       <main className="section-shell py-16">
         <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">Custom / Bespoke</p>
-        <h1 className="mt-4 max-w-3xl font-serif text-[var(--step-5)] font-normal leading-tight">定制珠宝</h1>
-        <p className="mt-6 max-w-3xl text-[var(--step-1)] leading-8 text-[var(--graphite)]">
+        <h1 className="mt-4 max-w-3xl font-serif text-step-5 font-normal leading-tight">定制珠宝</h1>
+        <p className="mt-6 max-w-3xl text-step-1 leading-8 text-[var(--graphite)]">
           这是一个用于把需求说清楚的页面：用途、风格、预算、时间、尺寸与材质偏好。确认之后，再进入可执行的制作计划。
         </p>
 
         <section className="mt-12 grid gap-6 lg:grid-cols-3">
           <div className="border border-black/10 bg-white/50 p-6">
-            <h2 className="text-[var(--step-1)]">1. 意向沟通</h2>
-            <p className="mt-3 text-[var(--step--1)] leading-7 text-[var(--graphite)]">告诉我们佩戴场景、偏好的系列气质、预算区间与期望交付时间。</p>
+            <h2 className="text-step-1">1. 意向沟通</h2>
+            <p className="mt-3 text-step--1 leading-7 text-[var(--graphite)]">告诉我们佩戴场景、偏好的系列气质、预算区间与期望交付时间。</p>
           </div>
           <div className="border border-black/10 bg-white/50 p-6">
-            <h2 className="text-[var(--step-1)]">2. 方案确认</h2>
-            <p className="mt-3 text-[var(--step--1)] leading-7 text-[var(--graphite)]">明确金属、主石与点缀宝石、比例与尺寸，以及关键工艺选择。</p>
+            <h2 className="text-step-1">2. 方案确认</h2>
+            <p className="mt-3 text-step--1 leading-7 text-[var(--graphite)]">明确金属、主石与点缀宝石、比例与尺寸，以及关键工艺选择。</p>
           </div>
           <div className="border border-black/10 bg-white/50 p-6">
-            <h2 className="text-[var(--step-1)]">3. 制作与交付</h2>
-            <p className="mt-3 text-[var(--step--1)] leading-7 text-[var(--graphite)]">根据复杂度制定里程碑计划，制作期间同步关键节点，完成后安排交付与归档。</p>
+            <h2 className="text-step-1">3. 制作与交付</h2>
+            <p className="mt-3 text-step--1 leading-7 text-[var(--graphite)]">根据复杂度制定里程碑计划，制作期间同步关键节点，完成后安排交付与归档。</p>
           </div>
         </section>
 
@@ -104,8 +104,8 @@ export default function Page() {
           <div className="mt-8 grid gap-6">
             {faqJsonLd.mainEntity.map((item) => (
               <article key={item.name} className="border border-black/10 bg-white/40 p-6">
-                <h3 className="text-[var(--step-0)]">{item.name}</h3>
-                <p className="mt-3 text-[var(--step--1)] leading-7 text-[var(--graphite)]">{item.acceptedAnswer.text}</p>
+                <h3 className="text-step-0">{item.name}</h3>
+                <p className="mt-3 text-step--1 leading-7 text-[var(--graphite)]">{item.acceptedAnswer.text}</p>
               </article>
             ))}
           </div>

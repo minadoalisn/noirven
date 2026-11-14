@@ -49,11 +49,11 @@ export function ProductCard({ product, locale = "zh" }: { product: Product; loca
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">
               {series?.name} / {categoryLabel(product.category, locale)}
             </p>
-            <h3 className="mt-2 font-serif text-[var(--step-2)] leading-snug font-normal text-black">{title}</h3>
+            <h3 className="mt-2 font-serif text-step-2 leading-snug font-normal text-black">{title}</h3>
           </div>
           <p className="font-mono text-xs tracking-[0.18em] text-black">{formatCurrency(product.currentPrice)}</p>
         </div>
-        <p className="text-[var(--step--1)] leading-6 text-[var(--graphite)]">
+        <p className="text-step--1 leading-6 text-[var(--graphite)]">
           {locale === "zh" ? product.inspiration : localizedProductInspiration(product, locale) || series?.emotionalLine}
         </p>
         <Link

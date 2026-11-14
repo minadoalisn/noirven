@@ -11,10 +11,10 @@ export function SoldPage({ locale = "zh" }: { locale?: Locale }) {
       <main>
         <section className="section-shell py-20">
           <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">Recognized Archive</p>
-          <h1 className="mt-5 max-w-4xl font-serif text-[var(--step-5)] font-normal leading-tight">
+          <h1 className="mt-5 max-w-4xl font-serif text-step-5 font-normal leading-tight">
             {locale === "zh" ? "它曾等待，直到被认出。" : "It waited until it was recognized."}
           </h1>
-          <p className="mt-6 max-w-2xl text-[var(--step-1)] leading-8 text-[var(--graphite)]">
+          <p className="mt-6 max-w-2xl text-step-1 leading-8 text-[var(--graphite)]">
             {locale === "zh"
               ? "已售档案不是普通成交记录，而是作品与主人完成归属后的公开痕迹。"
               : "The archive is not only a sales record. It is the trace left after a work and its owner found belonging."}
