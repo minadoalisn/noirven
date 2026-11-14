@@ -24,7 +24,7 @@ export function AccountPage({ locale = "zh", paymentStatus }: { locale?: Locale;
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">Collector Account</p>
             <form action="/api/auth/logout" method="post">
               <input type="hidden" name="next" value={locale === "zh" ? "/account/login" : "/en/account/login"} />
-              <button className="focus-ring rounded-full border border-black/14 px-4 py-3 text-[10px] uppercase tracking-[0.16em] text-black transition hover:border-[var(--champagne)]">
+              <button className="focus-ring rounded-full border border-black/14 px-4 py-3 text-[11px] uppercase tracking-[0.16em] text-black transition hover:border-[var(--champagne)]">
                 {locale === "zh" ? "退出登录" : "Sign Out"}
               </button>
             </form>

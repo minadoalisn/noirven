@@ -226,7 +226,7 @@ export function AdminPage({
             </div>
             <form action="/api/auth/logout" method="post">
               <input type="hidden" name="next" value={isZh ? "/admin/login" : "/en/admin/login"} />
-              <button className="focus-ring rounded-full border border-black/14 px-5 py-3 text-[10px] uppercase tracking-[0.16em] text-black transition hover:border-[var(--champagne)]">
+              <button className="focus-ring rounded-full border border-black/14 px-5 py-3 text-[11px] uppercase tracking-[0.16em] text-black transition hover:border-[var(--champagne)]">
                 {isZh ? "退出后台会话" : "Sign Out"}
               </button>
             </form>
@@ -257,7 +257,7 @@ export function AdminPage({
                     />
                   </svg>
                   <p className="mt-4 text-sm leading-6 text-[var(--graphite)]">{card.status}</p>
-                  <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--ash)]">{localizedText(card.source, locale)}</p>
+                  <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--ash)]">{localizedText(card.source, locale)}</p>
                 </div>
               );
             })}
@@ -310,7 +310,7 @@ export function AdminPage({
                 <div key={item.key} className="border border-black/10 p-5">
                   <p className="text-xs uppercase tracking-[0.18em] text-[var(--ash)]">{item.label}</p>
                   <p className="mt-3 text-xl">{item.value}</p>
-                  <p className={`mt-3 font-mono text-[10px] uppercase tracking-[0.16em] ${item.state === "ok" ? "text-[var(--graphite)]" : "text-[var(--signature-red)]"}`}>
+                  <p className={`mt-3 font-mono text-[11px] uppercase tracking-[0.16em] ${item.state === "ok" ? "text-[var(--graphite)]" : "text-[var(--signature-red)]"}`}>
                     {item.state === "ok" ? "ACTIVE" : "ACTION REQUIRED"}
                   </p>
                 </div>
@@ -325,7 +325,7 @@ export function AdminPage({
                     <div key={channel.key} className="border border-black/8 p-4">
                       <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--ash)]">{channel.key}</p>
                       <p className="mt-2 break-all text-sm">{channel.label}</p>
-                      <p className={`mt-2 text-[10px] uppercase tracking-[0.16em] ${channel.configured ? "text-[var(--graphite)]" : "text-[var(--signature-red)]"}`}>
+                      <p className={`mt-2 text-[11px] uppercase tracking-[0.16em] ${channel.configured ? "text-[var(--graphite)]" : "text-[var(--signature-red)]"}`}>
                         {channel.configured ? (isZh ? "已配置" : "Configured") : (isZh ? "待配置" : "Missing")}
                       </p>
                     </div>
@@ -340,7 +340,7 @@ export function AdminPage({
                     <div key={rule.name} className="grid gap-3 border-b border-black/10 pb-3 last:border-b-0 last:pb-0 md:grid-cols-[0.35fr_0.45fr_0.2fr]">
                       <p className="font-medium">{isZh ? rule.zhName : rule.name}</p>
                       <p className="text-sm leading-6 text-[var(--graphite)]">{rule.condition}</p>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--ash)]">{rule.priority}</p>
+                      <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--ash)]">{rule.priority}</p>
                     </div>
                   ))}
                 </div>
@@ -450,7 +450,7 @@ export function AdminPage({
                 isZh ? "登记拥有者并发货" : "Register owner and ship",
               ].map((step, index) => (
                 <div key={step} className="border border-black/10 p-4">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--ash)]">0{index + 1}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--ash)]">0{index + 1}</p>
                   <p className="mt-2">{step}</p>
                 </div>
               ))}
@@ -531,10 +531,10 @@ export function AdminPage({
           <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-7">
             {shipmentWorkflow.map((stage, index) => (
               <div key={stage.title.en} className="border border-black/10 p-4">
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--ash)]">0{index + 1}</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--ash)]">0{index + 1}</p>
                 <h3 className="mt-3 text-lg">{localizedText(stage.title, locale)}</h3>
                 <p className="mt-3 text-sm leading-6 text-[var(--graphite)]">{localizedText(stage.detail, locale)}</p>
-                <p className="mt-4 border-t border-black/10 pt-3 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--ash)]">
+                <p className="mt-4 border-t border-black/10 pt-3 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--ash)]">
                   {localizedText(stage.gate, locale)}
                 </p>
               </div>

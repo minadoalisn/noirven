@@ -39,7 +39,7 @@ export function Countdown({ target, compact = false }: { target: string; compact
             <div className={compact ? "font-mono text-xl leading-none" : "font-mono text-3xl leading-none sm:text-5xl"}>
               {String(item.value).padStart(2, "0")}
             </div>
-            <div className="mt-2 text-[10px] text-[var(--ash)]">{item.label}</div>
+            <div className="mt-2 text-[11px] text-[var(--ash)]">{item.label}</div>
           </div>
           {index < items.length - 1 ? <span className={compact ? "hidden" : "pb-5 font-mono text-2xl text-black/36"}>:</span> : null}
         </div>

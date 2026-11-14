@@ -217,7 +217,7 @@ export function CustomerServiceWidget({ locale = "zh" }: { locale?: Locale }) {
         <section className="max-h-[calc(100dvh-7rem)] w-[calc(100vw-2rem)] max-w-[390px] overflow-y-auto overscroll-contain border border-black/12 bg-[var(--porcelain)] shadow-[0_24px_70px_rgba(0,0,0,0.14)]">
           <div className="flex items-start justify-between gap-4 border-b border-black/10 p-5">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--ash)]">{t.subtitle}</p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--ash)]">{t.subtitle}</p>
               <h2 className="mt-2 text-2xl">{t.title}</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--graphite)]">{t.intro}</p>
             </div>
@@ -233,14 +233,14 @@ export function CustomerServiceWidget({ locale = "zh" }: { locale?: Locale }) {
             <input className="hidden" tabIndex={-1} autoComplete="off" name="company" />
 
             <div className="border border-black/10 bg-white/35 p-4">
-              <p className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-[var(--ash)]">
+              <p className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">
                 <Sparkles size={13} /> {t.smartTitle}
               </p>
               <p className="mt-2 text-sm leading-6 text-[var(--graphite)]">{guidance}</p>
             </div>
 
             <label className="block">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.intent}</span>
+              <span className="text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.intent}</span>
               <select
                 className="mt-2 h-11 w-full border border-black/14 bg-transparent px-3 text-sm outline-none focus:border-[var(--champagne)]"
                 name="intent"
@@ -257,11 +257,11 @@ export function CustomerServiceWidget({ locale = "zh" }: { locale?: Locale }) {
 
             <div className="grid gap-3 sm:grid-cols-2">
               <label className="block">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.name}</span>
+                <span className="text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.name}</span>
                 <input className="mt-2 h-11 w-full border border-black/14 bg-transparent px-3 text-sm outline-none focus:border-[var(--champagne)]" name="name" minLength={2} required />
               </label>
               <label className="block">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.channel}</span>
+                <span className="text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.channel}</span>
                 <select
                   className="mt-2 h-11 w-full border border-black/14 bg-transparent px-3 text-sm outline-none focus:border-[var(--champagne)]"
                   name="contactChannel"
@@ -279,18 +279,18 @@ export function CustomerServiceWidget({ locale = "zh" }: { locale?: Locale }) {
 
             <div className="grid gap-3 sm:grid-cols-2">
               <label className="block">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.contact}</span>
+                <span className="text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.contact}</span>
                 <input className="mt-2 h-11 w-full border border-black/14 bg-transparent px-3 text-sm outline-none focus:border-[var(--champagne)]" name="contactHandle" placeholder={contactChannel === "wechat" ? "WeChat ID" : ""} />
               </label>
               <label className="block">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.email}</span>
+                <span className="text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.email}</span>
                 <input className="mt-2 h-11 w-full border border-black/14 bg-transparent px-3 text-sm outline-none focus:border-[var(--champagne)]" name="email" type="email" />
               </label>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
               <label className="block">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.product}</span>
+                <span className="text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.product}</span>
                 <input
                   className="mt-2 h-11 w-full border border-black/14 bg-transparent px-3 text-sm uppercase outline-none focus:border-[var(--champagne)]"
                   name="productSerial"
@@ -300,7 +300,7 @@ export function CustomerServiceWidget({ locale = "zh" }: { locale?: Locale }) {
                 />
               </label>
               <label className="block">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.budget}</span>
+                <span className="text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.budget}</span>
                 <input
                   className="mt-2 h-11 w-full border border-black/14 bg-transparent px-3 text-sm outline-none focus:border-[var(--champagne)]"
                   name="budgetUsd"
@@ -314,7 +314,7 @@ export function CustomerServiceWidget({ locale = "zh" }: { locale?: Locale }) {
             </div>
 
             <div>
-              <p className="text-[10px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.quickTitle}</p>
+              <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.quickTitle}</p>
               <div className="mt-2 grid gap-2">
                 {t.quickPrompts.map((prompt) => (
                   <button
@@ -330,7 +330,7 @@ export function CustomerServiceWidget({ locale = "zh" }: { locale?: Locale }) {
             </div>
 
             <label className="block">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.message}</span>
+              <span className="text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{t.message}</span>
               <textarea
                 className="mt-2 min-h-28 w-full resize-none border border-black/14 bg-transparent px-3 py-3 text-sm leading-6 outline-none focus:border-[var(--champagne)]"
                 name="message"
