@@ -29,7 +29,7 @@ function HeroNav({ locale }: { locale: Locale }) {
 
   return (
     <header className="section-shell flex min-h-16 items-center justify-between gap-4 py-4">
-      <nav className="hidden items-center gap-7 text-[10px] uppercase tracking-[0.22em] text-[var(--graphite)] md:flex">
+      <nav className="hidden items-center gap-7 text-[11px] uppercase tracking-[0.22em] text-[var(--graphite)] md:flex">
         <Link href={withLocale(locale, "/")}>{locale === "zh" ? "首页" : "Home"}</Link>
         <Link href={withLocale(locale, "/custom")}>{copy.custom}</Link>
         <Link href={withLocale(locale, "/series")}>{copy.series}</Link>
@@ -40,7 +40,7 @@ function HeroNav({ locale }: { locale: Locale }) {
         <span className="brand-wordmark block text-[18px] leading-none">NOIRVEN</span>
         <span className="brand-cn mt-2 block text-[12px]">诺梵</span>
       </Link>
-      <div className="ml-auto flex items-center gap-5 text-[10px] uppercase tracking-[0.22em] text-[var(--graphite)]">
+      <div className="ml-auto flex items-center gap-5 text-[11px] uppercase tracking-[0.22em] text-[var(--graphite)]">
         <Link href={withLocale(locale, "/account")}>{locale === "zh" ? "登录" : "Login"}</Link>
         <Link href={locale === "zh" ? "/en" : "/"}>{locale === "zh" ? "中英" : "ZH"}</Link>
         <Menu size={18} />
@@ -57,14 +57,14 @@ function HeroSaleStrip({ locale }: { locale: Locale }) {
     <section className="section-shell pb-8">
       <div className="grid items-center border border-black/12 bg-[rgba(251,250,246,0.72)] md:grid-cols-[0.95fr_1.2fr_0.75fr_0.5fr]">
         <div className="border-b border-black/10 p-5 md:border-b-0 md:border-r">
-          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-[var(--ash)]">
+          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">
             {locale === "zh" ? "最新上线顶奢作品" : "Latest Ultra-Luxury Work"} · {featured.serial}
           </p>
           <p className="mt-2 text-sm text-black">{title}</p>
         </div>
         <div className="border-b border-black/10 p-5 md:border-b-0 md:border-r">
           <p className="font-mono text-2xl text-black">{formatCurrency(featured.currentPrice)}</p>
-          <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-[var(--ash)]">Fixed Ownership Price / USDT</p>
+          <p className="mt-2 text-[11px] uppercase tracking-[0.22em] text-[var(--ash)]">Fixed Ownership Price / USDT</p>
         </div>
         <div className="relative hidden h-28 md:block">
           <Image
@@ -93,7 +93,7 @@ function MobileHeroSale({ locale }: { locale: Locale }) {
 
   return (
     <div className="mx-auto mt-8 max-w-sm border border-black/12 p-4 md:hidden">
-      <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-[var(--ash)]">
+      <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">
         {locale === "zh" ? "最新上线顶奢作品" : "Latest Ultra-Luxury Work"} · {featured.serial}
       </p>
       <p className="mt-2 font-mono text-2xl">{formatCurrency(featured.currentPrice)}</p>
@@ -185,7 +185,6 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
 
         <section className="section-shell py-24" id="series">
           <div className="mb-12 max-w-2xl">
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--ash)]">Story Universe</p>
             <h2 className="mt-4 font-serif text-5xl font-normal leading-[1.05] sm:text-6xl">{copy.seriesTitle}</h2>
             <p className="mt-5 text-lg leading-8 text-[var(--graphite)]">{copy.seriesIntro}</p>
           </div>
@@ -196,7 +195,6 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
           <div className="section-shell">
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/46">Ultra-Luxury Works</p>
                 <h2 className="mt-4 font-serif text-5xl font-normal leading-[1.05] text-white sm:text-6xl">{copy.auctionTitle}</h2>
               </div>
               <LinkButton href={withLocale(locale, "/auctions")} variant="light">
@@ -215,7 +213,6 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
 
         <section className="section-shell grid gap-12 py-24 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--ash)]">Materials / Craft</p>
             <h2 className="mt-4 font-serif text-5xl font-normal leading-[1.05] sm:text-6xl">
               {locale === "zh" ? "材质服务故事，而不是炫耀堆砌。" : "Materials serve the story, not excess."}
             </h2>
@@ -227,7 +224,6 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
             <div className="mt-8 grid gap-4">
               {materialNarratives.slice(0, 3).map((item) => (
                 <div key={item.title} className="border-t border-black/12 pt-4">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-[var(--ash)]">{item.title}</p>
                   <h3 className="mt-2 text-xl">{locale === "zh" ? item.zhTitle : item.title}</h3>
                   <p className="mt-2 text-sm leading-7 text-[var(--graphite)]">
                     {localizedMaterialNarrativeStory(item.title, item.story, locale)}
@@ -261,7 +257,6 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
           <div className="section-shell">
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--ash)]">Sold Archive</p>
                 <h2 className="mt-4 font-serif text-5xl font-normal leading-[1.05] sm:text-6xl">{copy.archiveTitle}</h2>
               </div>
               <LinkButton href={withLocale(locale, "/sold")} variant="outline">

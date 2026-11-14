@@ -30,7 +30,7 @@ export function SeriesGrid({ locale = "zh" }: { locale?: Locale }) {
         >
           <div className="flex items-start justify-between gap-6">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--ash)]">
+              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[var(--ash)]">
                 0{index + 1} / {series.name}
               </p>
               <h3 className="mt-4 font-serif text-3xl font-normal text-black">{locale === "zh" ? series.zhName : <SeriesNameEmphasis name={series.name} />}</h3>

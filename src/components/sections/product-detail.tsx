@@ -119,10 +119,10 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
             locale={locale}
           />
           <div className="lg:pt-8">
-            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">
+            <h1 className="font-serif text-6xl font-normal leading-tight">{localizedTitle}</h1>
+            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">
               {product.serial} / {series?.name} / {categoryLabel(product.category, locale)}
             </p>
-            <h1 className="mt-5 font-serif text-6xl font-normal leading-tight">{localizedTitle}</h1>
             <p className="mt-6 text-xl leading-9 text-[var(--graphite)]">{localizedProductInspiration(product, locale)}</p>
             <div className="mt-10 grid grid-cols-2 gap-4 border-y border-black/10 py-6">
               <div>

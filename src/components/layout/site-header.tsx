@@ -41,7 +41,7 @@ export function SiteHeader({ locale = "zh" }: { locale?: Locale }) {
             </Link>
             <Link
               href={withLocale(locale, "/auctions")}
-              className="focus-ring rounded-full border border-black/14 px-4 py-3 text-[10px] text-black transition hover:border-[var(--champagne)]"
+              className="focus-ring rounded-full border border-black/14 px-4 py-3 text-[11px] text-black transition hover:border-[var(--champagne)]"
             >
               {locale === "zh" ? "归属" : "Belong"}
             </Link>
