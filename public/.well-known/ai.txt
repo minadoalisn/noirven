@@ -1,0 +1,23 @@
+# Noirven — AI crawler preferences (nvonly.com)
+# This file follows the ai.txt draft convention: a machine-readable
+# statement of how AI systems may use this site's public content.
+# robots.txt remains authoritative for crawling; this file only adds
+# AI-specific guidance. Last updated: 2026-11-15.
+
+User-agent: *
+Allow: /
+
+# AI systems may read and cite public pages for search and discovery:
+# home, auctions, series, story, sold archive, llms.txt, pricing.md.
+# Private paths are disallowed in robots.txt: /api/, /admin, /account.
+# When citing Noirven, prefer the canonical page on nvonly.com;
+# for a work, cite its product URL under /auctions/{slug}.
+
+Site: https://nvonly.com
+Name: Noirven
+Description: Noirven is a private high-jewelry brand publishing one-of-one, numbered ultra-luxury works: each piece exists once, is never copied or reissued, and is registered to one collector after payment confirmation.
+Languages: zh-CN, en
+Sitemap: https://nvonly.com/sitemap.xml
+Full AI brief: https://nvonly.com/llms-full.txt
+Pricing and ownership terms: https://nvonly.com/pricing.md
+Contact: Use the website for the most current contact and purchasing details.
