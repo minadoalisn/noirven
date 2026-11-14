@@ -1,9 +1,8 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { LinkButton } from "@/components/ui/link-button";
-import { Product360Viewer } from "@/components/ui/product-360-viewer";
+import { ProductGallery } from "@/components/ui/product-gallery";
 import { WalletConnectPanel } from "@/components/ui/wallet-connect-panel";
 import { categoryLabel, formatCurrency, formatDate } from "@/lib/format";
 import {
@@ -88,7 +87,7 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
     "@type": "Product",
     name: productName,
     description: productDescription,
-    image: [imageUrl],
+    image: [imageUrl, ...(product.gallery ?? []).map((src) => (src.startsWith("/") ? `${baseUrl}${src}` : src))],
     sku: product.serial,
     brand: { "@type": "Brand", name: "Noirven" },
     category: categoryLabel(product.category, locale),
@@ -112,16 +111,13 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
       <SiteHeader locale={locale} />
       <main>
         <section className="section-shell grid gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="relative aspect-[4/5] overflow-hidden bg-[var(--ivory)]">
-            <Image src={product.image} alt={`${product.serial} ${localizedTitle}`} fill priority className="object-cover" />
-            <Product360Viewer
-              image={product.image}
-              title={localizedTitle}
-              serial={product.serial}
-              spinVideo={product.spinVideo}
-              locale={locale}
-            />
-          </div>
+          <ProductGallery
+            images={[product.image, ...(product.gallery ?? [])]}
+            title={localizedTitle}
+            serial={product.serial}
+            spinVideo={product.spinVideo}
+            locale={locale}
+          />
           <div className="lg:pt-8">
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">
               {product.serial} / {series?.name} / {categoryLabel(product.category, locale)}
