@@ -4,20 +4,31 @@ import { products } from "@/lib/noirven-data";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nvonly.com";
   const staticLastModified = new Date("2026-07-30T00:00:00+08:00");
-  // Rendered pages last changed 2026-11-04 (root layout: GEOInflow tracker 11-03 + Speed Insights 11-04);
-  // AI briefs llms.txt / llms-full.txt / pricing.md were refreshed 2026-11-09 (commit e8e3632);
+  // Rendered pages last changed 2026-11-14 (root layout: footer Our Story link 1cae1e33;
+  // global typography + product cards 18dea74b; home lists N-0534/N-0535 since 1b80eaa;
+  // product pages gained the gallery 953cccf0).
+  // AI briefs llms.txt / llms-full.txt were refreshed 2026-11-14 (commits 1b80eaa, 1cae1e33);
+  // pricing.md unchanged since 2026-11-09, so it keeps its own date.
   // ai-monitoring-prompts.md and okf/noirven.md are unchanged since 2026-07-30, so they keep staticLastModified.
-  const pageLastModified = new Date("2026-11-04T00:00:00+08:00");
-  const aiBriefLastModified = new Date("2026-11-09T00:00:00+08:00");
+  const pageLastModified = new Date("2026-11-14T00:00:00+08:00");
+  const llmsLastModified = new Date("2026-11-14T00:00:00+08:00");
+  const pricingLastModified = new Date("2026-11-09T00:00:00+08:00");
   const aiBriefRoutes = ["/llms.txt", "/llms-full.txt", "/pricing.md"];
+  const llmsRoutes = ["/llms.txt", "/llms-full.txt"];
   const staticRoutes = ["", "/auctions", "/custom", "/series", "/story", "/sold", "/guides/private-high-jewelry-buying"];
+  const machineLastModified = (path: string): Date =>
+    llmsRoutes.includes(path)
+      ? llmsLastModified
+      : path === "/pricing.md"
+        ? pricingLastModified
+        : staticLastModified;
   const machineReadableRoutes: MetadataRoute.Sitemap = [
     ...aiBriefRoutes,
     "/ai-monitoring-prompts.md",
     "/okf/noirven.md",
   ].map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: aiBriefRoutes.includes(path) ? aiBriefLastModified : staticLastModified,
+    lastModified: machineLastModified(path),
     changeFrequency: "weekly" as const,
     priority: 0.55,
   }));
@@ -42,6 +53,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
   });
 
+  // Products whose endsAt falls back to seedAuctionEndsAt[0] (2026-08-07) have no real
+  // auction end date in the seed array; use their verified listing date instead
+  // (N-0533 added 2026-07-30, commit 5c3299e4; N-0534/N-0535 listed 2026-11-14, commit 1b80eaa).
+  const listedAtBySlug: Record<string, Date> = {
+    "still-here-n-0533": new Date("2026-07-30T21:35:16+08:00"),
+    "swan-light-n-0534": new Date("2026-11-14T22:09:10+08:00"),
+    "tide-return-n-0535": new Date("2026-11-14T22:09:10+08:00"),
+  };
+
   const productRoutes: MetadataRoute.Sitemap = products.flatMap((product) => {
     const canonical = `${baseUrl}/auctions/${product.slug}`;
     const english = `${baseUrl}/en/auctions/${product.slug}`;
@@ -53,7 +73,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     } as const;
 
-    const lastModified = new Date(product.soldAt ?? product.endsAt);
+    const lastModified = new Date(product.soldAt ?? listedAtBySlug[product.slug] ?? product.endsAt);
 
     return [
       { url: canonical, alternates, lastModified, changeFrequency: "daily" as const, priority: 0.8 },
