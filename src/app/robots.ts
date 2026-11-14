@@ -47,6 +47,11 @@ export default function robots(): MetadataRoute.Robots {
         disallow: protectedPaths,
       },
       {
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: protectedPaths,
+      },
+      {
         userAgent: "CCBot",
         allow: "/",
         disallow: protectedPaths,

@@ -39,6 +39,7 @@ export function SiteFooter({ locale = "zh" }: { locale?: Locale }) {
             <Link href={`${prefix}/auctions`}>{locale === "zh" ? "顶奢作品" : "Ultra-Luxury"}</Link>
             <Link href={`${prefix}/guides/private-high-jewelry-buying`}>{locale === "zh" ? "购买指南" : "Buying Guide"}</Link>
             <Link href={`${prefix}/series`}>{locale === "zh" ? "故事系列" : "Story Series"}</Link>
+            <Link href={`${prefix}/story`}>{locale === "zh" ? "品牌故事" : "Our Story"}</Link>
             <Link href={`${prefix}/sold`}>{locale === "zh" ? "已售档案" : "Archive"}</Link>
             <Link href={`${prefix}/admin`}>{locale === "zh" ? "后台入口" : "Admin"}</Link>
           </div>
