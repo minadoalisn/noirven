@@ -71,10 +71,10 @@ export function GeoGuidePage({ locale = "zh" }: { locale?: Locale }) {
         <section className="section-shell grid gap-12 py-20 lg:grid-cols-[0.82fr_1.18fr]">
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">{meta.eyebrow}</p>
-            <h1 className="mt-4 max-w-4xl font-serif text-5xl font-normal leading-tight md:text-6xl">{meta.heading}</h1>
+            <h1 className="mt-4 max-w-4xl font-serif text-[var(--step-5)] font-normal leading-tight md:text-[var(--step-5)]">{meta.heading}</h1>
           </div>
           <div className="max-w-3xl">
-            <p className="text-lg leading-8 text-[var(--graphite)]">{meta.intro}</p>
+            <p className="text-[var(--step-1)] leading-8 text-[var(--graphite)]">{meta.intro}</p>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {[
                 locale === "zh" ? "第一句给结论" : "Answer first",
@@ -83,7 +83,7 @@ export function GeoGuidePage({ locale = "zh" }: { locale?: Locale }) {
               ].map((item) => (
                 <div key={item} className="border border-black/10 p-4">
                   <CheckCircle2 size={17} className="text-[var(--antique-gold)]" />
-                  <p className="mt-3 text-sm">{item}</p>
+                  <p className="mt-3 text-[var(--step--1)]">{item}</p>
                 </div>
               ))}
             </div>
@@ -102,10 +102,10 @@ export function GeoGuidePage({ locale = "zh" }: { locale?: Locale }) {
           <div className="mt-10 grid gap-5">
             {questions.map((item, index) => (
               <article key={item.id} className="grid gap-6 border-t border-black/12 py-7 lg:grid-cols-[0.16fr_0.84fr]">
-                <p className="font-mono text-sm text-[var(--ash)]">{String(index + 1).padStart(2, "0")}</p>
+                <p className="font-mono text-[var(--step--1)] text-[var(--ash)]">{String(index + 1).padStart(2, "0")}</p>
                 <div>
-                  <h3 className="text-2xl font-normal">{item.question}</h3>
-                  <p className="mt-4 max-w-4xl text-sm leading-7 text-[var(--graphite)]">{item.answer}</p>
+                  <h3 className="text-[var(--step-2)] font-normal">{item.question}</h3>
+                  <p className="mt-4 max-w-4xl text-[var(--step--1)] leading-7 text-[var(--graphite)]">{item.answer}</p>
                 </div>
               </article>
             ))}
@@ -119,7 +119,7 @@ export function GeoGuidePage({ locale = "zh" }: { locale?: Locale }) {
                 <MessageSquareText size={14} /> {locale === "zh" ? "社区回答草稿" : "Community Answer Drafts"}
               </p>
               <h2 className="mt-4 font-serif text-4xl font-normal">{locale === "zh" ? "可人工发布，不自动发帖" : "Manual replies, not automated posting"}</h2>
-              <p className="mt-5 text-sm leading-7 text-[var(--graphite)]">
+              <p className="mt-5 text-[var(--step--1)] leading-7 text-[var(--graphite)]">
                 {locale === "zh"
                   ? "这些回答用于品牌代表在相关讨论中透明回复，不能用于自动刷帖、冒充用户或批量灌水。"
                   : noAutomaticPosting}
@@ -128,8 +128,8 @@ export function GeoGuidePage({ locale = "zh" }: { locale?: Locale }) {
             <div className="grid gap-5">
               {drafts.map((draft) => (
                 <article key={draft.topic} className="border border-black/10 bg-white/35 p-5">
-                  <h3 className="text-lg">{draft.topic}</h3>
-                  <p className="mt-3 text-sm leading-7 text-[var(--graphite)]">{draft.answer}</p>
+                  <h3 className="text-[var(--step-1)]">{draft.topic}</h3>
+                  <p className="mt-3 text-[var(--step--1)] leading-7 text-[var(--graphite)]">{draft.answer}</p>
                 </article>
               ))}
             </div>

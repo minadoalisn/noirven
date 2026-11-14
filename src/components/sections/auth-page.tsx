@@ -42,7 +42,7 @@ function Field({
     <label className="block">
       <span className="text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{label}</span>
       <input
-        className="mt-3 h-12 w-full border border-black/14 bg-transparent px-4 text-sm outline-none transition focus:border-[var(--champagne)]"
+        className="mt-3 h-12 w-full border border-black/14 bg-transparent px-4 text-[var(--step--1)] outline-none transition focus:border-[var(--champagne)]"
         name={name}
         type={type}
         autoComplete={autoComplete}
@@ -74,7 +74,7 @@ export function AuthPage({ locale = "zh", mode, nextPath, error }: AuthPageProps
           <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">
             {isAdmin ? "Noirven Admin" : "Collector Account"}
           </p>
-          <h1 className="mt-5 max-w-3xl font-serif text-5xl font-normal leading-tight sm:text-6xl">
+          <h1 className="mt-5 max-w-3xl font-serif text-[var(--step-5)] font-normal leading-tight">
             {isAdmin
               ? locale === "zh"
                 ? "管理员登录后，才能进入后台。"
@@ -83,7 +83,7 @@ export function AuthPage({ locale = "zh", mode, nextPath, error }: AuthPageProps
                 ? "登录后，才能提交付款凭证与查看订单。"
                 : "Sign in to submit payment proofs and view orders."}
           </h1>
-          <p className="mt-6 max-w-xl text-sm leading-7 text-[var(--graphite)]">
+          <p className="mt-6 max-w-xl text-[var(--step--1)] leading-7 text-[var(--graphite)]">
             {isAdmin
               ? locale === "zh"
                 ? "后台入口由服务端权限保护，不再公开展示管理界面。"
@@ -92,12 +92,12 @@ export function AuthPage({ locale = "zh", mode, nextPath, error }: AuthPageProps
                 ? "作品浏览可以公开，涉及账户、付款凭证、订单与发货的操作需要登录。"
                 : "Browsing stays public; account, payment proof, order, and delivery actions require authentication."}
           </p>
-          {message ? <p className="mt-6 border border-[var(--signature-red)]/30 px-4 py-3 text-sm text-[var(--signature-red)]">{message}</p> : null}
+          {message ? <p className="mt-6 border border-[var(--signature-red)]/30 px-4 py-3 text-[var(--step--1)] text-[var(--signature-red)]">{message}</p> : null}
         </section>
 
         {isAdmin ? (
           <section className="border-t border-black/12 pt-6">
-            <h2 className="text-2xl">{locale === "zh" ? "后台登录" : "Admin Login"}</h2>
+            <h2 className="text-[var(--step-2)]">{locale === "zh" ? "后台登录" : "Admin Login"}</h2>
             <form className="mt-8 grid gap-5" action="/api/auth/admin/login" method="post">
               <input type="hidden" name="next" value={nextPath} />
               <Field label={locale === "zh" ? "管理员账号" : "Username"} name="username" autoComplete="username" />
@@ -108,7 +108,7 @@ export function AuthPage({ locale = "zh", mode, nextPath, error }: AuthPageProps
         ) : (
           <div className="grid gap-8">
             <section className="border-t border-black/12 pt-6">
-              <h2 className="text-2xl">{locale === "zh" ? "登录账户" : "Sign In"}</h2>
+              <h2 className="text-[var(--step-2)]">{locale === "zh" ? "登录账户" : "Sign In"}</h2>
               <form className="mt-8 grid gap-5" action="/api/auth/user/login" method="post">
                 <input type="hidden" name="next" value={nextPath} />
                 <Field label={locale === "zh" ? "邮箱" : "Email"} name="email" type="email" autoComplete="email" />
@@ -117,7 +117,7 @@ export function AuthPage({ locale = "zh", mode, nextPath, error }: AuthPageProps
               </form>
             </section>
             <section className="border-t border-black/12 pt-6">
-              <h2 className="text-2xl">{locale === "zh" ? "注册新账户" : "Create Account"}</h2>
+              <h2 className="text-[var(--step-2)]">{locale === "zh" ? "注册新账户" : "Create Account"}</h2>
               <form className="mt-8 grid gap-5" action="/api/auth/user/register" method="post">
                 <input type="hidden" name="next" value={nextPath} />
                 <Field label={locale === "zh" ? "公开昵称" : "Nickname"} name="nickname" autoComplete="nickname" minLength={2} />
@@ -130,7 +130,7 @@ export function AuthPage({ locale = "zh", mode, nextPath, error }: AuthPageProps
         )}
       </main>
       <div className="section-shell">
-        <Link className="text-sm text-[var(--graphite)] underline" href={`${prefix}/`}>
+        <Link className="text-[var(--step--1)] text-[var(--graphite)] underline" href={`${prefix}/`}>
           {locale === "zh" ? "返回首页" : "Back to home"}
         </Link>
       </div>
