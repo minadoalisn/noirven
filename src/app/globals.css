@@ -1,19 +1,66 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbfaf6;
-  --foreground: #151515;
+  /* 12-step scales, Radix structure with warm nvonly values (OKLCH interpolation, anchors = existing tokens) */
+  --sand-1: #fdfdfa;
+  --sand-2: #fbfaf6;
+  --sand-3: #f7f3ea;
+  --sand-4: #f4f1ea;
+  --sand-5: #e9e5dd;
+  --sand-6: #ded9d0;
+  --sand-7: #d4cec3;
+  --sand-8: #c9c2b6;
+  --sand-9: #aaa398;
+  --sand-10: #8b847b;
+  --sand-11: #6e675f;
+  --sand-12: #151515;
+  --gold-1: #fdfdfa;
+  --gold-2: #eee5d1;
+  --gold-3: #e6d9bd;
+  --gold-4: #dfcda8;
+  --gold-5: #d7c194;
+  --gold-6: #d0b57f;
+  --gold-7: #c8a96a;
+  --gold-8: #b5965c;
+  --gold-9: #a2834e;
+  --gold-10: #8f7140;
+  --gold-11: #645236;
+  --gold-12: #3b352b;
+  --ruby-1: #fffcfd;
+  --ruby-2: #f6e6e7;
+  --ruby-3: #ecd0d0;
+  --ruby-4: #e2babb;
+  --ruby-5: #d7a5a5;
+  --ruby-6: #cc8f90;
+  --ruby-7: #c17a7c;
+  --ruby-8: #b56568;
+  --ruby-9: #a85055;
+  --ruby-10: #9b3942;
+  --ruby-11: #8e1f2f;
+  --ruby-12: #64172b;
+  /* Utopia fluid type scale: viewport 360-1240px, base 16-20px, ratio 1.2-1.25 */
+  --step--2: clamp(0.6944rem, 0.6513rem + 0.1919vw, 0.8000rem);
+  --step--1: clamp(0.8333rem, 0.7652rem + 0.3030vw, 1.0000rem);
+  --step-0: clamp(1.0000rem, 0.8977rem + 0.4545vw, 1.2500rem);
+  --step-1: clamp(1.2000rem, 1.0517rem + 0.6591vw, 1.5625rem);
+  --step-2: clamp(1.4400rem, 1.2301rem + 0.9330vw, 1.9531rem);
+  --step-3: clamp(1.7280rem, 1.4362rem + 1.2971vw, 2.4414rem);
+  --step-4: clamp(2.0736rem, 1.6734rem + 1.7785vw, 3.0518rem);
+  --step-5: clamp(2.4883rem, 1.9457rem + 2.4116vw, 3.8147rem);
+  /* semantic tokens, mapped onto the scales (values unchanged) */
+  --background: var(--sand-2);
+  --foreground: var(--sand-12);
   --noir: #030303;
   --obsidian: #090807;
-  --porcelain: #fbfaf6;
-  --ivory: #f7f3ea;
-  --platinum: #f4f1ea;
-  --warm-silver: #c9c2b6;
+  --porcelain: var(--sand-2);
+  --ivory: var(--sand-3);
+  --platinum: var(--sand-4);
+  --warm-silver: var(--sand-8);
   --graphite: #4b4a46;
-  --ash: #6e675f;
-  --champagne: #c8a96a;
-  --antique-gold: #8f7140;
-  --signature-red: #8e1f2f;
+  --ash: var(--sand-11);
+  --champagne: var(--gold-7);
+  --antique-gold: var(--gold-10);
+  --signature-red: var(--ruby-11);
   --hairline: #26221d;
   --soft-hairline: #ded7ca;
 }
@@ -23,6 +70,7 @@
   --color-foreground: var(--foreground);
   --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", "Noto Serif SC", serif;
 }
 
 * {

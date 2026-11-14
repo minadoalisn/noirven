@@ -29,15 +29,15 @@ export function AccountPage({ locale = "zh", paymentStatus }: { locale?: Locale;
               </button>
             </form>
           </div>
-          <h1 className="mt-5 font-serif text-6xl font-normal leading-tight">
+          <h1 className="mt-5 font-serif text-[var(--step-5)] font-normal leading-tight">
             {locale === "zh" ? "管理你的归属、付款凭证与订单档案。" : "Manage ownership, payment proofs, and order archive."}
           </h1>
-          <p className="mt-6 text-lg leading-8 text-[var(--graphite)]">
+          <p className="mt-6 text-[var(--step-1)] leading-8 text-[var(--graphite)]">
             {locale === "zh"
               ? "作品可公开浏览；提交付款凭证、确认订单与查看发货进度需要登录。"
               : "Works are publicly browsable; payment proof, orders, and delivery status require sign-in."}
           </p>
-          {notice ? <p className="mt-6 border border-[var(--champagne)]/60 px-4 py-3 text-sm leading-6 text-black">{notice}</p> : null}
+          {notice ? <p className="mt-6 border border-[var(--champagne)]/60 px-4 py-3 text-[var(--step--1)] leading-6 text-black">{notice}</p> : null}
         </div>
         <div className="grid gap-6">
           {[
@@ -47,8 +47,8 @@ export function AccountPage({ locale = "zh", paymentStatus }: { locale?: Locale;
             [locale === "zh" ? "订单与发货" : "Order and delivery", locale === "zh" ? "到账确认后登记拥有者、确认收货信息并安排发货。" : "After receipt confirmation, ownership, shipping details, and delivery are handled."],
           ].map(([title, text]) => (
             <section key={title} className="border-t border-black/12 pt-6">
-              <h2 className="text-2xl">{title}</h2>
-              <p className="mt-3 text-sm leading-7 text-[var(--graphite)]">{text}</p>
+              <h2 className="text-[var(--step-2)]">{title}</h2>
+              <p className="mt-3 text-[var(--step--1)] leading-7 text-[var(--graphite)]">{text}</p>
             </section>
           ))}
         </div>

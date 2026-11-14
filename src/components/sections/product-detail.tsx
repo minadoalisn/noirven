@@ -119,11 +119,11 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
             locale={locale}
           />
           <div className="lg:pt-8">
-            <h1 className="font-serif text-6xl font-normal leading-tight">{localizedTitle}</h1>
+            <h1 className="font-serif text-[var(--step-5)] font-normal leading-tight">{localizedTitle}</h1>
             <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">
               {product.serial} / {series?.name} / {categoryLabel(product.category, locale)}
             </p>
-            <p className="mt-6 text-xl leading-9 text-[var(--graphite)]">{localizedProductInspiration(product, locale)}</p>
+            <p className="mt-6 text-[var(--step-1)] leading-9 text-[var(--graphite)]">{localizedProductInspiration(product, locale)}</p>
             <div className="mt-10 grid grid-cols-2 gap-4 border-y border-black/10 py-6">
               <div>
                 <p className="text-xs uppercase tracking-[0.18em] text-[var(--ash)]">{locale === "zh" ? "顶奢定价" : "Ultra-Luxury Price"}</p>
@@ -131,28 +131,28 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
               </div>
               <div>
                 <p className="text-xs uppercase tracking-[0.18em] text-[var(--ash)]">{locale === "zh" ? "收款网络" : "Network"}</p>
-                <p className="mt-2 text-sm leading-7">BNB Smart Chain / BEP-20 USDT</p>
+                <p className="mt-2 text-[var(--step--1)] leading-7">BNB Smart Chain / BEP-20 USDT</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-[0.18em] text-[var(--ash)]">{locale === "zh" ? "确认方式" : "Confirmation"}</p>
-                <p className="mt-2 text-sm leading-7">{locale === "zh" ? "后台人工确认到账" : "Manual admin review"}</p>
+                <p className="mt-2 text-[var(--step--1)] leading-7">{locale === "zh" ? "后台人工确认到账" : "Manual admin review"}</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-[0.18em] text-[var(--ash)]">{locale === "zh" ? "归属状态" : "Status"}</p>
-                <p className="mt-2 text-sm leading-7">
+                <p className="mt-2 text-[var(--step--1)] leading-7">
                   {product.status === "sold" ? (locale === "zh" ? `已归于 ${product.ownerNickname}` : `Belongs to ${product.ownerNickname}`) : locale === "zh" ? "等待确认" : "Available"}
                 </p>
               </div>
             </div>
-            <p className="mt-8 text-base leading-8 text-[var(--graphite)]">{productDescription}</p>
+            <p className="mt-8 text-[var(--step-0)] leading-8 text-[var(--graphite)]">{productDescription}</p>
             {notice ? (
-              <p className="mt-6 border border-[var(--signature-red)]/30 px-4 py-3 text-sm leading-6 text-[var(--signature-red)]">
+              <p className="mt-6 border border-[var(--signature-red)]/30 px-4 py-3 text-[var(--step--1)] leading-6 text-[var(--signature-red)]">
                 {notice}
               </p>
             ) : null}
             {product.status === "sold" ? (
               <div className="mt-8 border-y border-black/12 py-6">
-                <p className="text-sm leading-7 text-[var(--graphite)]">
+                <p className="text-[var(--step--1)] leading-7 text-[var(--graphite)]">
                   {locale === "zh"
                     ? `此件已完成归属登记，拥有者：${product.ownerNickname}。仍可浏览材质、故事与唯一刻印档案。`
                     : `This work has completed ownership registration for ${product.ownerNickname}. Materials, story, and engraving remain visible.`}
@@ -160,7 +160,7 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
               </div>
             ) : !session ? (
               <div className="mt-8 border-y border-black/12 py-6">
-                <p className="text-sm leading-7 text-[var(--graphite)]">
+                <p className="text-[var(--step--1)] leading-7 text-[var(--graphite)]">
                   {locale === "zh"
                     ? "登录或注册后可提交 USDT 付款凭证。后台确认到账后，作品会显示你的拥有者昵称并进入发货流程。"
                     : "Sign in or create an account to submit a USDT payment proof. After manual confirmation, ownership and delivery will be registered."}
@@ -189,8 +189,8 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
                   <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">
                     {locale === "zh" ? "收款地址 / BEP-20 USDT" : "Receiving Address / BEP-20 USDT"}
                   </p>
-                  <p className="mt-3 break-all font-mono text-sm text-black">{receivingAddress}</p>
-                  <p className="mt-3 text-sm leading-7 text-[var(--graphite)]">
+                  <p className="mt-3 break-all font-mono text-[var(--step--1)] text-black">{receivingAddress}</p>
+                  <p className="mt-3 text-[var(--step--1)] leading-7 text-[var(--graphite)]">
                     {locale === "zh"
                       ? `应付金额：${formatCurrency(product.currentPrice)}，按 1 USD = 1 USDT 提交。点击下方钱包按钮会切换到 BNB Smart Chain，并发起 BEP-20 USDT 转账。`
                       : `Amount due: ${formatCurrency(product.currentPrice)}, submitted as 1 USD = 1 USDT. The wallet button switches to BNB Smart Chain and starts a BEP-20 USDT transfer.`}
@@ -199,7 +199,7 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
                 <div>
                   <WalletConnectPanel locale={locale} amountUsd={product.currentPrice} receivingAddress={receivingAddress} />
                 </div>
-                <div className="mt-5 flex flex-col gap-3 text-sm leading-6 text-[var(--graphite)] sm:flex-row sm:items-center sm:justify-between">
+                <div className="mt-5 flex flex-col gap-3 text-[var(--step--1)] leading-6 text-[var(--graphite)] sm:flex-row sm:items-center sm:justify-between">
                   <p>
                     {locale === "zh"
                       ? "后台确认到账后，这件作品会显示拥有者并进入订单发货。"
@@ -220,16 +220,16 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
         </section>
         <section className="section-shell grid gap-10 pb-24 md:grid-cols-3">
           <div className="border-t border-black/12 pt-6">
-            <h2 className="text-sm uppercase tracking-[0.18em]">{locale === "zh" ? "材质" : "Materials"}</h2>
-            <p className="mt-4 text-sm leading-7 text-[var(--graphite)]">{productMaterials.join(" / ")}</p>
+            <h2 className="text-[var(--step--1)] uppercase tracking-[0.18em]">{locale === "zh" ? "材质" : "Materials"}</h2>
+            <p className="mt-4 text-[var(--step--1)] leading-7 text-[var(--graphite)]">{productMaterials.join(" / ")}</p>
           </div>
           <div className="border-t border-black/12 pt-6">
-            <h2 className="text-sm uppercase tracking-[0.18em]">{locale === "zh" ? "工艺" : "Craft"}</h2>
-            <p className="mt-4 text-sm leading-7 text-[var(--graphite)]">{productCraft.join(" / ")}</p>
+            <h2 className="text-[var(--step--1)] uppercase tracking-[0.18em]">{locale === "zh" ? "工艺" : "Craft"}</h2>
+            <p className="mt-4 text-[var(--step--1)] leading-7 text-[var(--graphite)]">{productCraft.join(" / ")}</p>
           </div>
           <div className="border-t border-black/12 pt-6">
-            <h2 className="text-sm uppercase tracking-[0.18em]">{locale === "zh" ? "归属规则" : "Belonging Rule"}</h2>
-            <p className="mt-4 text-sm leading-7 text-[var(--graphite)]">
+            <h2 className="text-[var(--step--1)] uppercase tracking-[0.18em]">{locale === "zh" ? "归属规则" : "Belonging Rule"}</h2>
+            <p className="mt-4 text-[var(--step--1)] leading-7 text-[var(--graphite)]">
               {product.status === "sold"
                 ? `${locale === "zh" ? "此件已归于" : "Belongs to"} ${product.ownerNickname} / ${formatDate(product.soldAt ?? product.endsAt)}`
                 : locale === "zh"
@@ -238,16 +238,16 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
             </p>
           </div>
           <div className="border-t border-black/12 pt-6">
-            <h2 className="text-sm uppercase tracking-[0.18em]">{locale === "zh" ? "可调节规格" : "Adjustable Fit"}</h2>
-            <p className="mt-4 text-sm leading-7 text-[var(--graphite)]">{productSizing}</p>
+            <h2 className="text-[var(--step--1)] uppercase tracking-[0.18em]">{locale === "zh" ? "可调节规格" : "Adjustable Fit"}</h2>
+            <p className="mt-4 text-[var(--step--1)] leading-7 text-[var(--graphite)]">{productSizing}</p>
           </div>
           <div className="border-t border-black/12 pt-6">
-            <h2 className="text-sm uppercase tracking-[0.18em]">{locale === "zh" ? "唯一刻印" : "Unique Engraving"}</h2>
-            <p className="mt-4 text-sm leading-7 text-[var(--graphite)]">{productEngraving}</p>
+            <h2 className="text-[var(--step--1)] uppercase tracking-[0.18em]">{locale === "zh" ? "唯一刻印" : "Unique Engraving"}</h2>
+            <p className="mt-4 text-[var(--step--1)] leading-7 text-[var(--graphite)]">{productEngraving}</p>
           </div>
           <div className="border-t border-black/12 pt-6">
-            <h2 className="text-sm uppercase tracking-[0.18em]">{locale === "zh" ? "定价依据" : "Pricing Basis"}</h2>
-            <p className="mt-4 text-sm leading-7 text-[var(--graphite)]">{productPricingBasis}</p>
+            <h2 className="text-[var(--step--1)] uppercase tracking-[0.18em]">{locale === "zh" ? "定价依据" : "Pricing Basis"}</h2>
+            <p className="mt-4 text-[var(--step--1)] leading-7 text-[var(--graphite)]">{productPricingBasis}</p>
           </div>
         </section>
       </main>

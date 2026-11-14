@@ -77,24 +77,24 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }} />
       <main className="section-shell py-16">
         <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">Custom / Bespoke</p>
-        <h1 className="mt-4 max-w-3xl font-serif text-6xl font-normal leading-tight">Custom Jewelry</h1>
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--graphite)]">
+        <h1 className="mt-4 max-w-3xl font-serif text-[var(--step-5)] font-normal leading-tight">Custom Jewelry</h1>
+        <p className="mt-6 max-w-3xl text-[var(--step-1)] leading-8 text-[var(--graphite)]">
           This page is designed to make requirements explicit: use case, story tone, budget range, target date, sizing, and material preferences.
           Once confirmed, we turn it into an executable production plan.
         </p>
 
         <section className="mt-12 grid gap-6 lg:grid-cols-3">
           <div className="border border-black/10 bg-white/50 p-6">
-            <h2 className="text-lg">1. Intent</h2>
-            <p className="mt-3 text-sm leading-7 text-[var(--graphite)]">Share your use case, preferred series tone, budget range, and target delivery date.</p>
+            <h2 className="text-[var(--step-1)]">1. Intent</h2>
+            <p className="mt-3 text-[var(--step--1)] leading-7 text-[var(--graphite)]">Share your use case, preferred series tone, budget range, and target delivery date.</p>
           </div>
           <div className="border border-black/10 bg-white/50 p-6">
-            <h2 className="text-lg">2. Confirmation</h2>
-            <p className="mt-3 text-sm leading-7 text-[var(--graphite)]">We confirm materials, main and secondary stones, proportions, sizing, and key craft choices.</p>
+            <h2 className="text-[var(--step-1)]">2. Confirmation</h2>
+            <p className="mt-3 text-[var(--step--1)] leading-7 text-[var(--graphite)]">We confirm materials, main and secondary stones, proportions, sizing, and key craft choices.</p>
           </div>
           <div className="border border-black/10 bg-white/50 p-6">
-            <h2 className="text-lg">3. Production</h2>
-            <p className="mt-3 text-sm leading-7 text-[var(--graphite)]">We set milestones, share progress at critical steps, and arrange delivery and archiving after completion.</p>
+            <h2 className="text-[var(--step-1)]">3. Production</h2>
+            <p className="mt-3 text-[var(--step--1)] leading-7 text-[var(--graphite)]">We set milestones, share progress at critical steps, and arrange delivery and archiving after completion.</p>
           </div>
         </section>
 
@@ -103,8 +103,8 @@ export default function Page() {
           <div className="mt-8 grid gap-6">
             {faqJsonLd.mainEntity.map((item) => (
               <article key={item.name} className="border border-black/10 bg-white/40 p-6">
-                <h3 className="text-base">{item.name}</h3>
-                <p className="mt-3 text-sm leading-7 text-[var(--graphite)]">{item.acceptedAnswer.text}</p>
+                <h3 className="text-[var(--step-0)]">{item.name}</h3>
+                <p className="mt-3 text-[var(--step--1)] leading-7 text-[var(--graphite)]">{item.acceptedAnswer.text}</p>
               </article>
             ))}
           </div>
