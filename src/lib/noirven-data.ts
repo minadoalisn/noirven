@@ -8,6 +8,7 @@ type DailyProductSeed = {
   category: Category;
   zhTitle: string;
   image: string;
+  gallery?: string[];
   materialLine: string;
   craftLine: string;
   storyLine: string;
@@ -758,6 +759,11 @@ export const dailyProductSeeds: DailyProductSeed[] = [
     category: "brooch",
     zhTitle: "天鹅之光胸针",
     image: "/assets/products/n-0534-swan-light-brooch.png",
+    gallery: [
+      "/assets/products/n-0534-swan-light-brooch-macro.png",
+      "/assets/products/n-0534-swan-light-brooch-back.png",
+      "/assets/products/n-0534-swan-light-brooch-wear.png",
+    ],
     materialLine: "铂金 / 黑铑铂金 / 月光石 / 天然白钻 / 淡色珐琅",
     craftLine: "手工錾刻 / 微密镶 / 镜面抛光 / 珐琅嵌线",
     storyLine: "天鹅一生只认一片水；它飞起的瞬间，就是光第一次有了形状。",
@@ -769,6 +775,11 @@ export const dailyProductSeeds: DailyProductSeed[] = [
     category: "ring",
     zhTitle: "水月戒指",
     image: "/assets/products/n-0535-water-moon-ring.png",
+    gallery: [
+      "/assets/products/n-0535-water-moon-ring-macro.png",
+      "/assets/products/n-0535-water-moon-ring-opening.png",
+      "/assets/products/n-0535-water-moon-ring-wear.png",
+    ],
     materialLine: "铂金 / 玫瑰金 / 月光石 / 天然白钻",
     craftLine: "拉丝雾面 / 镜面抛光 / 爪镶 / 微密镶 / 开口戒臂成形",
     storyLine: "月亮从不属于任何人，但水面上的那一轮，今晚只照一个人。",
@@ -895,6 +906,7 @@ function createProductFromSeed(seed: DailyProductSeed, index: number): Product {
     ownerNickname: archiveOverride?.ownerNickname,
     soldAt: archiveOverride?.soldAt,
     image: seed.image,
+    gallery: seed.gallery,
     sizing: seedSizing(seed.category),
     engraving: `内侧或背面微刻 ${seed.serial}，作为 Noirven 唯一编号印记。`,
     pricingBasis: luxuryPricingBasis(),
