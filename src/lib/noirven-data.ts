@@ -228,6 +228,20 @@ export const storySeries: StorySeries[] = [
     visualMemory: ["月相切片", "档案封条", "半透明留白", "低声编号"],
     ipHook: "Moon Archive 可以沉淀为秘密档案馆、月相日记、失物记忆和角色过往支线，为后续小说和短剧提供情感线索。",
   },
+  {
+    id: "swan-light",
+    name: "Swan Light",
+    zhName: "天鹅之光",
+    theme: "天鹅一生只认一片水；它飞起的瞬间，就是光第一次有了形状。",
+    emotionalLine: "飞起的瞬间，光第一次有了形状。",
+    description:
+      "把艾里森机械天鹅（水面机器人天鹅）的意象提炼成一件可佩戴的顶奢胸针——东方水文化 × 未来科技 × 顶奢珠宝。月光石为身、羽翼边缘密镶天然白钻、黑铑铂金水波纹为底，优雅克制，不卡通、不凶猛。",
+    categories: ["brooch"],
+    materials: ["铂金", "黑铑铂金", "月光石", "天然白钻", "淡色珐琅"],
+    craft: ["手工錾刻", "微密镶", "镜面抛光", "珐琅嵌线"],
+    visualMemory: ["振翅天鹅", "月光石晕彩", "水波纹底座", "黑钻眼点"],
+    ipHook: "天鹅之光把艾里森水面机器人天鹅的意象收进一件胸针：振翅的瞬间被定格，仍可佩戴。",
+  },
 ];
 
 export const storyChapters = [
@@ -737,6 +751,27 @@ export const dailyProductSeeds: DailyProductSeed[] = [
     materialLine: "钛金属 / 陨铁 / 烟晶 / 暗红珐琅 / 天然白钻 / 黑陶瓷",
     craftLine: "陶瓷烧结 / 局部氧化 / 雪花镶 / 微密镶",
     storyLine: "一块陨铁是灰烬后的证据，它不说话，但它从不撤销。",
+  },  {
+    serial: "N-0534",
+    title: "Swan Light Brooch",
+    seriesId: "swan-light",
+    category: "brooch",
+    zhTitle: "天鹅之光胸针",
+    image: "/assets/products/n-0534-swan-light-brooch.png",
+    materialLine: "铂金 / 黑铑铂金 / 月光石 / 天然白钻 / 淡色珐琅",
+    craftLine: "手工錾刻 / 微密镶 / 镜面抛光 / 珐琅嵌线",
+    storyLine: "天鹅一生只认一片水；它飞起的瞬间，就是光第一次有了形状。",
+  },
+  {
+    serial: "N-0535",
+    title: "Water Moon Ring",
+    seriesId: "tide-return",
+    category: "ring",
+    zhTitle: "水月戒指",
+    image: "/assets/products/n-0535-water-moon-ring.png",
+    materialLine: "铂金 / 玫瑰金 / 月光石 / 天然白钻",
+    craftLine: "拉丝雾面 / 镜面抛光 / 爪镶 / 微密镶 / 开口戒臂成形",
+    storyLine: "月亮从不属于任何人，但水面上的那一轮，今晚只照一个人。",
   },
 ];
 
@@ -1200,7 +1235,7 @@ export const soldProducts = products.filter((product) => product.status === "sol
 
 export const adminMetrics: AdminMetric[] = [
   { label: "Live Belonging", value: "36", detail: "New story-backed product images are listed first" },
-  { label: "Story Series", value: "08", detail: "Ready for IP, short drama, game extension" },
+  { label: "Story Series", value: "09", detail: "Ready for IP, short drama, game extension" },
   { label: "Pending Settlement", value: "$220k+", detail: "USDT transfer proofs waiting for admin confirmation" },
   { label: "Generated Drafts", value: "18", detail: "Seed prompts stay internal; only finished product images are public" },
 ];
