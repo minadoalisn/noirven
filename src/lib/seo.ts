@@ -45,6 +45,9 @@ export function createMetadata({
         en: enPath,
         "x-default": zhPath,
       },
+      types: {
+        "application/rss+xml": "/feed.xml",
+      },
     },
     openGraph: {
       title: finalTitle,

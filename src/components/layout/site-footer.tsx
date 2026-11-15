@@ -45,6 +45,15 @@ export function SiteFooter({ locale = "zh" }: { locale?: Locale }) {
           </div>
         </div>
       </div>
+      <div className="border-t border-white/10">
+        <div className="section-shell flex flex-wrap items-center justify-between gap-3 py-5 text-xs text-white/46">
+          <span>{locale === "zh" ? "Noirven 诺梵高奢" : "Noirven"}</span>
+          <span>
+            {locale === "zh" ? "最后更新：" : "Last updated: "}
+            <time dateTime="2026-11-16">{locale === "zh" ? "2026年11月16日" : "November 16, 2026"}</time>
+          </span>
+        </div>
+      </div>
     </footer>
   );
 }
