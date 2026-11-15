@@ -40,6 +40,9 @@ export function websiteJsonLd() {
     url: siteUrl,
     inLanguage: ["zh-CN", "en"],
     publisher: { "@id": organizationId },
+    // Truthful site-wide update date: matches the visible footer date and
+    // sitemap pageLastModified. Update it when the site changes.
+    dateModified: "2026-11-16",
     potentialAction: {
       "@type": "SearchAction",
       target: `${siteUrl}/auctions?query={search_term_string}`,
