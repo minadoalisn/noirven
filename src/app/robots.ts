@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
 
   return {
     rules: [
+      // Retrieval (search) crawlers — allowed (aaron search-only split, 2026-11-16).
       {
         userAgent: "OAI-SearchBot",
         allow: "/",
@@ -17,22 +18,12 @@ export default function robots(): MetadataRoute.Robots {
         disallow: protectedPaths,
       },
       {
-        userAgent: "GPTBot",
-        allow: "/",
-        disallow: protectedPaths,
-      },
-      {
         userAgent: "PerplexityBot",
         allow: "/",
         disallow: protectedPaths,
       },
       {
-        userAgent: "ClaudeBot",
-        allow: "/",
-        disallow: protectedPaths,
-      },
-      {
-        userAgent: "anthropic-ai",
+        userAgent: "Perplexity-User",
         allow: "/",
         disallow: protectedPaths,
       },
@@ -42,17 +33,12 @@ export default function robots(): MetadataRoute.Robots {
         disallow: protectedPaths,
       },
       {
-        userAgent: "Google-Extended",
+        userAgent: "Claude-User",
         allow: "/",
         disallow: protectedPaths,
       },
       {
         userAgent: "Googlebot",
-        allow: "/",
-        disallow: protectedPaths,
-      },
-      {
-        userAgent: "CCBot",
         allow: "/",
         disallow: protectedPaths,
       },
@@ -75,6 +61,27 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "Applebot",
         allow: "/",
         disallow: protectedPaths,
+      },
+      // Training crawlers — blocked from everything.
+      {
+        userAgent: "GPTBot",
+        disallow: "/",
+      },
+      {
+        userAgent: "ClaudeBot",
+        disallow: "/",
+      },
+      {
+        userAgent: "anthropic-ai",
+        disallow: "/",
+      },
+      {
+        userAgent: "CCBot",
+        disallow: "/",
+      },
+      {
+        userAgent: "Google-Extended",
+        disallow: "/",
       },
       {
         userAgent: "*",
