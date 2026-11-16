@@ -40,9 +40,12 @@ export function websiteJsonLd() {
     url: siteUrl,
     inLanguage: ["zh-CN", "en"],
     publisher: { "@id": organizationId },
+    // Author attribution (G-BYLINE): the site content is authored by the
+    // Noirven organization — same pattern as alisnart.cn 2026-11-17.
+    author: { "@id": organizationId },
     // Truthful site-wide update date: matches the visible footer date and
     // sitemap pageLastModified. Update it when the site changes.
-    dateModified: "2026-11-16",
+    dateModified: "2026-11-17",
     potentialAction: {
       "@type": "SearchAction",
       target: `${siteUrl}/auctions?query={search_term_string}`,

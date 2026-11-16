@@ -50,7 +50,7 @@ export function SiteFooter({ locale = "zh" }: { locale?: Locale }) {
           <span>{locale === "zh" ? "Noirven 诺梵高奢" : "Noirven"}</span>
           <span>
             {locale === "zh" ? "最后更新：" : "Last updated: "}
-            <time dateTime="2026-11-16">{locale === "zh" ? "2026年11月16日" : "November 16, 2026"}</time>
+            <time dateTime="2026-11-17">{locale === "zh" ? "2026年11月17日" : "November 17, 2026"}</time>
           </span>
         </div>
       </div>
