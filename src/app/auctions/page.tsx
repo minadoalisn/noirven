@@ -3,7 +3,7 @@ import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
   title: "顶奢作品",
-  description: "Noirven 诺梵顶奢作品：举世无双、仅此一件、不复制不复刻的编号顶级奢侈品级高珠宝作品。",
+  description: "Noirven 诺梵顶奢作品：举世无双、仅此一件、不复制不复刻的编号顶级奢侈品级高珠宝作品，按编号优先展示，USDT 到账确认后登记拥有者。",
   path: "/auctions",
 });
 
