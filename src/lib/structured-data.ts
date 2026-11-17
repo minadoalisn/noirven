@@ -45,7 +45,7 @@ export function websiteJsonLd() {
     author: { "@id": organizationId },
     // Truthful site-wide update date: matches the visible footer date and
     // sitemap pageLastModified. Update it when the site changes.
-    dateModified: "2026-11-17",
+    dateModified: "2026-11-18",
     potentialAction: {
       "@type": "SearchAction",
       target: `${siteUrl}/auctions?query={search_term_string}`,
