@@ -5,6 +5,7 @@ export const metadata = createMetadata({
   title: "顶级奢侈品级艺术珠宝",
   description: "Noirven 诺梵只发布举世无双的编号顶级奢侈品级作品：每件仅此一件，不复制、不复刻、不再生产，确认后登记给唯一藏家。",
   path: "/",
+  aiIndexAlternate: true,
 });
 
 export default function Page() {

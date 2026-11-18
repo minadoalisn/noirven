@@ -6,6 +6,7 @@ export const metadata = createMetadata({
   description:
     "Noirven presents unrepeatable ultra-luxury numbered works: one physical piece, never copied, never reissued, and registered to one collector after confirmation.",
   path: "/en",
+  aiIndexAlternate: true,
 });
 
 export default function Page() {

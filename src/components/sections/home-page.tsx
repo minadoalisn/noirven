@@ -114,9 +114,42 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
   const featured = live[0];
   const featuredTitle = localizedProductTitle(featured, locale);
   const sold = soldProducts.slice(0, 2);
+  // Machine-readable list of the same 6 live works already rendered below
+  // with ProductCard: same data source, same prices, no new claims. Lets
+  // crawlers and AI search read the live lots from the homepage itself,
+  // where geo-optimizer actually scores, instead of only from /ai-index.json.
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nvonly.com";
+  const homeItemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: locale === "zh" ? "在售顶奢作品" : "Available ultra-luxury works",
+    itemListElement: live.map((product, index) => {
+      const productPath = withLocale(locale, `/auctions/${product.slug}`);
+      const productTitle = localizedProductTitle(product, locale);
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Product",
+          name: `${productTitle} ${product.serial}`,
+          url: `${baseUrl}${productPath}`,
+          image: product.image.startsWith("/") ? `${baseUrl}${product.image}` : product.image,
+          offers: {
+            "@type": "Offer",
+            url: `${baseUrl}${productPath}`,
+            priceCurrency: "USD",
+            price: String(product.currentPrice),
+            availability: "https://schema.org/InStock",
+            itemCondition: "https://schema.org/NewCondition",
+          },
+        },
+      };
+    }),
+  };
 
   return (
     <div className="min-h-screen bg-[var(--porcelain)] text-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeItemListJsonLd) }} />
       <HeroNav locale={locale} />
       <main>
         <section className="section-shell grid min-h-[calc(100vh-176px)] items-center gap-6 py-8 lg:grid-cols-[0.86fr_1.14fr]">

@@ -14,12 +14,15 @@ export function createMetadata({
   path = "",
   image = "/assets/noirven-series-visual.png",
   openGraphLocale,
+  aiIndexAlternate = false,
 }: {
   title?: string;
   description?: string;
   path?: string;
   image?: string;
   openGraphLocale?: string;
+  // Homepage only: point crawlers at the machine-readable product index.
+  aiIndexAlternate?: boolean;
 } = {}): Metadata {
   const normalizedPath = path || "/";
   const isEnglish = normalizedPath.startsWith("/en");
@@ -47,6 +50,7 @@ export function createMetadata({
       },
       types: {
         "application/rss+xml": "/feed.xml",
+        ...(aiIndexAlternate ? { "application/json": "/ai-index.json" } : {}),
       },
     },
     openGraph: {
