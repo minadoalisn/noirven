@@ -16,10 +16,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // AI briefs llms.txt / llms-full.txt were refreshed 2026-11-14 (commits 1b80eaa, 1cae1e33);
   // pricing.md unchanged since 2026-11-09, so it keeps its own date.
   // ai-monitoring-prompts.md and okf/noirven.md are unchanged since 2026-07-30, so they keep staticLastModified.
+  // ai-index.json added 2026-11-18 (machine-readable product index, built from
+  // src/lib/noirven-data.ts at request time), so it keeps its own date.
   const pageLastModified = new Date("2026-11-18T00:00:00+08:00");
   const feedLastModified = new Date("2026-11-16T00:00:00+08:00");
   const llmsLastModified = new Date("2026-11-14T00:00:00+08:00");
   const pricingLastModified = new Date("2026-11-09T00:00:00+08:00");
+  const aiIndexLastModified = new Date("2026-11-18T00:00:00+08:00");
   const aiBriefRoutes = ["/llms.txt", "/llms-full.txt", "/pricing.md"];
   const llmsRoutes = ["/llms.txt", "/llms-full.txt"];
   const staticRoutes = ["", "/auctions", "/custom", "/series", "/story", "/sold", "/guides/private-high-jewelry-buying"];
@@ -28,9 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ? llmsLastModified
       : path === "/pricing.md"
         ? pricingLastModified
-        : staticLastModified;
+        : path === "/ai-index.json"
+          ? aiIndexLastModified
+          : staticLastModified;
   const machineReadableRoutes: MetadataRoute.Sitemap = [
     ...aiBriefRoutes,
+    "/ai-index.json",
     "/ai-monitoring-prompts.md",
     "/okf/noirven.md",
   ].map((path) => ({
