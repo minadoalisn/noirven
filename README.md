@@ -51,3 +51,5 @@ npm run build
 ```
 
 Both pass in the current MVP.
+
+<!-- Deploy trigger 2026-11-19: re-trigger Vercel build. Commit 6faa915 (homepage ItemList JSON-LD + /ai-index.json alternate) builds OK locally (next build exit 0, 35/35 pages, ItemList present in built output) but was not live ~10h after push; this commit changes no site content. -->
