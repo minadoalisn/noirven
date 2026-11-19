@@ -799,6 +799,21 @@ export const dailyProductSeeds: DailyProductSeed[] = [
     craftLine: "爪镶 / 微密镶 / 镜面抛光 / 链节手工打磨",
     storyLine: "前面六盏灯照别人，第七盏只照归来的人。",
   },
+  {
+    serial: "N-0537",
+    title: "Tender Armor Bracelet",
+    seriesId: "tender-armor",
+    category: "bracelet",
+    zhTitle: "柔甲手镯",
+    image: "/assets/products/n-0537-tender-armor-bracelet.png",
+    gallery: [
+      "/assets/products/n-0537-tender-armor-bracelet-macro.png",
+      "/assets/products/n-0537-tender-armor-bracelet-wear.png",
+    ],
+    materialLine: "铂金 / 黑铑铂金 / 天然白钻",
+    craftLine: "铰链拼接 / 微密镶 / 镜面抛光 / 内侧手工打磨",
+    storyLine: "温柔不是没有甲，是甲长成了拥抱的形状。",
+  },
 ];
 
 export const internalProductConceptSeeds: DailyProductSeed[] = [
