@@ -784,6 +784,21 @@ export const dailyProductSeeds: DailyProductSeed[] = [
     craftLine: "拉丝雾面 / 镜面抛光 / 爪镶 / 微密镶 / 开口戒臂成形",
     storyLine: "月亮从不属于任何人，但水面上的那一轮，今晚只照一个人。",
   },
+  {
+    serial: "N-0536",
+    title: "Seventh Light Necklace",
+    seriesId: "seventh-light",
+    category: "necklace",
+    zhTitle: "第七盏灯项链",
+    image: "/assets/products/n-0536-seventh-light-necklace.png",
+    gallery: [
+      "/assets/products/n-0536-seventh-light-necklace-macro.png",
+      "/assets/products/n-0536-seventh-light-necklace-wear.png",
+    ],
+    materialLine: "铂金 / 天然蓝宝石 / 天然白钻",
+    craftLine: "爪镶 / 微密镶 / 镜面抛光 / 链节手工打磨",
+    storyLine: "前面六盏灯照别人，第七盏只照归来的人。",
+  },
 ];
 
 export const internalProductConceptSeeds: DailyProductSeed[] = [
