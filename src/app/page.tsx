@@ -3,7 +3,7 @@ import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
   title: "顶级奢侈品级艺术珠宝",
-  description: "Noirven 诺梵只发布举世无双的编号顶级奢侈品级作品：每件仅此一件，不复制、不复刻、不再生产，确认后登记给唯一藏家。",
+  description: "Noirven（nvonly.com，诺梵高奢）是一家独一无二的高级珠宝拍卖站。每件作品都有独立编号，只存在一件，永不复制、永不复刻，并归属于一个故事系列。作品以美元固定拥有价挂牌，通过中英双语的七日拍卖页售出。",
   path: "/",
   aiIndexAlternate: true,
 });

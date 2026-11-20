@@ -147,9 +147,41 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
     }),
   };
 
+  // Brand definition, verbatim from the brand block already published in
+  // /ai-index.json (src/app/ai-index.json/route.ts): the same wording on the
+  // homepage and in the machine index, so neither dilutes the other.
+  const brandDefinition =
+    locale === "zh"
+      ? "Noirven（nvonly.com，诺梵高奢）是一家独一无二的高级珠宝拍卖站。每件作品都有独立编号，只存在一件，永不复制、永不复刻，并归属于一个故事系列。作品以美元固定拥有价挂牌，通过中英双语的七日拍卖页售出；付款确认后，登记在唯一一位藏家名下。已售作品仍保留在档案中，并标注已售状态。"
+      : "Noirven (nvonly.com) is a one-of-one high-jewelry auction house. Every work is numbered, exists once, is never copied or reissued, and belongs to a story series. Works are listed with a fixed ownership price in US dollars and sold through a seven-day auction page in Chinese and English. After payment confirmation, each piece is registered to a single collector. Sold works stay visible in the archive with their sold status.";
+  // Quotable answers: every answer is a sentence already published on this
+  // site (the brand definition or the homepage pricing band); no new facts.
+  const homeFaq =
+    locale === "zh"
+      ? [
+          { question: "每件作品如何拍卖？", answer: "每件作品通过中英双语的七日拍卖页售出。" },
+          { question: "价格如何确定？", answer: "以宝石级稀缺、匠作时长与唯一编号定价；作品以美元固定拥有价挂牌。" },
+          { question: "售出后作品还留档吗？", answer: "已售作品仍保留在档案中，并标注已售状态。" },
+        ]
+      : [
+          { question: "How is each work auctioned?", answer: "Each work is sold through a seven-day auction page in Chinese and English." },
+          { question: "How is the price set?", answer: "Pricing follows gem-grade rarity, atelier hours, and one-of-one provenance; works are listed with a fixed ownership price in US dollars." },
+          { question: "Do sold works stay in the archive?", answer: "Sold works stay visible in the archive with their sold status." },
+        ];
+  const homeFaqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: homeFaq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-[var(--porcelain)] text-black">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeItemListJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }} />
       <HeroNav locale={locale} />
       <main>
         <section className="section-shell grid min-h-[calc(100vh-176px)] items-center gap-6 py-8 lg:grid-cols-[0.86fr_1.14fr]">
@@ -192,6 +224,20 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
             />
           </div>
           <MobileHeroSale locale={locale} />
+        </section>
+        <section className="section-shell border-t border-black/10 py-16">
+          <div className="max-w-2xl">
+            <h2 className="text-xs uppercase tracking-[0.2em]">{locale === "zh" ? "Noirven 是什么" : "What is Noirven"}</h2>
+            <p className="mt-5 text-step-1 leading-8 text-[var(--graphite)]">{brandDefinition}</p>
+            <div className="mt-10 space-y-8">
+              {homeFaq.map((item) => (
+                <div key={item.question}>
+                  <h3 className="font-serif text-step-1">{item.question}</h3>
+                  <p className="mt-2 text-step--1 leading-6 text-[var(--graphite)]">{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         <div className="hidden md:block">
