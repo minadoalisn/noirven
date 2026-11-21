@@ -5,35 +5,41 @@ import { listedAtBySlug } from "@/lib/listing-dates";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nvonly.com";
   const staticLastModified = new Date("2026-07-30T00:00:00+08:00");
-  // Rendered pages last changed 2026-11-18 (product card title h3 -> h2,
-  // fixing skipped heading level on listing pages; WebSite JSON-LD
-  // dateModified + footer visible date updated). Before that 2026-11-17
+  // Rendered pages last changed 2026-11-21 (/about entity page added; site
+  // footer gained an About link, so every page rendering the footer changed;
+  // WebSite JSON-LD dateModified + footer visible date updated).
+  // Before that 2026-11-18 (product card title h3 -> h2, fixing skipped
+  // heading level on listing pages). Before that 2026-11-17
   // (WebSite JSON-LD gained author attribution; footer visible date updated).
   // Before that 2026-11-16 (site footer gained a visible update date; feed.xml
   // route added). Before that 2026-11-14 (root layout: footer Our Story link
   // 1cae1e33; global typography + product cards 18dea74b; home lists N-0534/N-0535
   // since 1b80eaa; product pages gained the gallery 953cccf0).
-  // AI briefs llms.txt / llms-full.txt were refreshed 2026-11-14 (commits 1b80eaa, 1cae1e33);
+  // llms.txt refreshed 2026-11-21 (About link added); llms-full.txt unchanged
+  // since 2026-11-14 (commits 1b80eaa, 1cae1e33), so it keeps its own date.
   // pricing.md unchanged since 2026-11-09, so it keeps its own date.
   // ai-monitoring-prompts.md and okf/noirven.md are unchanged since 2026-07-30, so they keep staticLastModified.
   // ai-index.json added 2026-11-18 (machine-readable product index, built from
-  // src/lib/noirven-data.ts at request time), so it keeps its own date.
-  const pageLastModified = new Date("2026-11-18T00:00:00+08:00");
+  // src/lib/noirven-data.ts at request time); brand block gained the about
+  // links 2026-11-21, so it keeps its own date below.
+  const pageLastModified = new Date("2026-11-21T00:00:00+08:00");
   const feedLastModified = new Date("2026-11-16T00:00:00+08:00");
-  const llmsLastModified = new Date("2026-11-14T00:00:00+08:00");
+  const llmsLastModified = new Date("2026-11-21T00:00:00+08:00");
+  const llmsFullLastModified = new Date("2026-11-14T00:00:00+08:00");
   const pricingLastModified = new Date("2026-11-09T00:00:00+08:00");
-  const aiIndexLastModified = new Date("2026-11-18T00:00:00+08:00");
+  const aiIndexLastModified = new Date("2026-11-21T00:00:00+08:00");
   const aiBriefRoutes = ["/llms.txt", "/llms-full.txt", "/pricing.md"];
-  const llmsRoutes = ["/llms.txt", "/llms-full.txt"];
-  const staticRoutes = ["", "/auctions", "/custom", "/series", "/story", "/sold", "/guides/private-high-jewelry-buying"];
+  const staticRoutes = ["", "/auctions", "/custom", "/series", "/story", "/about", "/sold", "/guides/private-high-jewelry-buying"];
   const machineLastModified = (path: string): Date =>
-    llmsRoutes.includes(path)
+    path === "/llms.txt"
       ? llmsLastModified
-      : path === "/pricing.md"
-        ? pricingLastModified
-        : path === "/ai-index.json"
-          ? aiIndexLastModified
-          : staticLastModified;
+      : path === "/llms-full.txt"
+        ? llmsFullLastModified
+        : path === "/pricing.md"
+          ? pricingLastModified
+          : path === "/ai-index.json"
+            ? aiIndexLastModified
+            : staticLastModified;
   const machineReadableRoutes: MetadataRoute.Sitemap = [
     ...aiBriefRoutes,
     "/ai-index.json",

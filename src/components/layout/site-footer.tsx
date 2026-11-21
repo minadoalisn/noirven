@@ -40,6 +40,7 @@ export function SiteFooter({ locale = "zh" }: { locale?: Locale }) {
             <Link href={`${prefix}/guides/private-high-jewelry-buying`}>{locale === "zh" ? "购买指南" : "Buying Guide"}</Link>
             <Link href={`${prefix}/series`}>{locale === "zh" ? "故事系列" : "Story Series"}</Link>
             <Link href={`${prefix}/story`}>{locale === "zh" ? "品牌故事" : "Our Story"}</Link>
+            <Link href={`${prefix}/about`}>{locale === "zh" ? "关于 Noirven" : "About"}</Link>
             <Link href={`${prefix}/sold`}>{locale === "zh" ? "已售档案" : "Archive"}</Link>
             <Link href={`${prefix}/admin`}>{locale === "zh" ? "后台入口" : "Admin"}</Link>
           </div>
@@ -50,7 +51,7 @@ export function SiteFooter({ locale = "zh" }: { locale?: Locale }) {
           <span>{locale === "zh" ? "Noirven 诺梵高奢" : "Noirven"}</span>
           <span>
             {locale === "zh" ? "最后更新：" : "Last updated: "}
-            <time dateTime="2026-11-18">{locale === "zh" ? "2026年11月18日" : "November 18, 2026"}</time>
+            <time dateTime="2026-11-21">{locale === "zh" ? "2026年11月21日" : "November 21, 2026"}</time>
           </span>
         </div>
       </div>

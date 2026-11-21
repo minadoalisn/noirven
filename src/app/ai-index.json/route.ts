@@ -7,19 +7,22 @@ import { products } from "@/lib/noirven-data";
 // llms.txt. Sold works stay in the index with status "sold" so crawlers can
 // tell live from archived without guessing.
 // The brand block below reuses the brand definition already published in the
-// homepage Organization JSON-LD; it adds no new facts.
+// homepage Organization JSON-LD; it adds no new facts. The about links point
+// at the /about entity page added 2026-11-21.
 export function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nvonly.com";
   const index = {
     site: "Noirven",
     url: baseUrl,
-    generated: "2026-11-20",
+    generated: "2026-11-21",
     description:
       "One-of-one numbered high-jewelry works. Each piece exists once, is never copied or reissued, and is registered to one collector after payment confirmation.",
     brand: {
       name: "Noirven",
       alternateName: "Noirven 诺梵高奢",
       url: baseUrl,
+      about: `${baseUrl}/about`,
+      aboutEn: `${baseUrl}/en/about`,
       definitionEn:
         "Noirven (nvonly.com) is a one-of-one high-jewelry auction house. Every work is numbered, exists once, is never copied or reissued, and belongs to a story series. Works are listed with a fixed ownership price in US dollars and sold through a seven-day auction page in Chinese and English. After payment confirmation, each piece is registered to a single collector. Sold works stay visible in the archive with their sold status.",
       definitionZh:
