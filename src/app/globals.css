@@ -63,6 +63,15 @@
   --signature-red: var(--ruby-11);
   --hairline: #26221d;
   --soft-hairline: #ded7ca;
+  /* story dark chapter tokens (batch 3, gold accent, 2026-11-21) */
+  --story-dark-bg: #111711;
+  --story-dark-surface: #1a1e19;
+  --story-dark-text: #fcfbf7;
+  --story-dark-muted: #b5b3ad;
+  --story-dark-gold: #cbb99f;
+  --story-dark-gold-light: #e8e2d9;
+  /* display step above the Utopia scale: homepage hero H1 only */
+  --step-6: clamp(2.9000rem, 1.9000rem + 4.4444vw, 5.2500rem);
 }
 
 @theme inline {
@@ -83,6 +92,7 @@
   --text-step-3: var(--step-3);
   --text-step-4: var(--step-4);
   --text-step-5: var(--step-5);
+  --text-step-6: var(--step-6);
 }
 
 * {
@@ -221,4 +231,280 @@ select {
     opacity: 1;
     transform: rotateY(322deg) rotateX(2deg) scale(0.96);
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* Awwwards P1+P2 (2026-11-21): SANTAL + 197 patterns, gold accent.   */
+/* No new dependencies: IntersectionObserver + CSS transitions only.    */
+/* ------------------------------------------------------------------ */
+
+/* Story dark chapters (batch 3 tokens). */
+.story-dark {
+  background: var(--story-dark-bg);
+  color: var(--story-dark-text);
+}
+
+.story-dark-surface {
+  background: var(--story-dark-surface);
+  border-color: rgba(252, 251, 247, 0.12);
+  color: var(--story-dark-text);
+}
+
+/* Homepage hero: fine grid lines (SANTAL). */
+.hero-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(21, 21, 21, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(21, 21, 21, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+html[data-theme="dark"] .hero-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(252, 251, 247, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(252, 251, 247, 0.06) 1px, transparent 1px);
+}
+
+/* Hero title: word-by-word fade-in, total <= 0.8s. Static on mobile and
+   for reduced motion (no JS involved, so it never hides content). */
+.hero-word {
+  display: inline-block;
+  opacity: 0;
+  animation: hero-word-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@keyframes hero-word-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-word {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-word {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* Scroll reveal (Reveal component): hidden only after JS confirms the
+   element is below the fold, so SSR/no-JS never hides content. */
+.reveal {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-hidden {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .reveal-hidden {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Nav double-print rollover (SANTAL, pure CSS). */
+.nav-roll {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.nav-roll > span {
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.nav-roll > span:last-child {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: var(--champagne);
+}
+
+.nav-roll:hover > span,
+.nav-roll:focus-visible > span {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-roll > span {
+    transition: none;
+  }
+}
+
+/* Footer series marquee (SANTAL WE DO). Pauses on hover, static for
+   reduced motion. */
+.series-marquee {
+  overflow: hidden;
+}
+
+.series-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: series-marquee 46s linear infinite;
+}
+
+.series-marquee:hover .series-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes series-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .series-marquee-track {
+    animation: none;
+  }
+}
+
+/* Process accordion (native <details>, no JS). */
+.process-step {
+  border-top: 1px solid rgba(21, 21, 21, 0.12);
+}
+
+.process-step:last-of-type {
+  border-bottom: 1px solid rgba(21, 21, 21, 0.12);
+}
+
+.process-step summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 0;
+}
+
+.process-step summary::-webkit-details-marker {
+  display: none;
+}
+
+.process-step summary::marker {
+  content: "";
+}
+
+.process-step summary::after {
+  content: "+";
+  font-family: "Geist Mono", ui-monospace, monospace;
+  color: var(--antique-gold);
+}
+
+.process-step[open ] summary::after {
+  content: "\2013";
+}
+
+.process-step .process-body {
+  padding: 0 0 1.25rem;
+}
+
+/* Product gallery 2x loupe (desktop hover only; hidden on touch and
+   for reduced motion). */
+.magnifier-lens {
+  position: absolute;
+  z-index: 10;
+  width: 180px;
+  height: 180px;
+  border-radius: 9999px;
+  border: 1px solid rgba(21, 21, 21, 0.2);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  pointer-events: none;
+  background-repeat: no-repeat;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .magnifier-lens {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magnifier-lens {
+    display: none;
+  }
+}
+
+/* Invert color (SANTAL): token swap so product photos keep true color.
+   Hardcoded light utilities used across the site get overrides so
+   contrast survives the flip. Default is light; choice persists in
+   localStorage (nvonly-theme). */
+html[data-theme="dark"] {
+  --background: var(--story-dark-bg);
+  --foreground: var(--story-dark-text);
+  --porcelain: var(--story-dark-bg);
+  --ivory: var(--story-dark-surface);
+  --platinum: var(--story-dark-gold-light);
+  --graphite: var(--story-dark-muted);
+  --ash: var(--story-dark-gold);
+  --soft-hairline: rgba(252, 251, 247, 0.14);
+  --hairline: rgba(252, 251, 247, 0.2);
+}
+
+html[data-theme="dark"] body {
+  background:
+    linear-gradient(180deg, rgba(17, 23, 17, 0.96), rgba(26, 30, 25, 0.98)),
+    var(--background);
+  color: var(--foreground);
+}
+
+html[data-theme="dark"] [class*="text-black"] {
+  color: var(--story-dark-text);
+}
+
+html[data-theme="dark"] .border-black {
+  border-color: rgba(252, 251, 247, 0.4);
+}
+
+html[data-theme="dark"] [class*="border-black/"] {
+  border-color: rgba(252, 251, 247, 0.16);
+}
+
+html[data-theme="dark"] [class*="bg-[rgba(251,250,246"] {
+  background-color: rgba(17, 23, 17, 0.86);
+}
+
+html[data-theme="dark"] [class*="outline-black"] {
+  outline-color: var(--story-dark-gold);
+}
+
+html[data-theme="dark"] [class*="hover:bg-black"]:hover {
+  background-color: var(--story-dark-text);
+}
+
+html[data-theme="dark"] [class*="hover:text-white"]:hover {
+  color: var(--story-dark-bg);
+}
+
+html[data-theme="dark"] [class*="hover:bg-white"]:hover {
+  background-color: var(--story-dark-surface);
 }

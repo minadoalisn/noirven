@@ -90,7 +90,7 @@ export function AboutPage({ locale = "zh" }: { locale?: Locale }) {
           </h1>
           <p className="mt-8 max-w-3xl text-step-1 leading-10 text-[var(--graphite)]">{brandDefinition}</p>
         </section>
-        <section className="section-shell border-t border-black/10 py-16">
+        <section id="how-it-works" className="section-shell scroll-mt-24 border-t border-black/10 py-16">
           <div className="max-w-2xl">
             <h2 className="text-xs uppercase tracking-[0.2em]">{locale === "zh" ? "一件一拍如何运作" : "How one-of-one works"}</h2>
             <div className="mt-5 space-y-6">

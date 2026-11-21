@@ -1,14 +1,33 @@
 import Link from "next/link";
 import { BrandMark, NMark } from "@/components/ui/brand-mark";
-import { materialLibrary } from "@/lib/noirven-data";
+import { materialLibrary, storySeries } from "@/lib/noirven-data";
 import { localizedTerms } from "@/lib/localized-content";
 import type { Locale } from "@/lib/types";
 
 export function SiteFooter({ locale = "zh" }: { locale?: Locale }) {
   const prefix = locale === "en" ? "/en" : "";
+  const processSteps =
+    locale === "zh" ? ["鉴定", "估价", "竞拍", "交割"] : ["Appraisal", "Valuation", "Auction", "Handover"];
 
   return (
     <footer className="noir-surface mt-24 border-t dark-hairline">
+      <div className="series-marquee border-b border-white/10 py-4">
+        <div className="series-marquee-track">
+          {[0, 1].map((copyIndex) => (
+            <div key={copyIndex} aria-hidden={copyIndex === 1} className="flex shrink-0 items-center">
+              {storySeries.map((series) => (
+                <Link
+                  key={series.id}
+                  href={`${prefix}/series`}
+                  className="focus-ring mx-6 font-serif text-lg text-white/72 transition hover:text-white"
+                >
+                  {locale === "zh" ? series.zhName : series.name}
+                </Link>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="section-shell grid gap-12 py-16 lg:grid-cols-[1.1fr_1fr_1fr]">
         <div className="space-y-8">
           <BrandMark href={`${prefix}/`} compact light />
@@ -48,6 +67,16 @@ export function SiteFooter({ locale = "zh" }: { locale?: Locale }) {
       </div>
       <div className="border-t border-white/10">
         <div className="section-shell flex flex-wrap items-center justify-between gap-3 py-5 text-xs text-white/46">
+          <nav aria-label={locale === "zh" ? "一件一拍流程" : "One piece, one auction process"} className="flex flex-wrap items-center gap-2">
+            {processSteps.map((step, index) => (
+              <span key={step} className="flex items-center gap-2">
+                {index > 0 ? <span aria-hidden="true" className="text-white/30">→</span> : null}
+                <Link href={`${prefix}/about#how-it-works`} className="focus-ring transition hover:text-white">
+                  {step}
+                </Link>
+              </span>
+            ))}
+          </nav>
           <span>{locale === "zh" ? "Noirven 诺梵高奢" : "Noirven"}</span>
           <span>
             {locale === "zh" ? "最后更新：" : "Last updated: "}

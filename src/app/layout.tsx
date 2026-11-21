@@ -4,6 +4,7 @@ import "./globals.css";
 import { createMetadata } from "@/lib/seo";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import { SiteAnalyticsTracker } from "@/components/ui/site-analytics-tracker";
+import { InvertToggle } from "@/components/ui/invert-toggle";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
@@ -39,7 +40,13 @@ export default function RootLayout({
     <html lang="zh-CN" className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable}`}>
       <body className="min-h-screen antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem("nvonly-theme")==="dark"){document.documentElement.dataset.theme="dark"}}catch(e){}`,
+          }}
+        />
         {children}
+        <InvertToggle />
         {/* GEOInflow visitor tracker */}
         <script defer src="https://geoinflow-iota.vercel.app/script.js" data-website-id="380ac6ec-5c6e-48d3-81ee-4c2e38537675" />
         <SiteAnalyticsTracker />
