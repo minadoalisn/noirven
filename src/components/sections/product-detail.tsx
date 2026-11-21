@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { LinkButton } from "@/components/ui/link-button";
+import { CollectionButton } from "@/components/ui/collection";
 import { ProductGallery } from "@/components/ui/product-gallery";
 import { WalletConnectPanel } from "@/components/ui/wallet-connect-panel";
 import { categoryLabel, formatCurrency, formatDate } from "@/lib/format";
@@ -215,6 +216,42 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
               <LinkButton href={withLocale(locale, "/story")} variant="outline">
                 {locale === "zh" ? "理解故事线" : "Read Story"}
               </LinkButton>
+              <CollectionButton slug={product.slug} locale={locale} />
+            </div>
+            <div className="mt-10">
+              <h2 className="text-step--1 uppercase tracking-[0.18em]">{locale === "zh" ? "一件一拍如何运作" : "How one piece, one auction works"}</h2>
+              <div className="mt-4">
+                {(
+                  locale === "zh"
+                    ? [
+                        { step: "01", title: "鉴定", body: "每件作品都有独立编号，只存在一件，永不复制、永不复刻。" },
+                        { step: "02", title: "估价", body: "以宝石级稀缺、匠作时长与唯一编号定价；作品以美元固定拥有价挂牌。" },
+                        { step: "03", title: "竞拍", body: "每件作品通过中英双语的七日拍卖页售出。" },
+                        { step: "04", title: "交割", body: "USDT 到账确认后登记拥有者并安排发货。" },
+                      ]
+                    : [
+                        { step: "01", title: "Appraisal", body: "Every work is numbered, exists once, is never copied or reissued." },
+                        { step: "02", title: "Valuation", body: "Pricing follows gem-grade rarity, atelier hours, and one-of-one provenance; works are listed with a fixed ownership price in US dollars." },
+                        { step: "03", title: "Auction", body: "Each work is sold through a seven-day auction page in Chinese and English." },
+                        { step: "04", title: "Handover", body: "After USDT receipt is confirmed, ownership and delivery are registered." },
+                      ]
+                ).map((item) => (
+                  <details key={item.step} className="process-step">
+                    <summary>
+                      <span>
+                        <span className="mr-3 font-mono text-[11px] tracking-[0.16em] text-[var(--antique-gold)]">{item.step}</span>
+                        <span className="font-serif text-step-1">{item.title}</span>
+                      </span>
+                    </summary>
+                    <div className="process-body">
+                      <p className="text-step--1 leading-7 text-[var(--graphite)]">{item.body}</p>
+                      <a href={withLocale(locale, "/about#how-it-works")} className="focus-ring mt-3 inline-block text-xs text-[var(--antique-gold)] underline underline-offset-4">
+                        {locale === "zh" ? "在关于页查看完整流程 →" : "See the full process on About →"}
+                      </a>
+                    </div>
+                  </details>
+                ))}
+              </div>
             </div>
           </div>
         </section>

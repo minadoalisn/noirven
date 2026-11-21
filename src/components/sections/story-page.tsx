@@ -2,6 +2,7 @@ import Image from "next/image";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { LinkButton } from "@/components/ui/link-button";
+import { Reveal } from "@/components/ui/reveal";
 import { Product360Viewer } from "@/components/ui/product-360-viewer";
 import { dailyProductSeeds, getSeries, materialNarratives, storyChapters, storySeries } from "@/lib/noirven-data";
 import {
@@ -79,8 +80,9 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
       <SiteHeader locale={locale} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <main>
+        {/* Chapter 00 — light intro, wording unchanged. */}
         <section className="section-shell py-20">
-          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">Final Brand Story</p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--ash)]">00 / Final Brand Story</p>
           <h1 className="mt-5 max-w-4xl font-serif text-step-5 font-normal leading-tight">
             {locale === "zh" ? "没有滞销品，只有还未遇见主人的作品。" : "There are no unwanted works, only works that have not met their owner yet."}
           </h1>
@@ -90,52 +92,70 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
               : "Noirven tells a story about people and works that have been overlooked, missed, or misunderstood. An unrepeatable ultra-luxury presence does not lose value because it was not chosen at first."}
           </p>
         </section>
-        <section className="noir-surface py-20">
-          <div className="section-shell grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-            <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/46">N-0007 / Still Here</p>
-              <h2 className="mt-5 font-serif text-step-5 font-normal text-white">
-                {locale === "zh" ? "有一件作品，一直安静地等在那里。" : "One work kept waiting quietly."}
-              </h2>
-            </div>
-            <div className="space-y-6 text-step-1 leading-9 text-white/68">
-              <p>
-                {locale === "zh"
-                  ? "它没有耀眼到让所有人停下，也没有像流行款那样容易被理解。它只是安静地停在页面上，编号 N-0007，名字叫《第七日的光》。"
-                  : "It was not dazzling enough to stop everyone, and it was not easy to understand like a trend piece. It simply waited on the page, numbered N-0007, named Seventh Light."}
-              </p>
-              <p>
-                {locale === "zh"
-                  ? "后来，一个匿名用户确认了它。她留下昵称 Still Here，并写道：我也曾经以为，自己不会再被选择。"
-                  : "Later, an anonymous collector confirmed it. She left the nickname Still Here and wrote: I once thought I would never be chosen again."}
-              </p>
-              <p>
-                {locale === "zh"
-                  ? "从那一刻起，Noirven 确定了一条规则：没有作品会因为尚未归属而被放弃。它会继续等待，直到与唯一的主人互相确认。"
-                  : "From that moment, Noirven set a rule: no work will be abandoned because its owner has not arrived. It will wait until it meets its one owner."}
-              </p>
-            </div>
-          </div>
-        </section>
-        <section className="section-shell py-20">
-          <div className="mb-12 max-w-2xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--ash)]">Series As IP</p>
-            <h2 className="mt-4 font-serif text-step-5 font-normal">{locale === "zh" ? "每个故事，对应一件顶奢饰品。" : "Each story maps to one ultra-luxury jewel."}</h2>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            {storySeries.map((rawSeries) => {
-              const series = localizedSeries(rawSeries, locale);
 
-              return (
-              <article key={rawSeries.id} className="border-t border-black/12 pt-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--ash)]">{series.name}</p>
-                <h3 className="mt-4 text-step-3">{locale === "zh" ? series.zhName : series.name}</h3>
-                <p className="mt-5 text-step-1 leading-8 text-[var(--graphite)]">{locale === "zh" ? series.ipHook : series.description}</p>
-              </article>
-              );
-            })}
-          </div>
-          <section className="mt-20 border-t border-black/12 pt-10">
+        {/* Chapter 01 — dark: N-0007 / Still Here. */}
+        <section className="story-dark py-20">
+          <Reveal>
+            <div className="section-shell grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--story-dark-gold)]">01 / N-0007 / Still Here</p>
+                <h2 className="mt-5 font-serif text-step-5 font-normal text-[var(--story-dark-text)]">
+                  {locale === "zh" ? "有一件作品，一直安静地等在那里。" : "One work kept waiting quietly."}
+                </h2>
+              </div>
+              <div className="space-y-6 text-step-1 leading-9 text-[var(--story-dark-muted)]">
+                <p>
+                  {locale === "zh"
+                    ? "它没有耀眼到让所有人停下，也没有像流行款那样容易被理解。它只是安静地停在页面上，编号 N-0007，名字叫《第七日的光》。"
+                    : "It was not dazzling enough to stop everyone, and it was not easy to understand like a trend piece. It simply waited on the page, numbered N-0007, named Seventh Light."}
+                </p>
+                <p>
+                  {locale === "zh"
+                    ? "后来，一个匿名用户确认了它。她留下昵称 Still Here，并写道：我也曾经以为，自己不会再被选择。"
+                    : "Later, an anonymous collector confirmed it. She left the nickname Still Here and wrote: I once thought I would never be chosen again."}
+                </p>
+                <p>
+                  {locale === "zh"
+                    ? "从那一刻起，Noirven 确定了一条规则：没有作品会因为尚未归属而被放弃。它会继续等待，直到与唯一的主人互相确认。"
+                    : "From that moment, Noirven set a rule: no work will be abandoned because its owner has not arrived. It will wait until it meets its one owner."}
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* Chapter 02 — dark: Series As IP. */}
+        <section className="story-dark py-20">
+          <Reveal>
+            <div className="section-shell">
+              <div className="mb-12 max-w-2xl">
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--story-dark-gold)]">02 / Series As IP</p>
+                <h2 className="mt-4 font-serif text-step-5 font-normal text-[var(--story-dark-text)]">
+                  {locale === "zh" ? "每个故事，对应一件顶奢饰品。" : "Each story maps to one ultra-luxury jewel."}
+                </h2>
+              </div>
+              <div className="grid gap-8 md:grid-cols-2">
+                {storySeries.map((rawSeries) => {
+                  const series = localizedSeries(rawSeries, locale);
+
+                  return (
+                    <article key={rawSeries.id} className="story-dark-surface border-t pt-6">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--story-dark-gold)]">{series.name}</p>
+                      <h3 className="mt-4 text-step-3 text-[var(--story-dark-text)]">{locale === "zh" ? series.zhName : series.name}</h3>
+                      <p className="mt-5 text-step-1 leading-8 text-[var(--story-dark-muted)]">
+                        {locale === "zh" ? series.ipHook : series.description}
+                      </p>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* Supporting — light: Daily Story Growth. */}
+        <section className="section-shell py-20">
+          <Reveal>
             <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
               <div>
                 <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--ash)]">Daily Story Growth</p>
@@ -185,35 +205,47 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
                 })}
               </div>
             </div>
-          </section>
-          <section className="mt-20 border-t border-black/12 pt-10">
-            <div className="mb-10 max-w-3xl">
-              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--ash)]">Material Story Codes</p>
-              <h2 className="mt-4 font-serif text-step-5 font-normal">
-                {locale === "zh" ? "每一种材质都有自己的叙事职责。" : "Every material carries a narrative role."}
-              </h2>
-              <p className="mt-5 text-step--1 leading-7 text-[var(--graphite)]">
-                {locale === "zh"
-                  ? "材质不是堆砌价格，而是替故事承担情绪：夜色金属负责克制，档案之光负责保存，裁决之绿负责证明，灰烬盛开负责反转。"
-                  : "Materials are not price stacking. They carry emotion: night metal restrains, archive light preserves, verdict green proves, burned bloom reverses."}
-              </p>
+          </Reveal>
+        </section>
+
+        {/* Chapter 03 — dark: Material Story Codes. */}
+        <section className="story-dark py-20">
+          <Reveal>
+            <div className="section-shell">
+              <div className="mb-10 max-w-3xl">
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--story-dark-gold)]">03 / Material Story Codes</p>
+                <h2 className="mt-4 font-serif text-step-5 font-normal text-[var(--story-dark-text)]">
+                  {locale === "zh" ? "每一种材质都有自己的叙事职责。" : "Every material carries a narrative role."}
+                </h2>
+                <p className="mt-5 text-step--1 leading-7 text-[var(--story-dark-muted)]">
+                  {locale === "zh"
+                    ? "材质不是堆砌价格，而是替故事承担情绪：夜色金属负责克制，档案之光负责保存，裁决之绿负责证明，灰烬盛开负责反转。"
+                    : "Materials are not price stacking. They carry emotion: night metal restrains, archive light preserves, verdict green proves, burned bloom reverses."}
+                </p>
+              </div>
+              <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {materialNarratives.map((item, index) => (
+                  <article key={item.title} className="story-dark-surface border p-5">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--story-dark-gold)]">
+                      {String(index + 1).padStart(2, "0")} / {item.title}
+                    </p>
+                    <h3 className="mt-4 text-step-2 text-[var(--story-dark-text)]">{locale === "zh" ? item.zhTitle : item.title}</h3>
+                    <p className="mt-4 text-step--1 leading-7 text-[var(--story-dark-muted)]">
+                      {localizedMaterialNarrativeStory(item.title, item.story, locale)}
+                    </p>
+                    <p className="mt-5 text-xs leading-6 text-[var(--story-dark-muted)]">
+                      {localizedTerms([...item.materials, ...item.craft], locale).join(" / ")}
+                    </p>
+                  </article>
+                ))}
+              </div>
             </div>
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {materialNarratives.map((item) => (
-                <article key={item.title} className="border border-black/10 p-5">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--ash)]">{item.title}</p>
-                  <h3 className="mt-4 text-step-2">{locale === "zh" ? item.zhTitle : item.title}</h3>
-                  <p className="mt-4 text-step--1 leading-7 text-[var(--graphite)]">
-                    {localizedMaterialNarrativeStory(item.title, item.story, locale)}
-                  </p>
-                  <p className="mt-5 text-xs leading-6 text-[var(--ash)]">
-                    {localizedTerms([...item.materials, ...item.craft], locale).join(" / ")}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </section>
-          <section className="mt-20 border-t border-black/12 pt-10">
+          </Reveal>
+        </section>
+
+        {/* Supporting — light: Next Product Seeds. */}
+        <section className="section-shell py-20">
+          <Reveal>
             <div className="mb-10 max-w-3xl">
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--ash)]">Next Product Seeds</p>
               <h2 className="mt-4 font-serif text-step-5 font-normal">
@@ -266,12 +298,12 @@ export function StoryPage({ locale = "zh" }: { locale?: Locale }) {
                 );
               })}
             </div>
-          </section>
-          <div className="mt-12">
-            <LinkButton href={withLocale(locale, "/series")} variant="outline">
-              {locale === "zh" ? "查看故事系列" : "View Story Series"}
-            </LinkButton>
-          </div>
+            <div className="mt-12">
+              <LinkButton href={withLocale(locale, "/series")} variant="outline">
+                {locale === "zh" ? "查看故事系列" : "View Story Series"}
+              </LinkButton>
+            </div>
+          </Reveal>
         </section>
       </main>
       <SiteFooter locale={locale} />

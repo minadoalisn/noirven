@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { type CSSProperties, type ReactNode } from "react";
 import { ArrowRight, Archive, Gem, Menu, ShieldCheck } from "lucide-react";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { LinkButton } from "@/components/ui/link-button";
+import { Reveal } from "@/components/ui/reveal";
 import { ProductCard } from "@/components/sections/product-card";
 import { SeriesGrid } from "@/components/sections/series-grid";
 import { homeCopy, navCopy, withLocale } from "@/lib/i18n";
@@ -24,17 +26,28 @@ function newestLiveProducts() {
   return [...liveProducts].sort((a, b) => serialNumber(b.serial) - serialNumber(a.serial));
 }
 
+function NavRollLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <Link href={href}>
+      <span className="nav-roll">
+        <span>{children}</span>
+        <span aria-hidden="true">{children}</span>
+      </span>
+    </Link>
+  );
+}
+
 function HeroNav({ locale }: { locale: Locale }) {
   const copy = navCopy[locale];
 
   return (
     <header className="section-shell flex min-h-16 items-center justify-between gap-4 py-4">
       <nav className="hidden items-center gap-7 text-[11px] uppercase tracking-[0.22em] text-[var(--graphite)] md:flex">
-        <Link href={withLocale(locale, "/")}>{locale === "zh" ? "首页" : "Home"}</Link>
-        <Link href={withLocale(locale, "/custom")}>{copy.custom}</Link>
-        <Link href={withLocale(locale, "/series")}>{copy.series}</Link>
-        <Link href={withLocale(locale, "/story")}>{copy.story}</Link>
-        <Link href={withLocale(locale, "/auctions")}>{copy.auctions}</Link>
+        <NavRollLink href={withLocale(locale, "/")}>{locale === "zh" ? "首页" : "Home"}</NavRollLink>
+        <NavRollLink href={withLocale(locale, "/custom")}>{copy.custom}</NavRollLink>
+        <NavRollLink href={withLocale(locale, "/series")}>{copy.series}</NavRollLink>
+        <NavRollLink href={withLocale(locale, "/story")}>{copy.story}</NavRollLink>
+        <NavRollLink href={withLocale(locale, "/auctions")}>{copy.auctions}</NavRollLink>
       </nav>
       <Link href={withLocale(locale, "/")} className="absolute left-1/2 top-4 -translate-x-1/2 text-center">
         <span className="brand-wordmark block text-[18px] leading-none">NOIRVEN</span>
@@ -178,28 +191,50 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
     })),
   };
 
+  // Hero slogan, verbatim wording, word-by-word fade-in (<= 0.8s total).
+  const heroWords: { text: string; line: 0 | 1; gold: boolean }[] =
+    locale === "zh"
+      ? [
+          { text: "每一次归属，", line: 0, gold: false },
+          { text: "都是一次", line: 1, gold: false },
+          { text: "拯救", line: 1, gold: true },
+        ]
+      : [
+          { text: "Every", line: 0, gold: false },
+          { text: "belonging", line: 0, gold: false },
+          { text: "is", line: 1, gold: false },
+          { text: "a", line: 1, gold: false },
+          { text: "quiet", line: 1, gold: false },
+          { text: "rescue", line: 1, gold: true },
+        ];
+  let heroWordIndex = 0;
+
   return (
     <div className="min-h-screen bg-[var(--porcelain)] text-black">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeItemListJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }} />
       <HeroNav locale={locale} />
       <main>
-        <section className="section-shell grid min-h-[calc(100vh-176px)] items-center gap-6 py-8 lg:grid-cols-[0.86fr_1.14fr]">
+        <section className="hero-grid-bg section-shell grid min-h-[calc(100vh-176px)] items-center gap-6 py-8 lg:grid-cols-[0.86fr_1.14fr]">
           <div className="max-w-xl lg:pl-16">
-            <h1 className="font-serif text-step-5 font-normal leading-[1.12] text-black">
-              {locale === "zh" ? (
-                <>
-                  每一次归属，
-                  <br />
-                  都是一次拯救
-                </>
-              ) : (
-                <>
-                  Every belonging
-                  <br />
-                  is a quiet rescue
-                </>
-              )}
+            <h1 className="font-serif text-step-6 font-normal leading-[1.12] text-black">
+              {[0, 1].map((line) => (
+                <span key={line} className="block">
+                  {heroWords
+                    .filter((word) => word.line === line)
+                    .map((word, wordPosition, lineWords) => {
+                      const index = heroWordIndex++;
+                      return (
+                        <span key={word.text}>
+                          <span className="hero-word" style={{ "--i": index } as CSSProperties}>
+                            {word.gold ? <em className="text-[var(--champagne)]">{word.text}</em> : word.text}
+                          </span>
+                          {locale === "en" && wordPosition < lineWords.length - 1 ? " " : ""}
+                        </span>
+                      );
+                    })}
+                </span>
+              ))}
             </h1>
             <p className="mt-6 max-w-md text-step--1 leading-7 text-[var(--graphite)]">
               {locale === "zh"
@@ -225,20 +260,22 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
           </div>
           <MobileHeroSale locale={locale} />
         </section>
-        <section className="section-shell border-t border-black/10 py-16">
-          <div className="max-w-2xl">
-            <h2 className="text-xs uppercase tracking-[0.2em]">{locale === "zh" ? "Noirven 是什么" : "What is Noirven"}</h2>
-            <p className="mt-5 text-step-1 leading-8 text-[var(--graphite)]">{brandDefinition}</p>
-            <div className="mt-10 space-y-8">
-              {homeFaq.map((item) => (
-                <div key={item.question}>
-                  <h3 className="font-serif text-step-1">{item.question}</h3>
-                  <p className="mt-2 text-step--1 leading-6 text-[var(--graphite)]">{item.answer}</p>
-                </div>
-              ))}
+        <Reveal>
+          <section className="section-shell border-t border-black/10 py-16">
+            <div className="max-w-2xl">
+              <h2 className="text-xs uppercase tracking-[0.2em]">{locale === "zh" ? "Noirven 是什么" : "What is Noirven"}</h2>
+              <p className="mt-5 text-step-1 leading-8 text-[var(--graphite)]">{brandDefinition}</p>
+              <div className="mt-10 space-y-8">
+                {homeFaq.map((item) => (
+                  <div key={item.question}>
+                    <h3 className="font-serif text-step-1">{item.question}</h3>
+                    <p className="mt-2 text-step--1 leading-6 text-[var(--graphite)]">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </Reveal>
 
         <div className="hidden md:block">
           <HeroSaleStrip locale={locale} />
@@ -262,15 +299,18 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
           </div>
         </section>
 
-        <section className="section-shell py-24" id="series">
-          <div className="mb-12 max-w-2xl">
-            <h2 className="mt-4 font-serif text-step-5 font-normal leading-[1.05]">{copy.seriesTitle}</h2>
-            <p className="mt-5 text-step-1 leading-8 text-[var(--graphite)]">{copy.seriesIntro}</p>
-          </div>
-          <SeriesGrid locale={locale} />
-        </section>
+        <Reveal>
+          <section className="section-shell py-24" id="series">
+            <div className="mb-12 max-w-2xl">
+              <h2 className="mt-4 font-serif text-step-5 font-normal leading-[1.05]">{copy.seriesTitle}</h2>
+              <p className="mt-5 text-step-1 leading-8 text-[var(--graphite)]">{copy.seriesIntro}</p>
+            </div>
+            <SeriesGrid locale={locale} />
+          </section>
+        </Reveal>
 
-        <section className="noir-surface py-24">
+        <Reveal>
+          <section className="noir-surface py-24">
           <div className="section-shell">
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
               <div>
@@ -289,8 +329,10 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
             </div>
           </div>
         </section>
+        </Reveal>
 
-        <section className="section-shell grid gap-12 py-24 lg:grid-cols-[0.85fr_1.15fr]">
+        <Reveal>
+          <section className="section-shell grid gap-12 py-24 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <h2 className="mt-4 font-serif text-step-5 font-normal leading-[1.05]">
               {locale === "zh" ? "材质服务故事，而不是炫耀堆砌。" : "Materials serve the story, not excess."}
@@ -331,8 +373,10 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
             })}
           </div>
         </section>
+        </Reveal>
 
-        <section className="border-y border-black/10 bg-[var(--ivory)] py-24">
+        <Reveal>
+          <section className="border-y border-black/10 bg-[var(--ivory)] py-24">
           <div className="section-shell">
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
               <div>
@@ -349,6 +393,7 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
             </div>
           </div>
         </section>
+        </Reveal>
       </main>
       <SiteFooter locale={locale} />
     </div>
