@@ -55,9 +55,9 @@ export function websiteJsonLd() {
   };
 }
 
-export function webAppJsonLd() {
+export function webApplicationJsonLd() {
   return {
-    "@type": "WebApp",
+    "@type": "WebApplication",
     "@id": webAppId,
     name: "Noirven",
     alternateName: ["Noirven 诺梵高奢", "nvonly"],
