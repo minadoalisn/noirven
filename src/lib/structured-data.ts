@@ -11,7 +11,7 @@ export function organizationJsonLd() {
     "@type": "Organization",
     "@id": organizationId,
     name: "Noirven",
-    alternateName: "Noirven 诺梵高奢",
+    alternateName: ["Noirven 诺梵高奢", "nvonly"],
     url: siteUrl,
     logo: `${siteUrl}/favicon.svg`,
     description:
@@ -36,7 +36,7 @@ export function websiteJsonLd() {
     "@type": "WebSite",
     "@id": websiteId,
     name: "Noirven",
-    alternateName: "Noirven 诺梵高奢",
+    alternateName: ["Noirven 诺梵高奢", "nvonly"],
     url: siteUrl,
     inLanguage: ["zh-CN", "en"],
     publisher: { "@id": organizationId },
