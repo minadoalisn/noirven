@@ -4,6 +4,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nvonly.com";
 
 export const organizationId = `${siteUrl}/#organization`;
 export const websiteId = `${siteUrl}/#website`;
+export const webAppId = `${siteUrl}/#webapp`;
 
 export function organizationJsonLd() {
   return {
@@ -51,6 +52,20 @@ export function websiteJsonLd() {
       target: `${siteUrl}/auctions?query={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
+  };
+}
+
+export function webAppJsonLd() {
+  return {
+    "@type": "WebApp",
+    "@id": webAppId,
+    name: "Noirven",
+    alternateName: ["Noirven 诺梵高奢", "nvonly"],
+    url: siteUrl,
+    applicationCategory: "ShoppingApplication",
+    operatingSystem: "Web",
+    inLanguage: ["zh-CN", "en"],
+    publisher: { "@id": organizationId },
   };
 }
 

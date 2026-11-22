@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { createMetadata } from "@/lib/seo";
-import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
+import { organizationJsonLd, websiteJsonLd, webAppJsonLd } from "@/lib/structured-data";
 import { SiteAnalyticsTracker } from "@/components/ui/site-analytics-tracker";
 import { InvertToggle } from "@/components/ui/invert-toggle";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   const siteJsonLd = {
     "@context": "https://schema.org",
-    "@graph": [organizationJsonLd(), websiteJsonLd()],
+    "@graph": [organizationJsonLd(), websiteJsonLd(), webAppJsonLd()],
   };
 
   return (
