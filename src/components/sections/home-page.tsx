@@ -15,7 +15,7 @@ import {
   localizedSeries,
   localizedTerms,
 } from "@/lib/localized-content";
-import { formatCurrency } from "@/lib/format";
+import { formatCurrency, formatDate, getSevenDayCycleEnd } from "@/lib/format";
 import type { Locale } from "@/lib/types";
 
 function serialNumber(serial: string) {
@@ -265,6 +265,57 @@ export function HomePage({ locale = "zh" }: { locale?: Locale }) {
             <div className="max-w-2xl">
               <h2 className="text-xs uppercase tracking-[0.2em]">{locale === "zh" ? "Noirven 是什么" : "What is Noirven"}</h2>
               <p className="mt-5 text-step-1 leading-8 text-[var(--graphite)]">{brandDefinition}</p>
+              <div className="mt-10 overflow-x-auto">
+                <h3 className="font-serif text-step-1">{locale === "zh" ? "在售作品一览" : "Available works at a glance"}</h3>
+                <table className="mt-4 w-full border-collapse text-left text-step--1 leading-6">
+                  <caption className="sr-only">
+                    {locale === "zh" ? "在售作品编号、材质、固定拥有价与本轮截止时间" : "Available works: serial, materials, fixed ownership price, and cycle end"}
+                  </caption>
+                  <thead>
+                    <tr className="border-b border-black/20 text-[11px] uppercase tracking-[0.2em] text-[var(--ash)]">
+                      <th scope="col" className="py-3 pr-4">{locale === "zh" ? "编号" : "Serial"}</th>
+                      <th scope="col" className="py-3 pr-4">{locale === "zh" ? "作品" : "Work"}</th>
+                      <th scope="col" className="py-3 pr-4">{locale === "zh" ? "材质" : "Materials"}</th>
+                      <th scope="col" className="py-3 pr-4">{locale === "zh" ? "固定拥有价" : "Fixed price"}</th>
+                      <th scope="col" className="py-3">{locale === "zh" ? "本轮截止（北京时间）" : "Cycle ends (Beijing time)"}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {live.map((product) => (
+                      <tr key={product.id} className="border-b border-black/10 align-top">
+                        <th scope="row" className="py-3 pr-4 font-mono">
+                          <Link href={withLocale(locale, `/auctions/${product.slug}`)}>{product.serial}</Link>
+                        </th>
+                        <td className="py-3 pr-4">{localizedProductTitle(product, locale)}</td>
+                        <td className="py-3 pr-4 text-[var(--graphite)]">
+                          {localizedTerms(product.materials, locale).join(locale === "zh" ? "、" : ", ")}
+                        </td>
+                        <td className="py-3 pr-4 font-mono">{formatCurrency(product.currentPrice)}</td>
+                        <td className="py-3 font-mono">{formatDate(getSevenDayCycleEnd(product.endsAt).toISOString())}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="mt-4 text-step--1 leading-6 text-[var(--graphite)]">
+                  {locale === "zh" ? (
+                    <>
+                      宝石分级参考：
+                      <a href="https://4cs.gia.edu/en-us/grading-diamond-4cs/" target="_blank" rel="noopener">
+                        GIA 4Cs 钻石分级标准
+                      </a>
+                      。
+                    </>
+                  ) : (
+                    <>
+                      Diamond grading reference:{" "}
+                      <a href="https://4cs.gia.edu/en-us/grading-diamond-4cs/" target="_blank" rel="noopener">
+                        GIA 4Cs Diamond Grading
+                      </a>
+                      .
+                    </>
+                  )}
+                </p>
+              </div>
               <div className="mt-10 space-y-8">
                 {homeFaq.map((item) => (
                   <div key={item.question}>
