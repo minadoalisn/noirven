@@ -10,6 +10,7 @@ const baseDescription =
 
 export function createMetadata({
   title,
+  fullTitle,
   description,
   path = "",
   image = "/assets/noirven-series-visual.png",
@@ -17,6 +18,9 @@ export function createMetadata({
   aiIndexAlternate = false,
 }: {
   title?: string;
+  // Full <title> verbatim (no " | siteName" suffix appended). Homepage only:
+  // brand-first so head and schema carry the same brand string.
+  fullTitle?: string;
   description?: string;
   path?: string;
   image?: string;
@@ -27,7 +31,8 @@ export function createMetadata({
   const normalizedPath = path || "/";
   const isEnglish = normalizedPath.startsWith("/en");
   const siteName = isEnglish ? enSiteName : zhSiteName;
-  const finalTitle = title ? `${title} | ${siteName}` : isEnglish ? `Noirven | Unrepeatable Ultra-Luxury Art Jewelry` : baseTitle;
+  const finalTitle =
+    fullTitle ?? (title ? `${title} | ${siteName}` : isEnglish ? `Noirven | Unrepeatable Ultra-Luxury Art Jewelry` : baseTitle);
   const finalDescription = description ?? (isEnglish ? "Noirven presents unrepeatable ultra-luxury numbered works: one physical piece, never copied, never reissued, and registered to one collector after confirmation." : baseDescription);
   const zhPath = isEnglish ? normalizedPath.replace(/^\/en/, "") || "/" : normalizedPath;
   const enPath = isEnglish ? normalizedPath : `/en${normalizedPath === "/" ? "" : normalizedPath}`;

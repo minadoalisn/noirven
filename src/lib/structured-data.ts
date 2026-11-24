@@ -11,8 +11,8 @@ export function organizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": organizationId,
-    name: "Noirven",
-    alternateName: ["Noirven 诺梵高奢", "nvonly"],
+    name: "Noirven 诺梵高奢",
+    alternateName: ["Noirven", "nvonly"],
     url: siteUrl,
     logo: `${siteUrl}/favicon.svg`,
     description:
@@ -36,9 +36,11 @@ export function websiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": websiteId,
-    name: "Noirven",
-    alternateName: ["Noirven 诺梵高奢", "nvonly"],
+    name: "Noirven 诺梵高奢",
+    alternateName: ["Noirven", "nvonly"],
     url: siteUrl,
+    // Site description, verbatim homepage meta description (facts unchanged).
+    description: "Noirven（nvonly.com，诺梵高奢）是一家独一无二的高级珠宝拍卖站。每件作品都有独立编号，只存在一件，永不复制、永不复刻，并归属于一个故事系列。作品以美元固定拥有价挂牌，通过中英双语的七日拍卖页售出。",
     inLanguage: ["zh-CN", "en"],
     publisher: { "@id": organizationId },
     // Author attribution (G-BYLINE): the site content is authored by the
@@ -59,8 +61,8 @@ export function webApplicationJsonLd() {
   return {
     "@type": "WebApplication",
     "@id": webAppId,
-    name: "Noirven",
-    alternateName: ["Noirven 诺梵高奢", "nvonly"],
+    name: "Noirven 诺梵高奢",
+    alternateName: ["Noirven", "nvonly"],
     url: siteUrl,
     applicationCategory: "ShoppingApplication",
     operatingSystem: "Web",
