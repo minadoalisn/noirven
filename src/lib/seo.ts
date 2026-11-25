@@ -16,6 +16,7 @@ export function createMetadata({
   image = "/assets/noirven-series-visual.png",
   openGraphLocale,
   aiIndexAlternate = false,
+  markdownAlternate = false,
 }: {
   title?: string;
   // Full <title> verbatim (no " | siteName" suffix appended). Homepage only:
@@ -27,6 +28,8 @@ export function createMetadata({
   openGraphLocale?: string;
   // Homepage only: point crawlers at the machine-readable product index.
   aiIndexAlternate?: boolean;
+  // Homepage only: advertise the Markdown mirror of the homepage.
+  markdownAlternate?: boolean;
 } = {}): Metadata {
   const normalizedPath = path || "/";
   const isEnglish = normalizedPath.startsWith("/en");
@@ -56,6 +59,7 @@ export function createMetadata({
       types: {
         "application/rss+xml": "/feed.xml",
         ...(aiIndexAlternate ? { "application/json": "/ai-index.json" } : {}),
+        ...(markdownAlternate ? { "text/markdown": "/index.md" } : {}),
       },
     },
     openGraph: {
