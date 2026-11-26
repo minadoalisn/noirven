@@ -1,4 +1,6 @@
 import { AuctionPage } from "@/components/sections/auction-page";
+import { auctionListQaPairs } from "@/lib/auction-qa";
+import { faqPageJsonLd } from "@/lib/structured-data";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
@@ -10,5 +12,14 @@ export const metadata = createMetadata({
 type PageSearchParams = Promise<Record<string, string | string[] | undefined>>;
 
 export default async function Page({ searchParams }: { searchParams?: PageSearchParams }) {
-  return <AuctionPage locale="zh" searchParams={searchParams ? await searchParams : {}} />;
+  const faqLd = faqPageJsonLd({
+    pageUrl: "https://nvonly.com/auctions",
+    pairs: auctionListQaPairs("zh"),
+  });
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <AuctionPage locale="zh" searchParams={searchParams ? await searchParams : {}} />
+    </>
+  );
 }

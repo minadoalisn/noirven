@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AuctionQa } from "@/components/sections/auction-qa";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ProductCard } from "@/components/sections/product-card";
 import { AuctionViewSwitch, type AuctionView } from "@/components/ui/auction-view-switch";
 import { CollectionStrip, type CollectionItem } from "@/components/ui/collection";
+import { auctionListQaPairs } from "@/lib/auction-qa";
 import { formatCurrency } from "@/lib/format";
 import { liveProducts, storySeries } from "@/lib/noirven-data";
 import { withLocale } from "@/lib/i18n";
@@ -334,6 +336,7 @@ export function AuctionPage({ locale = "zh", searchParams = {} }: { locale?: Loc
 
           <CollectionStrip items={collectionItems} locale={locale} />
         </section>
+        <AuctionQa pairs={auctionListQaPairs(locale)} locale={locale} />
       </main>
       <SiteFooter locale={locale} />
     </div>

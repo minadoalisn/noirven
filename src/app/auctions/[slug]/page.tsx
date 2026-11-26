@@ -3,8 +3,9 @@ import { AUTH_COOKIE, verifySessionToken } from "@/lib/auth";
 import { categoryLabel } from "@/lib/format";
 import { localizedPricingBasis, localizedProductConcept, localizedProductEngraving, localizedProductSizing, localizedTerms } from "@/lib/localized-content";
 import { getProduct } from "@/lib/noirven-data";
+import { productQaPairs } from "@/lib/auction-qa";
 import { createMetadata } from "@/lib/seo";
-import { productPageJsonLd } from "@/lib/structured-data";
+import { faqPageJsonLd, productPageJsonLd } from "@/lib/structured-data";
 import { cookies } from "next/headers";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -49,9 +50,17 @@ export default async function Page({
       })
     : null;
 
+  const faqLd = product
+    ? faqPageJsonLd({
+        pageUrl: `${baseUrl}/auctions/${product.slug}`,
+        pairs: productQaPairs(product, "zh"),
+      })
+    : null;
+
   return (
     <>
       {jsonLd ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /> : null}
+      {faqLd ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} /> : null}
       <ProductDetail slug={slug} locale="zh" paymentStatus={query?.payment} expectedAmount={query?.expected} session={session} />
     </>
   );

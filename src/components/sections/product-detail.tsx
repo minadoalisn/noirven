@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { AuctionQa } from "@/components/sections/auction-qa";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { LinkButton } from "@/components/ui/link-button";
@@ -16,6 +17,7 @@ import {
   localizedSeries,
   localizedTerms,
 } from "@/lib/localized-content";
+import { productQaPairs } from "@/lib/auction-qa";
 import { getProduct, getSeries } from "@/lib/noirven-data";
 import type { Locale } from "@/lib/types";
 import { withLocale } from "@/lib/i18n";
@@ -287,6 +289,7 @@ export function ProductDetail({ slug, locale = "zh", paymentStatus, expectedAmou
             <p className="mt-4 text-step--1 leading-7 text-[var(--graphite)]">{productPricingBasis}</p>
           </div>
         </section>
+        <AuctionQa pairs={productQaPairs(product, locale)} locale={locale} />
       </main>
       <SiteFooter locale={locale} />
     </div>

@@ -177,3 +177,22 @@ export function productPageJsonLd({
     ],
   };
 }
+
+export function faqPageJsonLd({
+  pageUrl,
+  pairs,
+}: {
+  pageUrl: string;
+  pairs: { question: string; answer: string }[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${pageUrl}#faq`,
+    mainEntity: pairs.map((pair) => ({
+      "@type": "Question",
+      name: pair.question,
+      acceptedAnswer: { "@type": "Answer", text: pair.answer },
+    })),
+  };
+}
