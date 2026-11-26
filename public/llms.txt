@@ -3,7 +3,7 @@
 > Noirven (nvonly.com) is a private high-jewelry brand publishing one-of-one, numbered ultra-luxury works: each piece exists once, is never copied or reissued, and is registered to one collector after payment confirmation.
 
 URL: https://nvonly.com
-Last updated: 2026-11-21
+Last updated: 2026-11-26
 Languages: zh-CN, en
 Category: Luxury jewelry / custom jewelry (one-of-one numbered works)
 Sitemap: https://nvonly.com/sitemap.xml
@@ -17,7 +17,8 @@ Machine-readable product index: https://nvonly.com/ai-index.json
 ## Crawler notes
 
 - OAI-SearchBot is allowed to crawl nvonly.com for search/discovery.
-- ChatGPT-User, GPTBot, PerplexityBot, ClaudeBot, Claude-SearchBot, anthropic-ai, Google-Extended, Bingbot, Baiduspider, Bytespider, Applebot, and CCBot are allowed to crawl public pages.
+- ChatGPT-User, PerplexityBot, Claude-SearchBot, Bingbot, Baiduspider, Bytespider, and Applebot are allowed to crawl public pages.
+- Training crawlers (GPTBot, ClaudeBot, anthropic-ai, Google-Extended, CCBot) are disallowed by robots.txt.
 - Private account, admin, and API paths are disallowed.
 
 ## About
